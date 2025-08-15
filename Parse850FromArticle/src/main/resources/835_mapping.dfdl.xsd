@@ -35,6 +35,9 @@
                             <xsd:element dfdl:initiator="REF" dfdl:ref="ibmEdiFmt:EDISegmentFormat"
                                          name="receiver-identification" type="REF_Segment" minOccurs="0"
                                          maxOccurs="unbounded"/>
+                            <xsd:element dfdl:initiator="REF" dfdl:ref="ibmEdiFmt:EDISegmentFormat"
+                                         name="version-identification" type="REF_Segment" minOccurs="0"
+                                         maxOccurs="unbounded"/>
                             <xsd:element dfdl:initiator="DTM" dfdl:ref="ibmEdiFmt:EDISegmentFormat"
                                          name="production-date" type="DTM_Segment" minOccurs="0" maxOccurs="unbounded"/>
 
@@ -53,7 +56,14 @@
                                         <xsd:element dfdl:initiator="PER" dfdl:ref="ibmEdiFmt:EDISegmentFormat"
                                                      name="payer-contact-info" type="PER_Segment" minOccurs="0"
                                                      maxOccurs="unbounded"/>
+                                        <xsd:element dfdl:initiator="PER" dfdl:ref="ibmEdiFmt:EDISegmentFormat"
+                                                     name="payer-technical-contact-info" type="PER_Segment" minOccurs="0"
+                                                     maxOccurs="unbounded"/>
+                                        <xsd:element dfdl:initiator="PER" dfdl:ref="ibmEdiFmt:EDISegmentFormat"
+                                                     name="payer-website" type="PER_Segment" minOccurs="0"
+                                                     maxOccurs="unbounded"/>
                                     </xsd:sequence>
+
                                 </xsd:complexType>
                             </xsd:element>
 
@@ -131,9 +141,21 @@
                                                                  dfdl:ref="ibmEdiFmt:EDISegmentFormat"
                                                                  name="other-claim-related-id" type="REF_Segment"
                                                                  minOccurs="0" maxOccurs="unbounded"/>
+                                                    <xsd:element dfdl:initiator="REF"
+                                                                 dfdl:ref="ibmEdiFmt:EDISegmentFormat"
+                                                                 name="rendering-provider-id" type="REF_Segment"
+                                                                 minOccurs="0" maxOccurs="unbounded"/>
                                                     <xsd:element dfdl:initiator="DTM"
                                                                  dfdl:ref="ibmEdiFmt:EDISegmentFormat"
-                                                                 name="claim-level-dates" type="DTM_Segment"
+                                                                 name="statement-from-or-to-date" type="DTM_Segment"
+                                                                 minOccurs="0" maxOccurs="unbounded"/>
+                                                    <xsd:element dfdl:initiator="DTM"
+                                                                 dfdl:ref="ibmEdiFmt:EDISegmentFormat"
+                                                                 name="coverage-expiration" type="DTM_Segment"
+                                                                 minOccurs="0" maxOccurs="unbounded"/>
+                                                    <xsd:element dfdl:initiator="DTM"
+                                                                 dfdl:ref="ibmEdiFmt:EDISegmentFormat"
+                                                                 name="claim-received" type="DTM_Segment"
                                                                  minOccurs="0" maxOccurs="unbounded"/>
                                                     <xsd:element dfdl:initiator="PER"
                                                                  dfdl:ref="ibmEdiFmt:EDISegmentFormat"
@@ -170,14 +192,29 @@
                                                                              name="service-identification"
                                                                              type="REF_Segment" minOccurs="0"
                                                                              maxOccurs="unbounded"/>
+                                                                <xsd:element dfdl:initiator="REF"
+                                                                             dfdl:ref="ibmEdiFmt:EDISegmentFormat"
+                                                                             name="line-item-control-number"
+                                                                             type="REF_Segment" minOccurs="0"
+                                                                             maxOccurs="unbounded"/>
+                                                                <xsd:element dfdl:initiator="REF"
+                                                                             dfdl:ref="ibmEdiFmt:EDISegmentFormat"
+                                                                             name="rendering-provider-information"
+                                                                             type="REF_Segment" minOccurs="0"
+                                                                             maxOccurs="unbounded"/>
+                                                                <xsd:element dfdl:initiator="REF"
+                                                                             dfdl:ref="ibmEdiFmt:EDISegmentFormat"
+                                                                             name="healthcare-policy-identification"
+                                                                             type="REF_Segment" minOccurs="0"
+                                                                             maxOccurs="unbounded"/>
                                                                 <xsd:element dfdl:initiator="AMT"
                                                                              dfdl:ref="ibmEdiFmt:EDISegmentFormat"
-                                                                             name="service-level-amount"
+                                                                             name="service-supplemental-amount"
                                                                              type="AMT_Segment" minOccurs="0"
                                                                              maxOccurs="unbounded"/>
                                                                 <xsd:element dfdl:initiator="QTY"
                                                                              dfdl:ref="ibmEdiFmt:EDISegmentFormat"
-                                                                             name="service-level-quantity"
+                                                                             name="service-supplemental-quantity"
                                                                              type="QTY_Segment" minOccurs="0"
                                                                              maxOccurs="unbounded"/>
                                                                 <xsd:element dfdl:initiator="LQ"
