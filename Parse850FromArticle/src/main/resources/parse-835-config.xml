@@ -8,5 +8,7 @@
             schemaUri="835_mapping.dfdl.xsd"
             segmentTerminator="~%WSP*; %NL;%WSP*;"
             dataElementSeparator="*"
-            validationMode="Full"/>
+            compositeDataElementSeparator=":"
+            validationMode="Full">
+    </edi:parser>
 </smooks-resource-list>

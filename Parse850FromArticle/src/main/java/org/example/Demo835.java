@@ -13,6 +13,8 @@ public class Demo835 {
         byte[] ediBytes = Files.readAllBytes(
                 Paths.get(Demo835.class.getClassLoader().getResource("input835.edi").toURI())
         );
+        String originalEDIString = Files.readString(Paths.get(Demo835.class.getClassLoader().getResource("input835.edi").toURI()));
+        System.out.println("Original      835 EDI:\n" + originalEDIString);
 
         // EDI -> XML
         String xml = X12_835_Parser.parseEDI(ediBytes);

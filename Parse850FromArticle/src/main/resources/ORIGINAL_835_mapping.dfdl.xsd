@@ -33,26 +33,25 @@
                             <xsd:element dfdl:initiator="CUR" dfdl:ref="ibmEdiFmt:EDISegmentFormat"
                                          name="foreign-currency-information" type="CUR_Segment" minOccurs="0"/>
                             <xsd:element dfdl:initiator="REF" dfdl:ref="ibmEdiFmt:EDISegmentFormat"
-                                         name="receiver-identification" type="REF_Segment" minOccurs="0"
-                                         maxOccurs="unbounded"/>
+                                         name="receiver-identification" type="REF_Segment" minOccurs="0"/>
                             <xsd:element dfdl:initiator="DTM" dfdl:ref="ibmEdiFmt:EDISegmentFormat"
-                                         name="production-date" type="DTM_Segment" minOccurs="0" maxOccurs="unbounded"/>
+                                         name="production-date" type="DTM_Segment" minOccurs="0"/>
 
                             <xsd:element name="Loop_1000A_Payer">
                                 <xsd:complexType>
                                     <xsd:sequence>
                                         <xsd:element dfdl:initiator="N1" dfdl:ref="ibmEdiFmt:EDISegmentFormat"
-                                                     name="payer-identification" type="N1_Segment"/>
+                                                     name="payer-identification" type="Name_Segment_Type"/>
                                         <xsd:element dfdl:initiator="N3" dfdl:ref="ibmEdiFmt:EDISegmentFormat"
-                                                     name="payer-address" type="N3_Segment" minOccurs="0"/>
+                                                     name="payer-address" type="Address_Segment_Type" minOccurs="0"/>
                                         <xsd:element dfdl:initiator="N4" dfdl:ref="ibmEdiFmt:EDISegmentFormat"
-                                                     name="payer-city-state-zip" type="N4_Segment" minOccurs="0"/>
+                                                     name="payer-city-state-zip" type="Location_Segment_Type"
+                                                     minOccurs="0"/>
                                         <xsd:element dfdl:initiator="REF" dfdl:ref="ibmEdiFmt:EDISegmentFormat"
                                                      name="additional-payer-id" type="REF_Segment" minOccurs="0"
                                                      maxOccurs="unbounded"/>
                                         <xsd:element dfdl:initiator="PER" dfdl:ref="ibmEdiFmt:EDISegmentFormat"
-                                                     name="payer-contact-info" type="PER_Segment" minOccurs="0"
-                                                     maxOccurs="unbounded"/>
+                                                     name="payer-contact-info" type="PER_Segment" minOccurs="0"/>
                                     </xsd:sequence>
                                 </xsd:complexType>
                             </xsd:element>
@@ -61,17 +60,15 @@
                                 <xsd:complexType>
                                     <xsd:sequence>
                                         <xsd:element dfdl:initiator="N1" dfdl:ref="ibmEdiFmt:EDISegmentFormat"
-                                                     name="payee-identification" type="N1_Segment"/>
+                                                     name="payee-identification" type="Name_Segment_Type"/>
                                         <xsd:element dfdl:initiator="N3" dfdl:ref="ibmEdiFmt:EDISegmentFormat"
-                                                     name="payee-address" type="N3_Segment" minOccurs="0"/>
+                                                     name="payee-address" type="Address_Segment_Type" minOccurs="0"/>
                                         <xsd:element dfdl:initiator="N4" dfdl:ref="ibmEdiFmt:EDISegmentFormat"
-                                                     name="payee-city-state-zip" type="N4_Segment" minOccurs="0"/>
+                                                     name="payee-city-state-zip" type="Location_Segment_Type"
+                                                     minOccurs="0"/>
                                         <xsd:element dfdl:initiator="REF" dfdl:ref="ibmEdiFmt:EDISegmentFormat"
                                                      name="payee-identification-ref" type="REF_Segment" minOccurs="0"
                                                      maxOccurs="unbounded"/>
-                                        <xsd:element dfdl:initiator="RDM" dfdl:ref="ibmEdiFmt:EDISegmentFormat"
-                                                     name="remittance-delivery-method" type="RDM_Segment"
-                                                     minOccurs="0"/>
                                     </xsd:sequence>
                                 </xsd:complexType>
                             </xsd:element>
@@ -86,7 +83,6 @@
                                         <xsd:element dfdl:initiator="TS2" dfdl:ref="ibmEdiFmt:EDISegmentFormat"
                                                      name="provider-supplemental-summary" type="TS2_Segment"
                                                      minOccurs="0"/>
-
                                         <xsd:element name="Loop_2100_ClaimPayment" maxOccurs="unbounded">
                                             <xsd:complexType>
                                                 <xsd:sequence>
@@ -99,26 +95,27 @@
                                                                  minOccurs="0" maxOccurs="99"/>
                                                     <xsd:element dfdl:initiator="NM1"
                                                                  dfdl:ref="ibmEdiFmt:EDISegmentFormat"
-                                                                 name="patient-name" type="NM1_Segment"/>
+                                                                 name="patient-name" type="Name_Segment_Type"/>
                                                     <xsd:element dfdl:initiator="NM1"
                                                                  dfdl:ref="ibmEdiFmt:EDISegmentFormat"
-                                                                 name="insured-name" type="NM1_Segment" minOccurs="0"/>
-                                                    <xsd:element dfdl:initiator="NM1"
-                                                                 dfdl:ref="ibmEdiFmt:EDISegmentFormat"
-                                                                 name="corrected-patient-insured" type="NM1_Segment"
+                                                                 name="insured-name" type="Name_Segment_Type"
                                                                  minOccurs="0"/>
                                                     <xsd:element dfdl:initiator="NM1"
                                                                  dfdl:ref="ibmEdiFmt:EDISegmentFormat"
-                                                                 name="service-provider-name" type="NM1_Segment"
+                                                                 name="corrected-patient-insured"
+                                                                 type="Name_Segment_Type" minOccurs="0"/>
+                                                    <xsd:element dfdl:initiator="NM1"
+                                                                 dfdl:ref="ibmEdiFmt:EDISegmentFormat"
+                                                                 name="service-provider-name" type="Name_Segment_Type"
                                                                  minOccurs="0"/>
                                                     <xsd:element dfdl:initiator="NM1"
                                                                  dfdl:ref="ibmEdiFmt:EDISegmentFormat"
-                                                                 name="crossover-carrier-name" type="NM1_Segment"
+                                                                 name="crossover-carrier-name" type="Name_Segment_Type"
                                                                  minOccurs="0"/>
                                                     <xsd:element dfdl:initiator="NM1"
                                                                  dfdl:ref="ibmEdiFmt:EDISegmentFormat"
-                                                                 name="corrected-priority-payer-name" type="NM1_Segment"
-                                                                 minOccurs="0"/>
+                                                                 name="corrected-priority-payer-name"
+                                                                 type="Name_Segment_Type" minOccurs="0"/>
                                                     <xsd:element dfdl:initiator="MIA"
                                                                  dfdl:ref="ibmEdiFmt:EDISegmentFormat"
                                                                  name="inpatient-adjudication" type="MIA_Segment"
@@ -147,7 +144,6 @@
                                                                  dfdl:ref="ibmEdiFmt:EDISegmentFormat"
                                                                  name="claim-level-quantity" type="QTY_Segment"
                                                                  minOccurs="0" maxOccurs="unbounded"/>
-
                                                     <xsd:element name="Loop_2110_ServicePayment" minOccurs="0"
                                                                  maxOccurs="999">
                                                         <xsd:complexType>
@@ -211,7 +207,6 @@
         </xsd:complexType>
     </xsd:element>
 
-    <!-- Segment Type Definitions -->
     <xsd:complexType name="ISA_InterchangeHeader">
         <xsd:sequence dfdl:ref="ibmEdiFmt:EDISegmentSequenceFormat">
             <xsd:element name="I01" type="alpha2-2"/>
@@ -232,7 +227,6 @@
             <xsd:element name="I16" type="alpha1-1"/>
         </xsd:sequence>
     </xsd:complexType>
-
     <xsd:complexType name="GS_FunctionalGroupHeader">
         <xsd:sequence dfdl:ref="ibmEdiFmt:EDISegmentSequenceFormat">
             <xsd:element name="GS01" type="alpha2-2"/>
@@ -245,139 +239,43 @@
             <xsd:element name="GS08" type="alpha1-12"/>
         </xsd:sequence>
     </xsd:complexType>
-
     <xsd:complexType name="ST_TransactionSetHeader">
         <xsd:sequence dfdl:ref="ibmEdiFmt:EDISegmentSequenceFormat">
             <xsd:element name="ST01" type="numeric3-3"/>
             <xsd:element name="ST02" type="alpha4-9"/>
-            <xsd:element name="ST03" type="alpha1-35" minOccurs="0"/>
         </xsd:sequence>
     </xsd:complexType>
-
     <xsd:complexType name="BPR_Segment">
         <xsd:sequence dfdl:ref="ibmEdiFmt:EDISegmentSequenceFormat">
             <xsd:element name="BPR01" type="alpha1-2"/>
             <xsd:element name="BPR02" type="decimal1-18"/>
             <xsd:element name="BPR03" type="alpha1-1"/>
             <xsd:element name="BPR04" type="alpha3-3"/>
-            <xsd:element name="BPR05" type="alpha1-2" minOccurs="0"/>
-            <xsd:element name="BPR06" type="alpha2-2" minOccurs="0"/>
-            <xsd:element name="BPR07" type="alpha2-2" minOccurs="0"/>
-            <xsd:element name="BPR08" type="alpha1-17" minOccurs="0"/>
-            <xsd:element name="BPR09" type="alpha1-2" minOccurs="0"/>
-            <xsd:element name="BPR10" type="alpha2-2" minOccurs="0"/>
-            <xsd:element name="BPR11" type="alpha2-2" minOccurs="0"/>
-            <xsd:element name="BPR12" type="alpha1-17" minOccurs="0"/>
-            <xsd:element name="BPR13" type="alpha8-8" minOccurs="0"/>
-            <xsd:element name="BPR14" type="alpha1-2" minOccurs="0"/>
-            <xsd:element name="BPR15" type="alpha2-2" minOccurs="0"/>
-            <xsd:element name="BPR16" type="alpha2-2" minOccurs="0"/>
-            <xsd:element name="BPR17" type="alpha1-17" minOccurs="0"/>
-            <xsd:element name="BPR18" type="alpha1-2" minOccurs="0"/>
-            <xsd:element name="BPR19" type="alpha2-2" minOccurs="0"/>
-            <xsd:element name="BPR20" type="alpha2-2" minOccurs="0"/>
-            <xsd:element name="BPR21" type="alpha1-17" minOccurs="0"/>
         </xsd:sequence>
     </xsd:complexType>
-
     <xsd:complexType name="TRN_Segment">
         <xsd:sequence dfdl:ref="ibmEdiFmt:EDISegmentSequenceFormat">
             <xsd:element name="TRN01" type="alpha1-2"/>
             <xsd:element name="TRN02" type="alpha1-50"/>
-            <xsd:element name="TRN03" type="alpha10-10" minOccurs="0"/>
-            <xsd:element name="TRN04" type="alpha1-50" minOccurs="0"/>
+            <xsd:element name="TRN03" type="alpha10-10"/>
         </xsd:sequence>
     </xsd:complexType>
-
     <xsd:complexType name="CUR_Segment">
         <xsd:sequence dfdl:ref="ibmEdiFmt:EDISegmentSequenceFormat">
             <xsd:element name="CUR01" type="alpha2-3"/>
             <xsd:element name="CUR02" type="alpha3-3"/>
-            <xsd:element name="CUR03" type="decimal4-10" minOccurs="0"/>
-            <xsd:element name="CUR04" type="alpha3-3" minOccurs="0"/>
-            <xsd:element name="CUR05" type="decimal4-10" minOccurs="0"/>
-            <xsd:element name="CUR06" type="alpha3-3" minOccurs="0"/>
-            <xsd:element name="CUR07" type="decimal4-10" minOccurs="0"/>
-            <xsd:element name="CUR08" type="alpha3-3" minOccurs="0"/>
-            <xsd:element name="CUR09" type="decimal4-10" minOccurs="0"/>
-            <xsd:element name="CUR10" type="alpha3-3" minOccurs="0"/>
-            <xsd:element name="CUR11" type="decimal4-10" minOccurs="0"/>
-            <xsd:element name="CUR12" type="alpha3-3" minOccurs="0"/>
-            <xsd:element name="CUR13" type="decimal4-10" minOccurs="0"/>
-            <xsd:element name="CUR14" type="alpha3-3" minOccurs="0"/>
-            <xsd:element name="CUR15" type="decimal4-10" minOccurs="0"/>
-            <xsd:element name="CUR16" type="alpha3-3" minOccurs="0"/>
-            <xsd:element name="CUR17" type="decimal4-10" minOccurs="0"/>
-            <xsd:element name="CUR18" type="alpha3-3" minOccurs="0"/>
-            <xsd:element name="CUR19" type="decimal4-10" minOccurs="0"/>
-            <xsd:element name="CUR20" type="alpha3-3" minOccurs="0"/>
-            <xsd:element name="CUR21" type="decimal4-10" minOccurs="0"/>
         </xsd:sequence>
     </xsd:complexType>
-
     <xsd:complexType name="REF_Segment">
         <xsd:sequence dfdl:ref="ibmEdiFmt:EDISegmentSequenceFormat">
             <xsd:element name="REF01" type="alpha2-3"/>
-            <xsd:element name="REF02" type="alpha1-50" minOccurs="0"/>
-            <xsd:element name="REF03" type="alpha1-80" minOccurs="0"/>
-            <xsd:element name="REF04" type="C040_Type" minOccurs="0"/>
+            <xsd:element name="REF02" type="alpha1-50"/>
         </xsd:sequence>
     </xsd:complexType>
-
     <xsd:complexType name="DTM_Segment">
         <xsd:sequence dfdl:ref="ibmEdiFmt:EDISegmentSequenceFormat">
             <xsd:element name="DTM01" type="alpha3-3"/>
-            <xsd:element name="DTM02" type="alpha8-8" minOccurs="0"/>
-            <xsd:element name="DTM03" type="alpha4-8" minOccurs="0"/>
-            <xsd:element name="DTM04" type="alpha2-2" minOccurs="0"/>
-            <xsd:element name="DTM05" type="alpha1-2" minOccurs="0"/>
-            <xsd:element name="DTM06" type="alpha1-2" minOccurs="0"/>
-        </xsd:sequence>
-    </xsd:complexType>
-
-    <xsd:complexType name="N1_Segment">
-        <xsd:sequence dfdl:ref="ibmEdiFmt:EDISegmentSequenceFormat">
-            <xsd:element name="N101" type="alpha2-3"/>
-            <xsd:element name="N102" type="alpha1-60" minOccurs="0"/>
-            <xsd:element name="N103" type="alpha1-80" minOccurs="0"/>
-            <xsd:element name="N104" type="alpha2-80" minOccurs="0"/>
-            <xsd:element name="N105" type="alpha2-3" minOccurs="0"/>
-            <xsd:element name="N106" type="alpha2-80" minOccurs="0"/>
-        </xsd:sequence>
-    </xsd:complexType>
-
-    <xsd:complexType name="NM1_Segment">
-        <xsd:sequence dfdl:ref="ibmEdiFmt:EDISegmentSequenceFormat">
-            <xsd:element name="NM101" type="alpha2-3"/>
-            <xsd:element name="NM102" type="alpha1-1"/>
-            <xsd:element name="NM103" type="alpha1-60" minOccurs="0"/>
-            <xsd:element name="NM104" type="alpha1-35" minOccurs="0"/>
-            <xsd:element name="NM105" type="alpha1-10" minOccurs="0"/>
-            <xsd:element name="NM106" type="alpha1-10" minOccurs="0"/>
-            <xsd:element name="NM107" type="alpha1-10" minOccurs="0"/>
-            <xsd:element name="NM108" type="alpha1-3" minOccurs="0"/>
-            <xsd:element name="NM109" type="alpha2-80" minOccurs="0"/>
-            <xsd:element name="NM110" type="alpha2-3" minOccurs="0"/>
-            <xsd:element name="NM111" type="alpha2-80" minOccurs="0"/>
-            <xsd:element name="NM112" type="alpha2-3" minOccurs="0"/>
-        </xsd:sequence>
-    </xsd:complexType>
-
-    <xsd:complexType name="N3_Segment">
-        <xsd:sequence dfdl:ref="ibmEdiFmt:EDISegmentSequenceFormat">
-            <xsd:element name="N301" type="alpha1-55"/>
-            <xsd:element name="N302" type="alpha1-55" minOccurs="0"/>
-        </xsd:sequence>
-    </xsd:complexType>
-
-    <xsd:complexType name="N4_Segment">
-        <xsd:sequence dfdl:ref="ibmEdiFmt:EDISegmentSequenceFormat">
-            <xsd:element name="N401" type="alpha2-30"/>
-            <xsd:element name="N402" type="alpha2-2" minOccurs="0"/>
-            <xsd:element name="N403" type="alpha3-15" minOccurs="0"/>
-            <xsd:element name="N404" type="alpha2-3" minOccurs="0"/>
-            <xsd:element name="N405" type="alpha1-4" minOccurs="0"/>
-            <xsd:element name="N406" type="alpha1-4" minOccurs="0"/>
+            <xsd:element name="DTM02" type="alpha8-8"/>
         </xsd:sequence>
     </xsd:complexType>
     <xsd:complexType name="Name_Segment_Type">
@@ -405,184 +303,60 @@
         <xsd:sequence dfdl:ref="ibmEdiFmt:EDISegmentSequenceFormat">
             <xsd:element name="PER01" type="alpha2-2"/>
             <xsd:element name="PER02" type="alpha1-60" minOccurs="0"/>
-            <xsd:element name="PER03" type="alpha2-2" minOccurs="0"/>
-            <xsd:element name="PER04" type="alpha1-256" minOccurs="0"/>
-            <xsd:element name="PER05" type="alpha2-2" minOccurs="0"/>
-            <xsd:element name="PER06" type="alpha1-256" minOccurs="0"/>
-            <xsd:element name="PER07" type="alpha2-2" minOccurs="0"/>
-            <xsd:element name="PER08" type="alpha1-256" minOccurs="0"/>
-            <xsd:element name="PER09" type="alpha7-20" minOccurs="0"/>
+            <xsd:element name="PER03" type="alpha2-2"/>
+            <xsd:element name="PER04" type="alpha1-256"/>
         </xsd:sequence>
     </xsd:complexType>
-
-    <xsd:complexType name="RDM_Segment">
-        <xsd:sequence dfdl:ref="ibmEdiFmt:EDISegmentSequenceFormat">
-            <xsd:element name="RDM01" type="alpha1-2"/>
-            <xsd:element name="RDM02" type="alpha1-80" minOccurs="0"/>
-            <xsd:element name="RDM03" type="alpha1-2" minOccurs="0"/>
-            <xsd:element name="RDM04" type="alpha1-256" minOccurs="0"/>
-        </xsd:sequence>
-    </xsd:complexType>
-
     <xsd:complexType name="LX_Segment">
         <xsd:sequence dfdl:ref="ibmEdiFmt:EDISegmentSequenceFormat">
             <xsd:element name="LX01" type="numeric1-6"/>
         </xsd:sequence>
     </xsd:complexType>
-
     <xsd:complexType name="TS3_Segment">
         <xsd:sequence dfdl:ref="ibmEdiFmt:EDISegmentSequenceFormat">
             <xsd:element name="TS301" type="alpha2-80"/>
-            <xsd:element name="TS302" type="alpha1-9" minOccurs="0"/>
-            <xsd:element name="TS303" type="decimal1-18" minOccurs="0"/>
-            <xsd:element name="TS304" type="decimal1-18" minOccurs="0"/>
-            <xsd:element name="TS305" type="decimal1-18" minOccurs="0"/>
-            <xsd:element name="TS306" type="numeric1-6" minOccurs="0"/>
-            <xsd:element name="TS307" type="decimal1-18" minOccurs="0"/>
-            <xsd:element name="TS308" type="decimal1-18" minOccurs="0"/>
-            <xsd:element name="TS309" type="decimal1-18" minOccurs="0"/>
-            <xsd:element name="TS310" type="decimal1-18" minOccurs="0"/>
-            <xsd:element name="TS311" type="decimal1-18" minOccurs="0"/>
-            <xsd:element name="TS312" type="decimal1-18" minOccurs="0"/>
-            <xsd:element name="TS313" type="decimal1-18" minOccurs="0"/>
-            <xsd:element name="TS314" type="decimal1-18" minOccurs="0"/>
-            <xsd:element name="TS315" type="decimal1-18" minOccurs="0"/>
-            <xsd:element name="TS316" type="decimal1-18" minOccurs="0"/>
-            <xsd:element name="TS317" type="decimal1-18" minOccurs="0"/>
-            <xsd:element name="TS318" type="decimal1-18" minOccurs="0"/>
-            <xsd:element name="TS319" type="decimal1-18" minOccurs="0"/>
-            <xsd:element name="TS320" type="decimal1-18" minOccurs="0"/>
-            <xsd:element name="TS321" type="decimal1-18" minOccurs="0"/>
-            <xsd:element name="TS322" type="decimal1-18" minOccurs="0"/>
-            <xsd:element name="TS323" type="decimal1-18" minOccurs="0"/>
-            <xsd:element name="TS324" type="decimal1-18" minOccurs="0"/>
         </xsd:sequence>
     </xsd:complexType>
-
     <xsd:complexType name="TS2_Segment">
         <xsd:sequence dfdl:ref="ibmEdiFmt:EDISegmentSequenceFormat">
-            <xsd:element name="TS201" type="decimal1-18" minOccurs="0"/>
-            <xsd:element name="TS202" type="decimal1-18" minOccurs="0"/>
-            <xsd:element name="TS203" type="decimal1-18" minOccurs="0"/>
-            <xsd:element name="TS204" type="decimal1-18" minOccurs="0"/>
-            <xsd:element name="TS205" type="decimal1-18" minOccurs="0"/>
-            <xsd:element name="TS206" type="decimal1-18" minOccurs="0"/>
-            <xsd:element name="TS207" type="decimal1-18" minOccurs="0"/>
-            <xsd:element name="TS208" type="decimal1-18" minOccurs="0"/>
-            <xsd:element name="TS209" type="decimal1-18" minOccurs="0"/>
-            <xsd:element name="TS210" type="decimal1-18" minOccurs="0"/>
-            <xsd:element name="TS211" type="decimal1-18" minOccurs="0"/>
-            <xsd:element name="TS212" type="decimal1-18" minOccurs="0"/>
-            <xsd:element name="TS213" type="decimal1-18" minOccurs="0"/>
-            <xsd:element name="TS214" type="decimal1-18" minOccurs="0"/>
-            <xsd:element name="TS215" type="decimal1-18" minOccurs="0"/>
-            <xsd:element name="TS216" type="decimal1-18" minOccurs="0"/>
-            <xsd:element name="TS217" type="decimal1-18" minOccurs="0"/>
-            <xsd:element name="TS218" type="decimal1-18" minOccurs="0"/>
-            <xsd:element name="TS219" type="decimal1-18" minOccurs="0"/>
+            <xsd:element name="TS201" type="decimal1-18"/>
         </xsd:sequence>
     </xsd:complexType>
-
     <xsd:complexType name="CLP_Segment">
         <xsd:sequence dfdl:ref="ibmEdiFmt:EDISegmentSequenceFormat">
             <xsd:element name="CLP01" type="alpha1-38"/>
             <xsd:element name="CLP02" type="numeric1-2"/>
             <xsd:element name="CLP03" type="decimal1-18"/>
             <xsd:element name="CLP04" type="decimal1-18"/>
-            <xsd:element name="CLP05" type="decimal1-18" minOccurs="0"/>
-            <xsd:element name="CLP06" type="alpha2-2" minOccurs="0"/>
-            <xsd:element name="CLP07" type="alpha1-38" minOccurs="0"/>
-            <xsd:element name="CLP08" type="alpha1-2" minOccurs="0"/>
-            <xsd:element name="CLP09" type="alpha1-38" minOccurs="0"/>
-            <xsd:element name="CLP10" type="alpha1-38" minOccurs="0"/>
-            <xsd:element name="CLP11" type="alpha1-38" minOccurs="0"/>
-            <xsd:element name="CLP12" type="alpha1-38" minOccurs="0"/>
-            <xsd:element name="CLP13" type="alpha1-38" minOccurs="0"/>
-            <xsd:element name="CLP14" type="alpha1-38" minOccurs="0"/>
         </xsd:sequence>
     </xsd:complexType>
-
     <xsd:complexType name="CAS_Segment">
         <xsd:sequence dfdl:ref="ibmEdiFmt:EDISegmentSequenceFormat">
             <xsd:element name="CAS01" type="alpha1-2"/>
             <xsd:element name="CAS02" type="alpha1-5"/>
             <xsd:element name="CAS03" type="decimal1-18"/>
-            <xsd:element name="CAS04" type="decimal1-15" minOccurs="0"/>
-            <xsd:element name="CAS05" type="alpha1-5" minOccurs="0"/>
-            <xsd:element name="CAS06" type="decimal1-18" minOccurs="0"/>
-            <xsd:element name="CAS07" type="decimal1-15" minOccurs="0"/>
-            <xsd:element name="CAS08" type="alpha1-5" minOccurs="0"/>
-            <xsd:element name="CAS09" type="decimal1-18" minOccurs="0"/>
-            <xsd:element name="CAS10" type="decimal1-15" minOccurs="0"/>
-            <xsd:element name="CAS11" type="alpha1-5" minOccurs="0"/>
-            <xsd:element name="CAS12" type="decimal1-18" minOccurs="0"/>
-            <xsd:element name="CAS13" type="decimal1-15" minOccurs="0"/>
-            <xsd:element name="CAS14" type="alpha1-5" minOccurs="0"/>
-            <xsd:element name="CAS15" type="decimal1-18" minOccurs="0"/>
-            <xsd:element name="CAS16" type="decimal1-15" minOccurs="0"/>
-            <xsd:element name="CAS17" type="alpha1-5" minOccurs="0"/>
-            <xsd:element name="CAS18" type="decimal1-18" minOccurs="0"/>
-            <xsd:element name="CAS19" type="decimal1-15" minOccurs="0"/>
         </xsd:sequence>
     </xsd:complexType>
-
     <xsd:complexType name="MIA_Segment">
         <xsd:sequence dfdl:ref="ibmEdiFmt:EDISegmentSequenceFormat">
             <xsd:element name="MIA01" type="decimal1-18"/>
-            <xsd:element name="MIA02" type="decimal1-18" minOccurs="0"/>
-            <xsd:element name="MIA03" type="decimal1-18" minOccurs="0"/>
-            <xsd:element name="MIA04" type="decimal1-18" minOccurs="0"/>
-            <xsd:element name="MIA05" type="alpha1-15" minOccurs="0"/>
-            <xsd:element name="MIA06" type="decimal1-18" minOccurs="0"/>
-            <xsd:element name="MIA07" type="decimal1-18" minOccurs="0"/>
-            <xsd:element name="MIA08" type="decimal1-18" minOccurs="0"/>
-            <xsd:element name="MIA09" type="decimal1-18" minOccurs="0"/>
-            <xsd:element name="MIA10" type="decimal1-18" minOccurs="0"/>
-            <xsd:element name="MIA11" type="decimal1-18" minOccurs="0"/>
-            <xsd:element name="MIA12" type="decimal1-18" minOccurs="0"/>
-            <xsd:element name="MIA13" type="decimal1-18" minOccurs="0"/>
-            <xsd:element name="MIA14" type="decimal1-18" minOccurs="0"/>
-            <xsd:element name="MIA15" type="decimal1-18" minOccurs="0"/>
-            <xsd:element name="MIA16" type="decimal1-18" minOccurs="0"/>
-            <xsd:element name="MIA17" type="decimal1-18" minOccurs="0"/>
-            <xsd:element name="MIA18" type="decimal1-18" minOccurs="0"/>
-            <xsd:element name="MIA19" type="decimal1-18" minOccurs="0"/>
-            <xsd:element name="MIA20" type="decimal1-18" minOccurs="0"/>
-            <xsd:element name="MIA21" type="decimal1-18" minOccurs="0"/>
-            <xsd:element name="MIA22" type="decimal1-18" minOccurs="0"/>
-            <xsd:element name="MIA23" type="decimal1-18" minOccurs="0"/>
-            <xsd:element name="MIA24" type="decimal1-18" minOccurs="0"/>
         </xsd:sequence>
     </xsd:complexType>
-
     <xsd:complexType name="MOA_Segment">
         <xsd:sequence dfdl:ref="ibmEdiFmt:EDISegmentSequenceFormat">
             <xsd:element name="MOA01" type="decimal1-18" minOccurs="0"/>
-            <xsd:element name="MOA02" type="decimal1-18" minOccurs="0"/>
-            <xsd:element name="MOA03" type="decimal1-18" minOccurs="0"/>
-            <xsd:element name="MOA04" type="decimal1-18" minOccurs="0"/>
-            <xsd:element name="MOA05" type="decimal1-18" minOccurs="0"/>
-            <xsd:element name="MOA06" type="decimal1-18" minOccurs="0"/>
-            <xsd:element name="MOA07" type="decimal1-18" minOccurs="0"/>
-            <xsd:element name="MOA08" type="decimal1-18" minOccurs="0"/>
-            <xsd:element name="MOA09" type="decimal1-18" minOccurs="0"/>
         </xsd:sequence>
     </xsd:complexType>
-
     <xsd:complexType name="AMT_Segment">
         <xsd:sequence dfdl:ref="ibmEdiFmt:EDISegmentSequenceFormat">
             <xsd:element name="AMT01" type="alpha1-3"/>
             <xsd:element name="AMT02" type="decimal1-18"/>
-            <xsd:element name="AMT03" type="alpha1-1" minOccurs="0"/>
         </xsd:sequence>
     </xsd:complexType>
-
     <xsd:complexType name="QTY_Segment">
         <xsd:sequence dfdl:ref="ibmEdiFmt:EDISegmentSequenceFormat">
             <xsd:element name="QTY01" type="alpha2-2"/>
             <xsd:element name="QTY02" type="decimal1-15"/>
-            <xsd:element name="QTY03" type="C001_Type" minOccurs="0"/>
-            <xsd:element name="QTY04" type="alpha1-1" minOccurs="0"/>
         </xsd:sequence>
     </xsd:complexType>
     <xsd:complexType name="SVC_Segment">
@@ -592,47 +366,32 @@
             <xsd:element name="SVC03" type="decimal1-18"/>
         </xsd:sequence>
     </xsd:complexType>
-
     <xsd:complexType name="LQ_Segment">
         <xsd:sequence dfdl:ref="ibmEdiFmt:EDISegmentSequenceFormat">
             <xsd:element name="LQ01" type="alpha2-2"/>
             <xsd:element name="LQ02" type="alpha1-30"/>
         </xsd:sequence>
     </xsd:complexType>
-
     <xsd:complexType name="PLB_Segment">
         <xsd:sequence dfdl:ref="ibmEdiFmt:EDISegmentSequenceFormat">
             <xsd:element name="PLB01" type="alpha2-80"/>
-            <xsd:element name="PLB02" type="alpha8-8"/>
-            <xsd:element name="PLB03" type="C042_Type"/>
+            <xsd:element name="PLB02" type="numeric8-8"/>
+            <xsd:element name="PLB03" type="alpha1-50"/>
             <xsd:element name="PLB04" type="decimal1-18"/>
-            <xsd:element name="PLB05" type="C042_Type" minOccurs="0"/>
-            <xsd:element name="PLB06" type="decimal1-18" minOccurs="0"/>
-            <xsd:element name="PLB07" type="C042_Type" minOccurs="0"/>
-            <xsd:element name="PLB08" type="decimal1-18" minOccurs="0"/>
-            <xsd:element name="PLB09" type="C042_Type" minOccurs="0"/>
-            <xsd:element name="PLB10" type="decimal1-18" minOccurs="0"/>
-            <xsd:element name="PLB11" type="C042_Type" minOccurs="0"/>
-            <xsd:element name="PLB12" type="decimal1-18" minOccurs="0"/>
-            <xsd:element name="PLB13" type="C042_Type" minOccurs="0"/>
-            <xsd:element name="PLB14" type="decimal1-18" minOccurs="0"/>
         </xsd:sequence>
     </xsd:complexType>
-
     <xsd:complexType name="SE_TransactionSetTrailer">
         <xsd:sequence dfdl:ref="ibmEdiFmt:EDISegmentSequenceFormat">
             <xsd:element name="SE01" type="numeric1-10"/>
             <xsd:element name="SE02" type="alpha4-9"/>
         </xsd:sequence>
     </xsd:complexType>
-
     <xsd:complexType name="GE_FunctionalGroupTrailer">
         <xsd:sequence dfdl:ref="ibmEdiFmt:EDISegmentSequenceFormat">
             <xsd:element name="GE01" type="numeric1-6"/>
             <xsd:element name="GE02" type="numeric1-9"/>
         </xsd:sequence>
     </xsd:complexType>
-
     <xsd:complexType name="IEA_InterchangeTrailer">
         <xsd:sequence dfdl:ref="ibmEdiFmt:EDISegmentSequenceFormat">
             <xsd:element name="IEA01" type="numeric1-5"/>
@@ -640,390 +399,216 @@
         </xsd:sequence>
     </xsd:complexType>
 
-    <!-- Composite Data Element Types -->
-    <xsd:complexType name="C001_Type">
-        <xsd:sequence dfdl:ref="ibmEdiFmt:EDISegmentSequenceFormat">
-            <xsd:element name="C00101" type="alpha2-2"/>
-            <xsd:element name="C00102" type="alpha1-17" minOccurs="0"/>
-            <xsd:element name="C00103" type="alpha2-2" minOccurs="0"/>
-            <xsd:element name="C00104" type="alpha1-17" minOccurs="0"/>
-            <xsd:element name="C00105" type="alpha2-2" minOccurs="0"/>
-            <xsd:element name="C00106" type="alpha1-17" minOccurs="0"/>
-            <xsd:element name="C00107" type="alpha2-2" minOccurs="0"/>
-            <xsd:element name="C00108" type="alpha1-17" minOccurs="0"/>
-            <xsd:element name="C00109" type="alpha2-2" minOccurs="0"/>
-            <xsd:element name="C00110" type="alpha1-17" minOccurs="0"/>
-            <xsd:element name="C00111" type="alpha2-2" minOccurs="0"/>
-            <xsd:element name="C00112" type="alpha1-17" minOccurs="0"/>
-            <xsd:element name="C00113" type="alpha2-2" minOccurs="0"/>
-            <xsd:element name="C00114" type="alpha1-17" minOccurs="0"/>
-            <xsd:element name="C00115" type="alpha2-2" minOccurs="0"/>
-        </xsd:sequence>
-    </xsd:complexType>
-
-    <xsd:complexType name="C003_Type">
-        <xsd:sequence dfdl:ref="ibmEdiFmt:EDISegmentSequenceFormat">
-            <xsd:element name="C00301" type="alpha1-48"/>
-            <xsd:element name="C00302" type="alpha1-7" minOccurs="0"/>
-            <xsd:element name="C00303" type="alpha1-7" minOccurs="0"/>
-            <xsd:element name="C00304" type="alpha1-7" minOccurs="0"/>
-            <xsd:element name="C00305" type="alpha1-7" minOccurs="0"/>
-            <xsd:element name="C00306" type="alpha1-7" minOccurs="0"/>
-            <xsd:element name="C00307" type="alpha1-30" minOccurs="0"/>
-        </xsd:sequence>
-    </xsd:complexType>
-
-    <xsd:complexType name="C040_Type">
-        <xsd:sequence dfdl:ref="ibmEdiFmt:EDISegmentSequenceFormat">
-            <xsd:element name="C04001" type="alpha1-30"/>
-            <xsd:element name="C04002" type="alpha1-30" minOccurs="0"/>
-            <xsd:element name="C04003" type="alpha1-30" minOccurs="0"/>
-            <xsd:element name="C04004" type="alpha1-30" minOccurs="0"/>
-            <xsd:element name="C04005" type="alpha1-30" minOccurs="0"/>
-            <xsd:element name="C04006" type="alpha1-30" minOccurs="0"/>
-        </xsd:sequence>
-    </xsd:complexType>
-
-    <xsd:complexType name="C042_Type">
-        <xsd:sequence dfdl:ref="ibmEdiFmt:EDISegmentSequenceFormat">
-            <xsd:element name="C04201" type="alpha1-2"/>
-            <xsd:element name="C04202" type="alpha1-50"/>
-        </xsd:sequence>
-    </xsd:complexType>
-
-    <!-- Simple Type Definitions -->
     <xsd:simpleType name="alpha1-1">
         <xsd:restriction base="xsd:string">
             <xsd:minLength value="1"/>
             <xsd:maxLength value="1"/>
         </xsd:restriction>
     </xsd:simpleType>
-
     <xsd:simpleType name="alpha1-2">
         <xsd:restriction base="xsd:string">
             <xsd:minLength value="1"/>
             <xsd:maxLength value="2"/>
         </xsd:restriction>
     </xsd:simpleType>
-
     <xsd:simpleType name="alpha1-3">
         <xsd:restriction base="xsd:string">
             <xsd:minLength value="1"/>
             <xsd:maxLength value="3"/>
         </xsd:restriction>
     </xsd:simpleType>
-
-    <xsd:simpleType name="alpha1-4">
-        <xsd:restriction base="xsd:string">
-            <xsd:minLength value="1"/>
-            <xsd:maxLength value="4"/>
-        </xsd:restriction>
-    </xsd:simpleType>
-
-    <xsd:simpleType name="alpha1-5">
-        <xsd:restriction base="xsd:string">
-            <xsd:minLength value="1"/>
-            <xsd:maxLength value="5"/>
-        </xsd:restriction>
-    </xsd:simpleType>
-
-    <xsd:simpleType name="alpha1-7">
-        <xsd:restriction base="xsd:string">
-            <xsd:minLength value="1"/>
-            <xsd:maxLength value="7"/>
-        </xsd:restriction>
-    </xsd:simpleType>
-
-    <xsd:simpleType name="alpha1-9">
-        <xsd:restriction base="xsd:string">
-            <xsd:minLength value="1"/>
-            <xsd:maxLength value="9"/>
-        </xsd:restriction>
-    </xsd:simpleType>
-
-    <xsd:simpleType name="alpha1-10">
-        <xsd:restriction base="xsd:string">
-            <xsd:minLength value="1"/>
-            <xsd:maxLength value="10"/>
-        </xsd:restriction>
-    </xsd:simpleType>
-
-    <xsd:simpleType name="alpha1-12">
-        <xsd:restriction base="xsd:string">
-            <xsd:minLength value="1"/>
-            <xsd:maxLength value="12"/>
-        </xsd:restriction>
-    </xsd:simpleType>
-
-    <xsd:simpleType name="alpha1-15">
-        <xsd:restriction base="xsd:string">
-            <xsd:minLength value="1"/>
-            <xsd:maxLength value="15"/>
-        </xsd:restriction>
-    </xsd:simpleType>
-
-    <xsd:simpleType name="alpha1-17">
-        <xsd:restriction base="xsd:string">
-            <xsd:minLength value="1"/>
-            <xsd:maxLength value="17"/>
-        </xsd:restriction>
-    </xsd:simpleType>
-
-    <xsd:simpleType name="alpha1-30">
-        <xsd:restriction base="xsd:string">
-            <xsd:minLength value="1"/>
-            <xsd:maxLength value="30"/>
-        </xsd:restriction>
-    </xsd:simpleType>
-
-    <xsd:simpleType name="alpha1-35">
-        <xsd:restriction base="xsd:string">
-            <xsd:minLength value="1"/>
-            <xsd:maxLength value="35"/>
-        </xsd:restriction>
-    </xsd:simpleType>
-
-    <xsd:simpleType name="alpha1-38">
-        <xsd:restriction base="xsd:string">
-            <xsd:minLength value="1"/>
-            <xsd:maxLength value="38"/>
-        </xsd:restriction>
-    </xsd:simpleType>
-
-    <xsd:simpleType name="alpha1-48">
-        <xsd:restriction base="xsd:string">
-            <xsd:minLength value="1"/>
-            <xsd:maxLength value="48"/>
-        </xsd:restriction>
-    </xsd:simpleType>
-
-    <xsd:simpleType name="alpha1-50">
-        <xsd:restriction base="xsd:string">
-            <xsd:minLength value="1"/>
-            <xsd:maxLength value="50"/>
-        </xsd:restriction>
-    </xsd:simpleType>
-
-    <xsd:simpleType name="alpha1-55">
-        <xsd:restriction base="xsd:string">
-            <xsd:minLength value="1"/>
-            <xsd:maxLength value="55"/>
-        </xsd:restriction>
-    </xsd:simpleType>
-
-    <xsd:simpleType name="alpha1-60">
-        <xsd:restriction base="xsd:string">
-            <xsd:minLength value="1"/>
-            <xsd:maxLength value="60"/>
-        </xsd:restriction>
-    </xsd:simpleType>
-
-    <xsd:simpleType name="alpha1-80">
-        <xsd:restriction base="xsd:string">
-            <xsd:minLength value="1"/>
-            <xsd:maxLength value="80"/>
-        </xsd:restriction>
-    </xsd:simpleType>
-
     <xsd:simpleType name="alpha2-2">
         <xsd:restriction base="xsd:string">
             <xsd:minLength value="2"/>
             <xsd:maxLength value="2"/>
         </xsd:restriction>
     </xsd:simpleType>
-
     <xsd:simpleType name="alpha2-3">
         <xsd:restriction base="xsd:string">
             <xsd:minLength value="2"/>
             <xsd:maxLength value="3"/>
         </xsd:restriction>
     </xsd:simpleType>
-
     <xsd:simpleType name="alpha3-3">
         <xsd:restriction base="xsd:string">
             <xsd:minLength value="3"/>
             <xsd:maxLength value="3"/>
         </xsd:restriction>
     </xsd:simpleType>
-
+    <xsd:simpleType name="alpha1-5">
+        <xsd:restriction base="xsd:string">
+            <xsd:minLength value="1"/>
+            <xsd:maxLength value="5"/>
+        </xsd:restriction>
+    </xsd:simpleType>
     <xsd:simpleType name="alpha2-15">
         <xsd:restriction base="xsd:string">
             <xsd:minLength value="2"/>
             <xsd:maxLength value="15"/>
         </xsd:restriction>
     </xsd:simpleType>
-
     <xsd:simpleType name="alpha4-9">
         <xsd:restriction base="xsd:string">
             <xsd:minLength value="4"/>
             <xsd:maxLength value="9"/>
         </xsd:restriction>
     </xsd:simpleType>
-
+    <xsd:simpleType name="alpha1-12">
+        <xsd:restriction base="xsd:string">
+            <xsd:minLength value="1"/>
+            <xsd:maxLength value="12"/>
+        </xsd:restriction>
+    </xsd:simpleType>
+    <xsd:simpleType name="alpha1-30">
+        <xsd:restriction base="xsd:string">
+            <xsd:minLength value="1"/>
+            <xsd:maxLength value="30"/>
+        </xsd:restriction>
+    </xsd:simpleType>
+    <xsd:simpleType name="alpha1-38">
+        <xsd:restriction base="xsd:string">
+            <xsd:minLength value="1"/>
+            <xsd:maxLength value="38"/>
+        </xsd:restriction>
+    </xsd:simpleType>
+    <xsd:simpleType name="alpha1-50">
+        <xsd:restriction base="xsd:string">
+            <xsd:minLength value="1"/>
+            <xsd:maxLength value="50"/>
+        </xsd:restriction>
+    </xsd:simpleType>
+    <xsd:simpleType name="alpha1-55">
+        <xsd:restriction base="xsd:string">
+            <xsd:minLength value="1"/>
+            <xsd:maxLength value="55"/>
+        </xsd:restriction>
+    </xsd:simpleType>
+    <xsd:simpleType name="alpha1-60">
+        <xsd:restriction base="xsd:string">
+            <xsd:minLength value="1"/>
+            <xsd:maxLength value="60"/>
+        </xsd:restriction>
+    </xsd:simpleType>
+    <xsd:simpleType name="alpha1-80">
+        <xsd:restriction base="xsd:string">
+            <xsd:minLength value="1"/>
+            <xsd:maxLength value="80"/>
+        </xsd:restriction>
+    </xsd:simpleType>
     <xsd:simpleType name="alpha2-30">
         <xsd:restriction base="xsd:string">
             <xsd:minLength value="2"/>
             <xsd:maxLength value="30"/>
         </xsd:restriction>
     </xsd:simpleType>
-
     <xsd:simpleType name="alpha2-80">
         <xsd:restriction base="xsd:string">
             <xsd:minLength value="2"/>
             <xsd:maxLength value="80"/>
         </xsd:restriction>
     </xsd:simpleType>
-
     <xsd:simpleType name="alpha1-256">
         <xsd:restriction base="xsd:string">
             <xsd:minLength value="1"/>
             <xsd:maxLength value="256"/>
         </xsd:restriction>
     </xsd:simpleType>
-
     <xsd:simpleType name="alpha10-10">
         <xsd:restriction base="xsd:string">
             <xsd:minLength value="10"/>
             <xsd:maxLength value="10"/>
         </xsd:restriction>
     </xsd:simpleType>
-
     <xsd:simpleType name="alpha15-15">
         <xsd:restriction base="xsd:string">
             <xsd:minLength value="15"/>
             <xsd:maxLength value="15"/>
         </xsd:restriction>
     </xsd:simpleType>
-
-    <xsd:simpleType name="alpha4-8">
-        <xsd:restriction base="xsd:string">
-            <xsd:minLength value="4"/>
-            <xsd:maxLength value="8"/>
-        </xsd:restriction>
-    </xsd:simpleType>
-
-    <xsd:simpleType name="alpha7-20">
-        <xsd:restriction base="xsd:string">
-            <xsd:minLength value="7"/>
-            <xsd:maxLength value="20"/>
-        </xsd:restriction>
-    </xsd:simpleType>
-
-    <xsd:simpleType name="alpha8-8">
-        <xsd:restriction base="xsd:string">
-            <xsd:minLength value="8"/>
-            <xsd:maxLength value="8"/>
-        </xsd:restriction>
-    </xsd:simpleType>
-
-    <xsd:simpleType name="alpha3-15">
-        <xsd:restriction base="xsd:string">
-            <xsd:minLength value="3"/>
-            <xsd:maxLength value="15"/>
-        </xsd:restriction>
-    </xsd:simpleType>
-
-    <!-- Numeric Types -->
     <xsd:simpleType name="numeric1-1">
         <xsd:restriction base="xsd:string">
             <xsd:pattern value="[0-9]{1}"/>
         </xsd:restriction>
     </xsd:simpleType>
-
     <xsd:simpleType name="numeric1-2">
         <xsd:restriction base="xsd:string">
             <xsd:pattern value="[0-9]{1,2}"/>
         </xsd:restriction>
     </xsd:simpleType>
-
     <xsd:simpleType name="numeric3-3">
         <xsd:restriction base="xsd:string">
             <xsd:pattern value="[0-9]{3}"/>
         </xsd:restriction>
     </xsd:simpleType>
-
     <xsd:simpleType name="numeric1-5">
         <xsd:restriction base="xsd:string">
             <xsd:pattern value="[0-9]{1,5}"/>
         </xsd:restriction>
     </xsd:simpleType>
-
     <xsd:simpleType name="numeric1-6">
         <xsd:restriction base="xsd:string">
             <xsd:pattern value="[0-9]{1,6}"/>
         </xsd:restriction>
     </xsd:simpleType>
-
     <xsd:simpleType name="numeric1-9">
         <xsd:restriction base="xsd:string">
             <xsd:pattern value="[0-9]{1,9}"/>
         </xsd:restriction>
     </xsd:simpleType>
-
     <xsd:simpleType name="numeric1-10">
         <xsd:restriction base="xsd:string">
             <xsd:pattern value="[0-9]{1,10}"/>
         </xsd:restriction>
     </xsd:simpleType>
-
     <xsd:simpleType name="numeric3-15">
         <xsd:restriction base="xsd:string">
             <xsd:pattern value="[0-9]{3,15}"/>
         </xsd:restriction>
     </xsd:simpleType>
-
     <xsd:simpleType name="numeric4-4">
         <xsd:restriction base="xsd:string">
             <xsd:pattern value="[0-9]{4}"/>
         </xsd:restriction>
     </xsd:simpleType>
-
     <xsd:simpleType name="numeric4-8">
         <xsd:restriction base="xsd:string">
             <xsd:pattern value="[0-9]{4,8}"/>
         </xsd:restriction>
     </xsd:simpleType>
-
     <xsd:simpleType name="numeric5-5">
         <xsd:restriction base="xsd:string">
             <xsd:pattern value="[0-9]{5}"/>
         </xsd:restriction>
     </xsd:simpleType>
-
     <xsd:simpleType name="numeric6-6">
         <xsd:restriction base="xsd:string">
             <xsd:pattern value="[0-9]{6}"/>
         </xsd:restriction>
     </xsd:simpleType>
-
     <xsd:simpleType name="numeric8-8">
         <xsd:restriction base="xsd:string">
             <xsd:pattern value="[0-9]{8}"/>
         </xsd:restriction>
     </xsd:simpleType>
-
     <xsd:simpleType name="numeric9-9">
         <xsd:restriction base="xsd:string">
             <xsd:pattern value="[0-9]{9}"/>
         </xsd:restriction>
     </xsd:simpleType>
-
-    <!-- Decimal Types -->
     <xsd:simpleType name="decimal1-15">
         <xsd:restriction base="xsd:string">
             <xsd:pattern value="-?[0-9]{1,13}(\.[0-9]{1,2})?"/>
         </xsd:restriction>
     </xsd:simpleType>
-
     <xsd:simpleType name="decimal1-18">
         <xsd:restriction base="xsd:string">
             <xsd:pattern value="-?[0-9]{1,16}(\.[0-9]{1,2})?"/>
         </xsd:restriction>
     </xsd:simpleType>
-
-    <xsd:simpleType name="decimal4-10">
+    <xsd:simpleType name="alpha8-8">
         <xsd:restriction base="xsd:string">
-            <xsd:pattern value="-?[0-9]{1,8}(\.[0-9]{1,2})?"/>
+            <xsd:minLength value="8"/>
+            <xsd:maxLength value="8"/>
         </xsd:restriction>
     </xsd:simpleType>
 </xsd:schema>

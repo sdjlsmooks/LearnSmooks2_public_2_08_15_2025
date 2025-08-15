@@ -4,6 +4,11 @@
         xmlns:edi="https://www.smooks.org/xsd/smooks/edi-2.0.xsd">
 
     <!-- Serialize XML (conforming to 835_mapping.dfdl.xsd) back to X12 835 EDI -->
-    <edi:unparser unparseOnNode="*" schemaUri="835_mapping.dfdl.xsd"
-                  segmentTerminator="~" dataElementSeparator="*" validationMode="Full"/>
+    <edi:unparser unparseOnNode="*"
+                  schemaUri="835_mapping.dfdl.xsd"
+                  segmentTerminator="~"
+                  dataElementSeparator="*"
+                  validationMode="Full"
+                  compositeDataElementSeparator=":">
+    </edi:unparser>
 </smooks-resource-list>

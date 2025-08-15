@@ -380,27 +380,7 @@
             <xsd:element name="N406" type="alpha1-4" minOccurs="0"/>
         </xsd:sequence>
     </xsd:complexType>
-    <xsd:complexType name="Name_Segment_Type">
-        <xsd:sequence dfdl:ref="ibmEdiFmt:EDISegmentSequenceFormat">
-            <xsd:element name="N101" type="alpha2-3"/>
-            <xsd:element name="N102" type="alpha1-60" minOccurs="0"/>
-            <xsd:element name="N103" type="alpha1-80" minOccurs="0"/>
-            <xsd:element name="N104" type="alpha2-80" minOccurs="0"/>
-        </xsd:sequence>
-    </xsd:complexType>
-    <xsd:complexType name="Address_Segment_Type">
-        <xsd:sequence dfdl:ref="ibmEdiFmt:EDISegmentSequenceFormat">
-            <xsd:element name="N301" type="alpha1-55"/>
-            <xsd:element name="N302" type="alpha1-55" minOccurs="0"/>
-        </xsd:sequence>
-    </xsd:complexType>
-    <xsd:complexType name="Location_Segment_Type">
-        <xsd:sequence dfdl:ref="ibmEdiFmt:EDISegmentSequenceFormat">
-            <xsd:element name="N401" type="alpha2-30"/>
-            <xsd:element name="N402" type="alpha2-2" minOccurs="0"/>
-            <xsd:element name="N403" type="numeric3-15" minOccurs="0"/>
-        </xsd:sequence>
-    </xsd:complexType>
+
     <xsd:complexType name="PER_Segment">
         <xsd:sequence dfdl:ref="ibmEdiFmt:EDISegmentSequenceFormat">
             <xsd:element name="PER01" type="alpha2-2"/>
@@ -585,11 +565,16 @@
             <xsd:element name="QTY04" type="alpha1-1" minOccurs="0"/>
         </xsd:sequence>
     </xsd:complexType>
+
     <xsd:complexType name="SVC_Segment">
         <xsd:sequence dfdl:ref="ibmEdiFmt:EDISegmentSequenceFormat">
-            <xsd:element name="SVC01" type="alpha1-80"/>
+            <xsd:element name="SVC01" type="C003_Type"/>
             <xsd:element name="SVC02" type="decimal1-18"/>
             <xsd:element name="SVC03" type="decimal1-18"/>
+            <xsd:element name="SVC04" type="alpha1-48" minOccurs="0"/>
+            <xsd:element name="SVC05" type="decimal1-15" minOccurs="0"/>
+            <xsd:element name="SVC06" type="C003_Type" minOccurs="0"/>
+            <xsd:element name="SVC07" type="decimal1-15" minOccurs="0"/>
         </xsd:sequence>
     </xsd:complexType>
 
@@ -1026,4 +1011,5 @@
             <xsd:pattern value="-?[0-9]{1,8}(\.[0-9]{1,2})?"/>
         </xsd:restriction>
     </xsd:simpleType>
+
 </xsd:schema>

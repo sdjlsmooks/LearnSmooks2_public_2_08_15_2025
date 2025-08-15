@@ -16,16 +16,21 @@ public class X12_835_ParserTest {
         byte[] ediBytes = Files.readAllBytes(
                 Paths.get(X12_835_ParserTest.class.getClassLoader().getResource("input835.edi").toURI())
         );
+        String ediString = Files.readString(Paths.get(X12_835_ParserTest.class.getClassLoader().getResource("input835.edi").toURI()));
+        assertNotNull(ediString);
+        System.out.println("Original EDI: " + ediString);
         String xml = X12_835_Parser.parseEDI(ediBytes);
         assertNotNull(xml);
-        System.out.println("XML:\n" + xml);
+        System.out.println("XML: " + xml);
         // Validate the parsed XML has required structure
         assertTrue("XML should contain interchange-header", xml.contains("interchange-header"));
         assertTrue("XML should contain group-header", xml.contains("group-header"));
 
         String edi = X12_835_Parser.xmlToEDI(xml);
+        String fixedEDI = edi.replaceAll("\\?:", ":");
         assertNotNull(edi);
-        System.out.println("EDI:\n" + edi);
+        System.out.println("Parsed   EDI: " + edi);
+        System.out.println("Fixed    EDI: " + fixedEDI);
         assertTrue("EDI should contain interchange-header", edi.contains("ISA"));
         assertTrue("EDI should contain group-header", edi.contains("GS"));
 
