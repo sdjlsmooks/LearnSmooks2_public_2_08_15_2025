@@ -123,6 +123,9 @@ public class X12_835_Interchange {
         @JsonProperty("reassociation-trace-number")
         private TRNSegment reassociationTraceNumber; // TRN
 
+        @JsonProperty("foreign-currency-information")
+        private CURSegment foreignCurrencyInformation; // CUR (optional)
+
         @JacksonXmlElementWrapper(useWrapping = false)
         @JsonProperty("receiver-identification")
         private List<REFSegment> receiverIdentification; // REF*
@@ -346,6 +349,31 @@ public class X12_835_Interchange {
         @JsonProperty("TRN01") private String trn01;
         @JsonProperty("TRN02") private String trn02;
         @JsonProperty("TRN03") private String trn03;
+    }
+
+    @Data
+    public static class CURSegment {
+        @JsonProperty("entity-identifier-code") private String entityIdentifierCode;
+        @JsonProperty("currency-code") private String currencyCode;
+        @JsonProperty("exchange-rate") private String exchangeRate;
+        @JsonProperty("entity-identifier-code-2") private String entityIdentifierCode2;
+        @JsonProperty("currency-code-2") private String currencyCode2;
+        @JsonProperty("currency-market-exchange-code") private String currencyMarketExchangeCode;
+        @JsonProperty("date-time-qualifier") private String dateTimeQualifier;
+        @JsonProperty("date") private String date;
+        @JsonProperty("time") private String time;
+        @JsonProperty("date-time-qualifier-2") private String dateTimeQualifier2;
+        @JsonProperty("date-2") private String date2;
+        @JsonProperty("time-2") private String time2;
+        @JsonProperty("date-time-qualifier-3") private String dateTimeQualifier3;
+        @JsonProperty("date-time-period") private String dateTimePeriod;
+        @JsonProperty("date-time-period-format-qualifier") private String dateTimePeriodFormatQualifier;
+        @JsonProperty("date-time-period-2") private String dateTimePeriod2;
+        @JsonProperty("date-time-period-format-qualifier-2") private String dateTimePeriodFormatQualifier2;
+        @JsonProperty("date-time-period-3") private String dateTimePeriod3;
+        @JsonProperty("date-time-period-format-qualifier-3") private String dateTimePeriodFormatQualifier3;
+        @JsonProperty("date-time-period-4") private String dateTimePeriod4;
+        @JsonProperty("date-time-period-format-qualifier-4") private String dateTimePeriodFormatQualifier4;
     }
 
     @Data

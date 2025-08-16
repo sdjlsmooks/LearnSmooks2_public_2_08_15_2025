@@ -328,27 +328,27 @@
 
     <xsd:complexType name="CUR_Segment">
         <xsd:sequence dfdl:ref="ibmEdiFmt:EDISegmentSequenceFormat">
-            <xsd:element name="CUR01" type="alpha2-3"/>
-            <xsd:element name="CUR02" type="alpha3-3"/>
-            <xsd:element name="CUR03" type="decimal4-10" minOccurs="0"/>
-            <xsd:element name="CUR04" type="alpha3-3" minOccurs="0"/>
-            <xsd:element name="CUR05" type="decimal4-10" minOccurs="0"/>
-            <xsd:element name="CUR06" type="alpha3-3" minOccurs="0"/>
-            <xsd:element name="CUR07" type="decimal4-10" minOccurs="0"/>
-            <xsd:element name="CUR08" type="alpha3-3" minOccurs="0"/>
-            <xsd:element name="CUR09" type="decimal4-10" minOccurs="0"/>
-            <xsd:element name="CUR10" type="alpha3-3" minOccurs="0"/>
-            <xsd:element name="CUR11" type="decimal4-10" minOccurs="0"/>
-            <xsd:element name="CUR12" type="alpha3-3" minOccurs="0"/>
-            <xsd:element name="CUR13" type="decimal4-10" minOccurs="0"/>
-            <xsd:element name="CUR14" type="alpha3-3" minOccurs="0"/>
-            <xsd:element name="CUR15" type="decimal4-10" minOccurs="0"/>
-            <xsd:element name="CUR16" type="alpha3-3" minOccurs="0"/>
-            <xsd:element name="CUR17" type="decimal4-10" minOccurs="0"/>
-            <xsd:element name="CUR18" type="alpha3-3" minOccurs="0"/>
-            <xsd:element name="CUR19" type="decimal4-10" minOccurs="0"/>
-            <xsd:element name="CUR20" type="alpha3-3" minOccurs="0"/>
-            <xsd:element name="CUR21" type="decimal4-10" minOccurs="0"/>
+            <xsd:element name="entity-identifier-code" type="alpha2-3"/>
+            <xsd:element name="currency-code" type="alpha3-3"/>
+            <xsd:element name="exchange-rate" type="decimal4-10" minOccurs="0"/>
+            <xsd:element name="entity-identifier-code-2" type="alpha3-3" minOccurs="0"/>
+            <xsd:element name="currency-code-2" type="decimal4-10" minOccurs="0"/>
+            <xsd:element name="currency-market-exchange-code" type="alpha3-3" minOccurs="0"/>
+            <xsd:element name="date-time-qualifier" type="decimal4-10" minOccurs="0"/>
+            <xsd:element name="date" type="alpha3-3" minOccurs="0"/>
+            <xsd:element name="time" type="decimal4-10" minOccurs="0"/>
+            <xsd:element name="date-time-qualifier-2" type="alpha3-3" minOccurs="0"/>
+            <xsd:element name="date-2" type="decimal4-10" minOccurs="0"/>
+            <xsd:element name="time-2" type="alpha3-3" minOccurs="0"/>
+            <xsd:element name="date-time-qualifier-3" type="decimal4-10" minOccurs="0"/>
+            <xsd:element name="date-time-period" type="alpha3-3" minOccurs="0"/>
+            <xsd:element name="date-time-period-format-qualifier" type="decimal4-10" minOccurs="0"/>
+            <xsd:element name="date-time-period-2" type="alpha3-3" minOccurs="0"/>
+            <xsd:element name="date-time-period-format-qualifier-2" type="decimal4-10" minOccurs="0"/>
+            <xsd:element name="date-time-period-3" type="alpha3-3" minOccurs="0"/>
+            <xsd:element name="date-time-period-format-qualifier-3" type="decimal4-10" minOccurs="0"/>
+            <xsd:element name="date-time-period-4" type="alpha3-3" minOccurs="0"/>
+            <xsd:element name="date-time-period-format-qualifier-4" type="decimal4-10" minOccurs="0"/>
         </xsd:sequence>
     </xsd:complexType>
 
