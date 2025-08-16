@@ -33,6 +33,9 @@ public class X12_835_ParserTest {
         System.out.println("Fixed    EDI: " + fixedEDI);
         assertTrue("EDI should contain interchange-header", edi.contains("ISA"));
         assertTrue("EDI should contain group-header", edi.contains("GS"));
+        // Verify that fixedEDI contains ISA and GS segments
+        assertTrue("fixedEDI should contain ISA segment", fixedEDI.contains("ISA"));
+        assertTrue("fixedEDI should contain GS segment", fixedEDI.contains("GS"));
 
     }
 }
