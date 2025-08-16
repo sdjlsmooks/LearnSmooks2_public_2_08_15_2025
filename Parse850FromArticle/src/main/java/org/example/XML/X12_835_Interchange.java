@@ -471,8 +471,8 @@ public class X12_835_Interchange {
 
     @Data
     public static class LQSegment {
-        @JsonProperty("LQ01") private String lq01;
-        @JsonProperty("LQ02") private String lq02;
+        @JsonProperty("code-list-qualifier-code") private String codeListQualifierCode;
+        @JsonProperty("industry-code") private String industryCode;
     }
 
     @Data

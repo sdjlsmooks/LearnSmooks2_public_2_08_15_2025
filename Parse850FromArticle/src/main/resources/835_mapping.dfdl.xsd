@@ -632,8 +632,8 @@
 
     <xsd:complexType name="LQ_Segment">
         <xsd:sequence dfdl:ref="ibmEdiFmt:EDISegmentSequenceFormat">
-            <xsd:element name="LQ01" type="alpha2-2"/>
-            <xsd:element name="LQ02" type="alpha1-30"/>
+            <xsd:element name="code-list-qualifier-code" type="alpha2-2"/>
+            <xsd:element name="industry-code" type="alpha1-30"/>
         </xsd:sequence>
     </xsd:complexType>
 
