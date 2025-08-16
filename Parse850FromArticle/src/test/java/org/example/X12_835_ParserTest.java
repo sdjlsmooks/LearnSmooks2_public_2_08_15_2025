@@ -26,7 +26,7 @@ public class X12_835_ParserTest {
         assertTrue("XML should contain interchange-header", xml.contains("interchange-header"));
         assertTrue("XML should contain group-header", xml.contains("group-header"));
 
-        String edi = X12_835_Parser.xmlToEDI(xml);
+        String edi = X12_835_Parser.toEDIString(xml);
         String fixedEDI = edi.replaceAll("\\?:", ":");
         assertNotNull(edi);
         System.out.println("Parsed   EDI: " + edi);

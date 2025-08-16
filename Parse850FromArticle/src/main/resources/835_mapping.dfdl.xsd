@@ -251,43 +251,43 @@
     <!-- Segment Type Definitions -->
     <xsd:complexType name="ISA_InterchangeHeader">
         <xsd:sequence dfdl:ref="ibmEdiFmt:EDISegmentSequenceFormat">
-            <xsd:element name="I01" type="alpha2-2"/>
-            <xsd:element name="I02" type="alpha10-10"/>
-            <xsd:element name="I03" type="alpha2-2"/>
-            <xsd:element name="I04" type="alpha10-10"/>
-            <xsd:element name="I05" type="alpha2-2"/>
-            <xsd:element name="I06" type="alpha15-15"/>
-            <xsd:element name="I07" type="alpha2-2"/>
-            <xsd:element name="I08" type="alpha15-15"/>
-            <xsd:element name="I09" type="numeric6-6"/>
-            <xsd:element name="I10" type="numeric4-4"/>
-            <xsd:element name="I11" type="alpha1-1"/>
-            <xsd:element name="I12" type="numeric5-5"/>
-            <xsd:element name="I13" type="numeric9-9"/>
-            <xsd:element name="I14" type="numeric1-1"/>
-            <xsd:element name="I15" type="alpha1-1"/>
-            <xsd:element name="I16" type="alpha1-1"/>
+            <xsd:element name="auth-qual" type="alpha2-2"/>
+            <xsd:element name="auth-id" type="alpha10-10"/>
+            <xsd:element name="security-qual" type="alpha2-2"/>
+            <xsd:element name="security-id" type="alpha10-10"/>
+            <xsd:element name="sender-qual" type="alpha2-2"/>
+            <xsd:element name="sender-id" type="alpha15-15"/>
+            <xsd:element name="receiver-qual" type="alpha2-2"/>
+            <xsd:element name="receiver-id" type="alpha15-15"/>
+            <xsd:element name="date" type="numeric6-6"/>
+            <xsd:element name="time" type="numeric4-4"/>
+            <xsd:element name="standard" type="alpha1-1"/>
+            <xsd:element name="version" type="numeric5-5"/>
+            <xsd:element name="interchange-control-number" type="numeric9-9"/>
+            <xsd:element name="ack" type="numeric1-1"/>
+            <xsd:element name="test" type="alpha1-1"/>
+            <xsd:element name="s-delimiter" type="alpha1-1"/>
         </xsd:sequence>
     </xsd:complexType>
 
     <xsd:complexType name="GS_FunctionalGroupHeader">
         <xsd:sequence dfdl:ref="ibmEdiFmt:EDISegmentSequenceFormat">
-            <xsd:element name="GS01" type="alpha2-2"/>
-            <xsd:element name="GS02" type="alpha2-15"/>
-            <xsd:element name="GS03" type="alpha2-15"/>
-            <xsd:element name="GS04" type="numeric8-8"/>
-            <xsd:element name="GS05" type="numeric4-8"/>
-            <xsd:element name="GS06" type="numeric1-9"/>
-            <xsd:element name="GS07" type="alpha1-2"/>
-            <xsd:element name="GS08" type="alpha1-12"/>
+            <xsd:element name="code" type="alpha2-2"/>
+            <xsd:element name="sender" type="alpha2-15"/>
+            <xsd:element name="receiver" type="alpha2-15"/>
+            <xsd:element name="date" type="numeric8-8"/>
+            <xsd:element name="time" type="numeric4-8"/>
+            <xsd:element name="group-control-number" type="numeric1-9"/>
+            <xsd:element name="standard" type="alpha1-2"/>
+            <xsd:element name="version" type="alpha1-12"/>
         </xsd:sequence>
     </xsd:complexType>
 
     <xsd:complexType name="ST_TransactionSetHeader">
         <xsd:sequence dfdl:ref="ibmEdiFmt:EDISegmentSequenceFormat">
-            <xsd:element name="ST01" type="numeric3-3"/>
-            <xsd:element name="ST02" type="alpha4-9"/>
-            <xsd:element name="ST03" type="alpha1-35" minOccurs="0"/>
+            <xsd:element name="code" type="numeric3-3"/>
+            <xsd:element name="transaction-set-control-number" type="alpha4-9"/>
+            <xsd:element name="implementation-convention-reference" type="alpha1-35" minOccurs="0"/>
         </xsd:sequence>
     </xsd:complexType>
 
@@ -658,22 +658,22 @@
 
     <xsd:complexType name="SE_TransactionSetTrailer">
         <xsd:sequence dfdl:ref="ibmEdiFmt:EDISegmentSequenceFormat">
-            <xsd:element name="SE01" type="numeric1-10"/>
-            <xsd:element name="SE02" type="alpha4-9"/>
+            <xsd:element name="number-of-included-segments" type="numeric1-10"/>
+            <xsd:element name="transaction-set-control-number" type="alpha4-9"/>
         </xsd:sequence>
     </xsd:complexType>
 
     <xsd:complexType name="GE_FunctionalGroupTrailer">
         <xsd:sequence dfdl:ref="ibmEdiFmt:EDISegmentSequenceFormat">
-            <xsd:element name="GE01" type="numeric1-6"/>
-            <xsd:element name="GE02" type="numeric1-9"/>
+            <xsd:element name="number-of-transaction-sets" type="numeric1-6"/>
+            <xsd:element name="group-control-number" type="numeric1-9"/>
         </xsd:sequence>
     </xsd:complexType>
 
     <xsd:complexType name="IEA_InterchangeTrailer">
         <xsd:sequence dfdl:ref="ibmEdiFmt:EDISegmentSequenceFormat">
-            <xsd:element name="IEA01" type="numeric1-5"/>
-            <xsd:element name="IEA02" type="numeric9-9"/>
+            <xsd:element name="number-of-function-groups-included" type="numeric1-5"/>
+            <xsd:element name="interchange-control-number" type="numeric9-9"/>
         </xsd:sequence>
     </xsd:complexType>
 

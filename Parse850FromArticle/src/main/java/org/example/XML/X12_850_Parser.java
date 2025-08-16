@@ -200,7 +200,7 @@ public class X12_850_Parser {
      * @throws IOException If an I/O error occurs during the conversion process.
      * @throws SAXException If an error occurs while parsing the intermediate XML representation.
      */
-    public static String xmlToEDI(X12_850_Interchange interchange) throws IOException, SAXException {
+    public static String toEdiString(X12_850_Interchange interchange) throws IOException, SAXException {
         return xmlToEDI(toXml(interchange));
     }
 

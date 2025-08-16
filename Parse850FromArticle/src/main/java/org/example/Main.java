@@ -41,7 +41,7 @@ public class Main {
             String ediResult = X12_850_Parser.xmlToEDI(xmlResult);
             System.out.printf("Converted to EDI:%s %n", ediResult);
 
-            String ediResultString = X12_850_Parser.xmlToEDI(interchange);
+            String ediResultString = X12_850_Parser.toEdiString(interchange);
             System.out.printf("Converted to EDI:%s %n", ediResultString);
         } catch (Exception e) {
             log.error("Error parsing XML using Jackson FasterXML: {}", e.getMessage(), e);

@@ -79,7 +79,7 @@ public class X12_835_Parser {
     /**
      * Serialize XML (conforming to 835_mapping.dfdl.xsd) back to X12 835 EDI using Smooks.
      */
-    public static String xmlToEDI(String xml) throws IOException, SAXException {
+    public static String toEDIString(String xml) throws IOException, SAXException {
         try (Smooks smooks = new Smooks("serialize-835-config.xml")) {
             smooks.setFilterSettings(FilterSettings.newSaxNgSettings().setDefaultSerializationOn(false));
             final byte[] xmlBytes = xml.getBytes();
@@ -192,8 +192,8 @@ public class X12_835_Parser {
      * @throws IOException If an I/O error occurs during the conversion process.
      * @throws SAXException If an error occurs while parsing the intermediate XML representation.
      */
-    public static String xmlToEDI(X12_835_Interchange interchange) throws IOException, SAXException {
-        return xmlToEDI(toXml(interchange));
+    public static String toEDIString(X12_835_Interchange interchange) throws IOException, SAXException {
+        return toEDIString(toXml(interchange));
     }
 
 }

@@ -1,6 +1,7 @@
 package org.example;
 
 import lombok.extern.slf4j.Slf4j;
+import org.example.XML.X12_835_Interchange;
 import org.example.XML.X12_835_Parser;
 import org.xml.sax.SAXException;
 
@@ -24,9 +25,21 @@ public class Demo835 {
             String xml = X12_835_Parser.parseEDI(ediBytes);
             System.out.println("Parsed 835 XML:\n" + xml);
 
+            X12_835_Interchange interchange = X12_835_Parser.parseXML(xml);
+
             // XML -> EDI
-            String edi = X12_835_Parser.xmlToEDI(xml);
+            String edi = X12_835_Parser.toEDIString(xml);
             System.out.println("Re-serialized 835 EDI:\n" + edi);
+
+
+            // YML
+            String yaml = X12_835_Parser.toYaml(interchange);
+            System.out.println("Parsed 835 YAML:\n" + yaml);
+
+            // JSON
+            String json = X12_835_Parser.toJson(interchange);
+            System.out.println("Parsed 835 JSON:\n" + json);
+
         } catch (IOException e) {
             log.error("IOException Error reading EDI file: {}", e.getMessage(), e);
             throw new RuntimeException(e);
