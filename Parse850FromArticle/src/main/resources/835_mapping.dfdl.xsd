@@ -259,7 +259,7 @@
             <xsd:element name="sender-id" type="alpha15-15"/>
             <xsd:element name="receiver-qual" type="alpha2-2"/>
             <xsd:element name="receiver-id" type="alpha15-15"/>
-            <xsd:element name="date" type="numeric6-6"/>
+            <xsd:element name="date" type="alpha6-6"/>
             <xsd:element name="time" type="numeric4-4"/>
             <xsd:element name="standard" type="alpha1-1"/>
             <xsd:element name="version" type="numeric5-5"/>
@@ -275,7 +275,7 @@
             <xsd:element name="code" type="alpha2-2"/>
             <xsd:element name="sender" type="alpha2-15"/>
             <xsd:element name="receiver" type="alpha2-15"/>
-            <xsd:element name="date" type="numeric8-8"/>
+            <xsd:element name="date" type="alpha8-8"/>
             <xsd:element name="time" type="numeric4-8"/>
             <xsd:element name="group-control-number" type="numeric1-9"/>
             <xsd:element name="standard" type="alpha1-2"/>
@@ -308,7 +308,7 @@
             <xsd:element name="receiver-or-provider-bank-id-number" type="alpha8-8" minOccurs="0"/>
             <xsd:element name="receiver-or-provider-account-number-qualifier" type="alpha1-2" minOccurs="0"/>
             <xsd:element name="receiver-or-provider-account-number" type="alpha2-2" minOccurs="0"/>
-            <xsd:element name="date" type="alpha2-2" minOccurs="0"/>
+            <xsd:element name="date" type="alpha8-8" minOccurs="0"/>
             <xsd:element name="business-function-code" type="alpha1-17" minOccurs="0"/>
             <xsd:element name="dfi-id-number-qualifier" type="alpha1-2" minOccurs="0"/>
             <xsd:element name="dfi-identification-number" type="alpha2-2" minOccurs="0"/>
@@ -332,23 +332,23 @@
             <xsd:element name="currency-code" type="alpha3-3"/>
             <xsd:element name="exchange-rate" type="decimal4-10" minOccurs="0"/>
             <xsd:element name="entity-identifier-code-2" type="alpha3-3" minOccurs="0"/>
-            <xsd:element name="currency-code-2" type="decimal4-10" minOccurs="0"/>
+            <xsd:element name="currency-code-2" type="alpha3-3" minOccurs="0"/>
             <xsd:element name="currency-market-exchange-code" type="alpha3-3" minOccurs="0"/>
-            <xsd:element name="date-time-qualifier" type="decimal4-10" minOccurs="0"/>
-            <xsd:element name="date" type="alpha3-3" minOccurs="0"/>
-            <xsd:element name="time" type="decimal4-10" minOccurs="0"/>
+            <xsd:element name="date-time-qualifier" type="alpha3-3" minOccurs="0"/>
+            <xsd:element name="date" type="alpha8-8" minOccurs="0"/>
+            <xsd:element name="time" type="alpha4-8" minOccurs="0"/>
             <xsd:element name="date-time-qualifier-2" type="alpha3-3" minOccurs="0"/>
-            <xsd:element name="date-2" type="decimal4-10" minOccurs="0"/>
-            <xsd:element name="time-2" type="alpha3-3" minOccurs="0"/>
-            <xsd:element name="date-time-qualifier-3" type="decimal4-10" minOccurs="0"/>
-            <xsd:element name="date-time-period" type="alpha3-3" minOccurs="0"/>
-            <xsd:element name="date-time-period-format-qualifier" type="decimal4-10" minOccurs="0"/>
-            <xsd:element name="date-time-period-2" type="alpha3-3" minOccurs="0"/>
-            <xsd:element name="date-time-period-format-qualifier-2" type="decimal4-10" minOccurs="0"/>
-            <xsd:element name="date-time-period-3" type="alpha3-3" minOccurs="0"/>
-            <xsd:element name="date-time-period-format-qualifier-3" type="decimal4-10" minOccurs="0"/>
-            <xsd:element name="date-time-period-4" type="alpha3-3" minOccurs="0"/>
-            <xsd:element name="date-time-period-format-qualifier-4" type="decimal4-10" minOccurs="0"/>
+            <xsd:element name="date-2" type="alpha8-8" minOccurs="0"/>
+            <xsd:element name="time-2" type="alpha4-8" minOccurs="0"/>
+            <xsd:element name="date-time-qualifier-3" type="alpha3-3" minOccurs="0"/>
+            <xsd:element name="date-time-period" type="alpha1-35" minOccurs="0"/>
+            <xsd:element name="date-time-period-format-qualifier" type="alpha2-3" minOccurs="0"/>
+            <xsd:element name="date-time-period-2" type="alpha1-35" minOccurs="0"/>
+            <xsd:element name="date-time-period-format-qualifier-2" type="alpha2-3" minOccurs="0"/>
+            <xsd:element name="date-time-period-3" type="alpha1-35" minOccurs="0"/>
+            <xsd:element name="date-time-period-format-qualifier-3" type="alpha2-3" minOccurs="0"/>
+            <xsd:element name="date-time-period-4" type="alpha1-35" minOccurs="0"/>
+            <xsd:element name="date-time-period-format-qualifier-4" type="alpha2-3" minOccurs="0"/>
         </xsd:sequence>
     </xsd:complexType>
 
@@ -471,7 +471,7 @@
         <xsd:sequence dfdl:ref="ibmEdiFmt:EDISegmentSequenceFormat">
             <xsd:element name="reference-identification" type="alpha2-80"/>
             <xsd:element name="facility-code-value" type="alpha1-9" minOccurs="0"/>
-            <xsd:element name="date" type="decimal1-18" minOccurs="0"/>
+            <xsd:element name="date" type="alpha8-8" minOccurs="0"/>
             <xsd:element name="quantity" type="decimal1-18" minOccurs="0"/>
             <xsd:element name="monetary-amount" type="decimal1-18" minOccurs="0"/>
             <xsd:element name="monetary-amount-2" type="numeric1-6" minOccurs="0"/>
@@ -584,9 +584,9 @@
             <xsd:element name="claim-pps-capital-outlier-amount" type="decimal1-18" minOccurs="0"/>
             <xsd:element name="claim-indirect-medical-education-amount" type="decimal1-18" minOccurs="0"/>
             <xsd:element name="nonpayable-professional-component-billed-amount" type="decimal1-18" minOccurs="0"/>
-            <xsd:element name="claim-payment-remark-code-2" type="decimal1-18" minOccurs="0"/>
-            <xsd:element name="claim-payment-remark-code-3" type="decimal1-18" minOccurs="0"/>
-            <xsd:element name="claim-payment-remark-code-4" type="decimal1-18" minOccurs="0"/>
+            <xsd:element name="claim-payment-remark-code-2" type="alpha1-30" minOccurs="0"/>
+            <xsd:element name="claim-payment-remark-code-3" type="alpha1-30" minOccurs="0"/>
+            <xsd:element name="claim-payment-remark-code-4" type="alpha1-30" minOccurs="0"/>
             <xsd:element name="pps-capital-exception-amount" type="decimal1-18" minOccurs="0"/>
             <xsd:element name="pps-capital-disproportionate-share-drg-amount" type="decimal1-18" minOccurs="0"/>
         </xsd:sequence>
@@ -596,11 +596,11 @@
         <xsd:sequence dfdl:ref="ibmEdiFmt:EDISegmentSequenceFormat">
             <xsd:element name="reimbursement-rate" type="decimal1-18" minOccurs="0"/>
             <xsd:element name="hcpcs-payable-amount" type="decimal1-18" minOccurs="0"/>
-            <xsd:element name="claim-payment-remark-code" type="decimal1-18" minOccurs="0"/>
-            <xsd:element name="claim-payment-remark-code-2" type="decimal1-18" minOccurs="0"/>
-            <xsd:element name="claim-payment-remark-code-3" type="decimal1-18" minOccurs="0"/>
-            <xsd:element name="claim-payment-remark-code-4" type="decimal1-18" minOccurs="0"/>
-            <xsd:element name="claim-payment-remark-code-5" type="decimal1-18" minOccurs="0"/>
+            <xsd:element name="claim-payment-remark-code" type="alpha1-30" minOccurs="0"/>
+            <xsd:element name="claim-payment-remark-code-2" type="alpha1-30" minOccurs="0"/>
+            <xsd:element name="claim-payment-remark-code-3" type="alpha1-30" minOccurs="0"/>
+            <xsd:element name="claim-payment-remark-code-4" type="alpha1-30" minOccurs="0"/>
+            <xsd:element name="claim-payment-remark-code-5" type="alpha1-30" minOccurs="0"/>
             <xsd:element name="end-stage-renal-disease-payment-amount" type="decimal1-18" minOccurs="0"/>
             <xsd:element name="non-payable-professional-component-billed-amount" type="decimal1-18" minOccurs="0"/>
         </xsd:sequence>
@@ -645,17 +645,17 @@
         <xsd:sequence dfdl:ref="ibmEdiFmt:EDISegmentSequenceFormat">
             <xsd:element name="provider-identifier" type="alpha2-80"/>
             <xsd:element name="fiscal-period-date" type="alpha8-8"/>
-            <xsd:element name="adjustment-identifier" type="C042_Type"/>
+            <xsd:element name="adjustment-identifier" type="alpha1-50"/>
             <xsd:element name="provider-adjustment-amount" type="decimal1-18"/>
-            <xsd:element name="adjustment-identifier-2" type="C042_Type" minOccurs="0"/>
+            <xsd:element name="adjustment-identifier-2" type="alpha1-50" minOccurs="0"/>
             <xsd:element name="provider-adjustment-amount-2" type="decimal1-18" minOccurs="0"/>
-            <xsd:element name="adjustment-identifier-3" type="C042_Type" minOccurs="0"/>
+            <xsd:element name="adjustment-identifier-3" type="alpha1-50" minOccurs="0"/>
             <xsd:element name="provider-adjustment-amount-3" type="decimal1-18" minOccurs="0"/>
-            <xsd:element name="adjustment-identifier-4" type="C042_Type" minOccurs="0"/>
+            <xsd:element name="adjustment-identifier-4" type="alpha1-50" minOccurs="0"/>
             <xsd:element name="provider-adjustment-amount-4" type="decimal1-18" minOccurs="0"/>
-            <xsd:element name="adjustment-identifier-5" type="C042_Type" minOccurs="0"/>
+            <xsd:element name="adjustment-identifier-5" type="alpha1-50" minOccurs="0"/>
             <xsd:element name="provider-adjustment-amount-5" type="decimal1-18" minOccurs="0"/>
-            <xsd:element name="adjustment-identifier-6" type="C042_Type" minOccurs="0"/>
+            <xsd:element name="adjustment-identifier-6" type="alpha1-50" minOccurs="0"/>
             <xsd:element name="provider-adjustment-amount-6" type="decimal1-18" minOccurs="0"/>
         </xsd:sequence>
     </xsd:complexType>
@@ -947,6 +947,13 @@
         <xsd:restriction base="xsd:string">
             <xsd:minLength value="7"/>
             <xsd:maxLength value="20"/>
+        </xsd:restriction>
+    </xsd:simpleType>
+
+    <xsd:simpleType name="alpha6-6">
+        <xsd:restriction base="xsd:string">
+            <xsd:minLength value="6"/>
+            <xsd:maxLength value="6"/>
         </xsd:restriction>
     </xsd:simpleType>
 

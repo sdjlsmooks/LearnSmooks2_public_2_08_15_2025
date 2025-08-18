@@ -13,10 +13,11 @@ public class X12_835_ParserTest {
 
     @Test
     public void testParseAndSerialize835() throws Exception {
+        String fileName = "input835_3.edi";
         byte[] ediBytes = Files.readAllBytes(
-                Paths.get(X12_835_ParserTest.class.getClassLoader().getResource("input835.edi").toURI())
+                Paths.get(X12_835_ParserTest.class.getClassLoader().getResource(fileName).toURI())
         );
-        String ediString = Files.readString(Paths.get(X12_835_ParserTest.class.getClassLoader().getResource("input835.edi").toURI()));
+        String ediString = Files.readString(Paths.get(X12_835_ParserTest.class.getClassLoader().getResource(fileName).toURI()));
         assertNotNull(ediString);
         System.out.println("Original EDI: " + ediString);
         String xml = X12_835_Parser.parseEDI(ediBytes);
