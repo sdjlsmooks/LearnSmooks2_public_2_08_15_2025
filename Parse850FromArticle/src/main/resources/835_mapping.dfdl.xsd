@@ -293,36 +293,36 @@
 
     <xsd:complexType name="BPR_Segment">
         <xsd:sequence dfdl:ref="ibmEdiFmt:EDISegmentSequenceFormat">
-            <xsd:element name="BPR01" type="alpha1-2"/>
-            <xsd:element name="BPR02" type="decimal1-18"/>
-            <xsd:element name="BPR03" type="alpha1-1"/>
-            <xsd:element name="BPR04" type="alpha3-3"/>
-            <xsd:element name="BPR05" type="alpha1-2" minOccurs="0"/>
-            <xsd:element name="BPR06" type="alpha2-2" minOccurs="0"/>
-            <xsd:element name="BPR07" type="alpha2-2" minOccurs="0"/>
-            <xsd:element name="BPR08" type="alpha1-17" minOccurs="0"/>
-            <xsd:element name="BPR09" type="alpha1-2" minOccurs="0"/>
-            <xsd:element name="BPR10" type="alpha2-2" minOccurs="0"/>
-            <xsd:element name="BPR11" type="alpha2-2" minOccurs="0"/>
-            <xsd:element name="BPR12" type="alpha1-17" minOccurs="0"/>
-            <xsd:element name="BPR13" type="alpha8-8" minOccurs="0"/>
-            <xsd:element name="BPR14" type="alpha1-2" minOccurs="0"/>
-            <xsd:element name="BPR15" type="alpha2-2" minOccurs="0"/>
-            <xsd:element name="BPR16" type="alpha2-2" minOccurs="0"/>
-            <xsd:element name="BPR17" type="alpha1-17" minOccurs="0"/>
-            <xsd:element name="BPR18" type="alpha1-2" minOccurs="0"/>
-            <xsd:element name="BPR19" type="alpha2-2" minOccurs="0"/>
-            <xsd:element name="BPR20" type="alpha2-2" minOccurs="0"/>
-            <xsd:element name="BPR21" type="alpha1-17" minOccurs="0"/>
+            <xsd:element name="transaction-handling-code" type="alpha1-2"/>
+            <xsd:element name="monetary-amount" type="decimal1-18"/>
+            <xsd:element name="credit-debit-flag-code" type="alpha1-1"/>
+            <xsd:element name="payment-method-code" type="alpha3-3"/>
+            <xsd:element name="payment-format-code" type="alpha1-2" minOccurs="0"/>
+            <xsd:element name="depository-financial-institution-dfi-identification-number-qualifier" type="alpha2-2" minOccurs="0"/>
+            <xsd:element name="depository-financial-institution-dfi-identification-number" type="alpha2-2" minOccurs="0"/>
+            <xsd:element name="account-number-qualifier" type="alpha1-17" minOccurs="0"/>
+            <xsd:element name="sender-bank-account-number" type="alpha1-2" minOccurs="0"/>
+            <xsd:element name="originating-company-identifier" type="alpha2-2" minOccurs="0"/>
+            <xsd:element name="originating-company-supplemental-code" type="alpha2-2" minOccurs="0"/>
+            <xsd:element name="receiver-or-provider-bank-id-number-qualifier" type="alpha1-17" minOccurs="0"/>
+            <xsd:element name="receiver-or-provider-bank-id-number" type="alpha8-8" minOccurs="0"/>
+            <xsd:element name="receiver-or-provider-account-number-qualifier" type="alpha1-2" minOccurs="0"/>
+            <xsd:element name="receiver-or-provider-account-number" type="alpha2-2" minOccurs="0"/>
+            <xsd:element name="date" type="alpha2-2" minOccurs="0"/>
+            <xsd:element name="business-function-code" type="alpha1-17" minOccurs="0"/>
+            <xsd:element name="dfi-id-number-qualifier" type="alpha1-2" minOccurs="0"/>
+            <xsd:element name="dfi-identification-number" type="alpha2-2" minOccurs="0"/>
+            <xsd:element name="account-number-qualifier-2" type="alpha2-2" minOccurs="0"/>
+            <xsd:element name="sender-bank-account-number-2" type="alpha1-17" minOccurs="0"/>
         </xsd:sequence>
     </xsd:complexType>
 
     <xsd:complexType name="TRN_Segment">
         <xsd:sequence dfdl:ref="ibmEdiFmt:EDISegmentSequenceFormat">
-            <xsd:element name="TRN01" type="alpha1-2"/>
-            <xsd:element name="TRN02" type="alpha1-50"/>
-            <xsd:element name="TRN03" type="alpha10-10" minOccurs="0"/>
-            <xsd:element name="TRN04" type="alpha1-50" minOccurs="0"/>
+            <xsd:element name="trace-type-code" type="alpha1-2"/>
+            <xsd:element name="reference-identification" type="alpha1-50"/>
+            <xsd:element name="originating-company-identifier" type="alpha10-10" minOccurs="0"/>
+            <xsd:element name="reference-identification-2" type="alpha1-50" minOccurs="0"/>
         </xsd:sequence>
     </xsd:complexType>
 
@@ -354,279 +354,283 @@
 
     <xsd:complexType name="REF_Segment">
         <xsd:sequence dfdl:ref="ibmEdiFmt:EDISegmentSequenceFormat">
-            <xsd:element name="REF01" type="alpha2-3"/>
-            <xsd:element name="REF02" type="alpha1-50" minOccurs="0"/>
-            <xsd:element name="REF03" type="alpha1-80" minOccurs="0"/>
-            <xsd:element name="REF04" type="C040_Type" minOccurs="0"/>
+            <xsd:element name="reference-identification-qualifier" type="alpha2-3"/>
+            <xsd:element name="reference-identification" type="alpha1-50" minOccurs="0"/>
+            <xsd:element name="description" type="alpha1-80" minOccurs="0"/>
+            <xsd:element name="reference-identifier" type="C040_Type" minOccurs="0"/>
         </xsd:sequence>
     </xsd:complexType>
 
     <xsd:complexType name="DTM_Segment">
         <xsd:sequence dfdl:ref="ibmEdiFmt:EDISegmentSequenceFormat">
-            <xsd:element name="DTM01" type="alpha3-3"/>
-            <xsd:element name="DTM02" type="alpha8-8" minOccurs="0"/>
-            <xsd:element name="DTM03" type="alpha4-8" minOccurs="0"/>
-            <xsd:element name="DTM04" type="alpha2-2" minOccurs="0"/>
-            <xsd:element name="DTM05" type="alpha1-2" minOccurs="0"/>
-            <xsd:element name="DTM06" type="alpha1-2" minOccurs="0"/>
+            <xsd:element name="date-time-qualifier" type="alpha3-3"/>
+            <xsd:element name="date" type="alpha8-8" minOccurs="0"/>
+            <xsd:element name="time" type="alpha4-8" minOccurs="0"/>
+            <xsd:element name="time-code" type="alpha2-2" minOccurs="0"/>
+            <xsd:element name="date-time-period-format-qualifier" type="alpha1-2" minOccurs="0"/>
+            <xsd:element name="date-time-period" type="alpha1-2" minOccurs="0"/>
         </xsd:sequence>
     </xsd:complexType>
 
     <xsd:complexType name="N1_Segment">
         <xsd:sequence dfdl:ref="ibmEdiFmt:EDISegmentSequenceFormat">
-            <xsd:element name="N101" type="alpha2-3"/>
-            <xsd:element name="N102" type="alpha1-60" minOccurs="0"/>
-            <xsd:element name="N103" type="alpha1-80" minOccurs="0"/>
-            <xsd:element name="N104" type="alpha2-80" minOccurs="0"/>
-            <xsd:element name="N105" type="alpha2-3" minOccurs="0"/>
-            <xsd:element name="N106" type="alpha2-80" minOccurs="0"/>
+            <xsd:element name="entity-identifier-code" type="alpha2-3"/>
+            <xsd:element name="name" type="alpha1-60" minOccurs="0"/>
+            <xsd:element name="identification-code-qualifier" type="alpha1-80" minOccurs="0"/>
+            <xsd:element name="identification-code" type="alpha2-80" minOccurs="0"/>
+            <xsd:element name="entity-identifier-code-2" type="alpha2-3" minOccurs="0"/>
+            <xsd:element name="identification-code-2" type="alpha2-80" minOccurs="0"/>
         </xsd:sequence>
     </xsd:complexType>
 
     <xsd:complexType name="NM1_Segment">
         <xsd:sequence dfdl:ref="ibmEdiFmt:EDISegmentSequenceFormat">
-            <xsd:element name="NM101" type="alpha2-3"/>
-            <xsd:element name="NM102" type="alpha1-1"/>
-            <xsd:element name="NM103" type="alpha1-60" minOccurs="0"/>
-            <xsd:element name="NM104" type="alpha1-35" minOccurs="0"/>
-            <xsd:element name="NM105" type="alpha1-10" minOccurs="0"/>
-            <xsd:element name="NM106" type="alpha1-10" minOccurs="0"/>
-            <xsd:element name="NM107" type="alpha1-10" minOccurs="0"/>
-            <xsd:element name="NM108" type="alpha1-3" minOccurs="0"/>
-            <xsd:element name="NM109" type="alpha2-80" minOccurs="0"/>
-            <xsd:element name="NM110" type="alpha2-3" minOccurs="0"/>
-            <xsd:element name="NM111" type="alpha2-80" minOccurs="0"/>
-            <xsd:element name="NM112" type="alpha2-3" minOccurs="0"/>
+            <xsd:element name="entity-identifier-code" type="alpha2-3"/>
+            <xsd:element name="entity-type-qualifier" type="alpha1-1"/>
+            <xsd:element name="name-last-or-organization-name" type="alpha1-60" minOccurs="0"/>
+            <xsd:element name="name-first" type="alpha1-35" minOccurs="0"/>
+            <xsd:element name="name-middle" type="alpha1-10" minOccurs="0"/>
+            <xsd:element name="name-prefix" type="alpha1-10" minOccurs="0"/>
+            <xsd:element name="name-suffix" type="alpha1-10" minOccurs="0"/>
+            <xsd:element name="identification-code-qualifier" type="alpha1-3" minOccurs="0"/>
+            <xsd:element name="identification-code" type="alpha2-80" minOccurs="0"/>
+            <xsd:element name="entity-relationship-code" type="alpha2-3" minOccurs="0"/>
+            <xsd:element name="entity-identifier-code-2" type="alpha2-80" minOccurs="0"/>
+            <xsd:element name="entity-identifier-code-qualifier-2" type="alpha2-3" minOccurs="0"/>
         </xsd:sequence>
     </xsd:complexType>
 
     <xsd:complexType name="N3_Segment">
         <xsd:sequence dfdl:ref="ibmEdiFmt:EDISegmentSequenceFormat">
-            <xsd:element name="N301" type="alpha1-55"/>
-            <xsd:element name="N302" type="alpha1-55" minOccurs="0"/>
+            <xsd:element name="address-information" type="alpha1-55"/>
+            <xsd:element name="address-information-2" type="alpha1-55" minOccurs="0"/>
         </xsd:sequence>
     </xsd:complexType>
 
     <xsd:complexType name="N4_Segment">
         <xsd:sequence dfdl:ref="ibmEdiFmt:EDISegmentSequenceFormat">
-            <xsd:element name="N401" type="alpha2-30"/>
-            <xsd:element name="N402" type="alpha2-2" minOccurs="0"/>
-            <xsd:element name="N403" type="alpha3-15" minOccurs="0"/>
-            <xsd:element name="N404" type="alpha2-3" minOccurs="0"/>
-            <xsd:element name="N405" type="alpha1-4" minOccurs="0"/>
-            <xsd:element name="N406" type="alpha1-4" minOccurs="0"/>
+            <xsd:element name="city-name" type="alpha2-30"/>
+            <xsd:element name="state-or-province-code" type="alpha2-2" minOccurs="0"/>
+            <xsd:element name="postal-code" type="alpha3-15" minOccurs="0"/>
+            <xsd:element name="country-code" type="alpha2-3" minOccurs="0"/>
+            <xsd:element name="location-qualifier" type="alpha1-4" minOccurs="0"/>
+            <xsd:element name="location-identifier" type="alpha1-4" minOccurs="0"/>
         </xsd:sequence>
     </xsd:complexType>
     <xsd:complexType name="Name_Segment_Type">
         <xsd:sequence dfdl:ref="ibmEdiFmt:EDISegmentSequenceFormat">
-            <xsd:element name="N101" type="alpha2-3"/>
-            <xsd:element name="N102" type="alpha1-60" minOccurs="0"/>
-            <xsd:element name="N103" type="alpha1-80" minOccurs="0"/>
-            <xsd:element name="N104" type="alpha2-80" minOccurs="0"/>
+            <xsd:element name="entity-identifier-code" type="alpha2-3"/>
+            <xsd:element name="name" type="alpha1-60" minOccurs="0"/>
+            <xsd:element name="identification-code-qualifier" type="alpha1-80" minOccurs="0"/>
+            <xsd:element name="identification-code" type="alpha2-80" minOccurs="0"/>
         </xsd:sequence>
     </xsd:complexType>
     <xsd:complexType name="Address_Segment_Type">
         <xsd:sequence dfdl:ref="ibmEdiFmt:EDISegmentSequenceFormat">
-            <xsd:element name="N301" type="alpha1-55"/>
-            <xsd:element name="N302" type="alpha1-55" minOccurs="0"/>
+            <xsd:element name="address-information" type="alpha1-55"/>
+            <xsd:element name="address-information-2" type="alpha1-55" minOccurs="0"/>
         </xsd:sequence>
     </xsd:complexType>
     <xsd:complexType name="Location_Segment_Type">
         <xsd:sequence dfdl:ref="ibmEdiFmt:EDISegmentSequenceFormat">
-            <xsd:element name="N401" type="alpha2-30"/>
-            <xsd:element name="N402" type="alpha2-2" minOccurs="0"/>
-            <xsd:element name="N403" type="numeric3-15" minOccurs="0"/>
+            <xsd:element name="city-name" type="alpha2-30"/>
+            <xsd:element name="state-or-province-code" type="alpha2-2" minOccurs="0"/>
+            <xsd:element name="postal-code" type="numeric3-15" minOccurs="0"/>
         </xsd:sequence>
     </xsd:complexType>
     <xsd:complexType name="PER_Segment">
         <xsd:sequence dfdl:ref="ibmEdiFmt:EDISegmentSequenceFormat">
-            <xsd:element name="PER01" type="alpha2-2"/>
-            <xsd:element name="PER02" type="alpha1-60" minOccurs="0"/>
-            <xsd:element name="PER03" type="alpha2-2" minOccurs="0"/>
-            <xsd:element name="PER04" type="alpha1-256" minOccurs="0"/>
-            <xsd:element name="PER05" type="alpha2-2" minOccurs="0"/>
-            <xsd:element name="PER06" type="alpha1-256" minOccurs="0"/>
-            <xsd:element name="PER07" type="alpha2-2" minOccurs="0"/>
-            <xsd:element name="PER08" type="alpha1-256" minOccurs="0"/>
-            <xsd:element name="PER09" type="alpha7-20" minOccurs="0"/>
+            <xsd:element name="contact-function-code" type="alpha2-2"/>
+            <xsd:element name="name" type="alpha1-60" minOccurs="0"/>
+            <xsd:element name="communication-number-qualifier" type="alpha2-2" minOccurs="0"/>
+            <xsd:element name="communication-number" type="alpha1-256" minOccurs="0"/>
+            <xsd:element name="communication-number-qualifier-2" type="alpha2-2" minOccurs="0"/>
+            <xsd:element name="communication-number-2" type="alpha1-256" minOccurs="0"/>
+            <xsd:element name="communication-number-qualifier-3" type="alpha2-2" minOccurs="0"/>
+            <xsd:element name="communication-number-3" type="alpha1-256" minOccurs="0"/>
+            <xsd:element name="contact-inquiry-reference" type="alpha7-20" minOccurs="0"/>
         </xsd:sequence>
     </xsd:complexType>
 
     <xsd:complexType name="RDM_Segment">
         <xsd:sequence dfdl:ref="ibmEdiFmt:EDISegmentSequenceFormat">
-            <xsd:element name="RDM01" type="alpha1-2"/>
-            <xsd:element name="RDM02" type="alpha1-80" minOccurs="0"/>
-            <xsd:element name="RDM03" type="alpha1-2" minOccurs="0"/>
-            <xsd:element name="RDM04" type="alpha1-256" minOccurs="0"/>
+            <xsd:element name="report-transmission-code" type="alpha1-2"/>
+            <xsd:element name="name" type="alpha1-80" minOccurs="0"/>
+            <xsd:element name="communication-number-qualifier" type="alpha1-2" minOccurs="0"/>
+            <xsd:element name="communication-number" type="alpha1-256" minOccurs="0"/>
         </xsd:sequence>
     </xsd:complexType>
 
     <xsd:complexType name="LX_Segment">
         <xsd:sequence dfdl:ref="ibmEdiFmt:EDISegmentSequenceFormat">
-            <xsd:element name="LX01" type="numeric1-6"/>
+            <xsd:element name="assigned-number" type="numeric1-6"/>
         </xsd:sequence>
     </xsd:complexType>
 
     <xsd:complexType name="TS3_Segment">
         <xsd:sequence dfdl:ref="ibmEdiFmt:EDISegmentSequenceFormat">
-            <xsd:element name="TS301" type="alpha2-80"/>
-            <xsd:element name="TS302" type="alpha1-9" minOccurs="0"/>
-            <xsd:element name="TS303" type="decimal1-18" minOccurs="0"/>
-            <xsd:element name="TS304" type="decimal1-18" minOccurs="0"/>
-            <xsd:element name="TS305" type="decimal1-18" minOccurs="0"/>
-            <xsd:element name="TS306" type="numeric1-6" minOccurs="0"/>
-            <xsd:element name="TS307" type="decimal1-18" minOccurs="0"/>
-            <xsd:element name="TS308" type="decimal1-18" minOccurs="0"/>
-            <xsd:element name="TS309" type="decimal1-18" minOccurs="0"/>
-            <xsd:element name="TS310" type="decimal1-18" minOccurs="0"/>
-            <xsd:element name="TS311" type="decimal1-18" minOccurs="0"/>
-            <xsd:element name="TS312" type="decimal1-18" minOccurs="0"/>
-            <xsd:element name="TS313" type="decimal1-18" minOccurs="0"/>
-            <xsd:element name="TS314" type="decimal1-18" minOccurs="0"/>
-            <xsd:element name="TS315" type="decimal1-18" minOccurs="0"/>
-            <xsd:element name="TS316" type="decimal1-18" minOccurs="0"/>
-            <xsd:element name="TS317" type="decimal1-18" minOccurs="0"/>
-            <xsd:element name="TS318" type="decimal1-18" minOccurs="0"/>
-            <xsd:element name="TS319" type="decimal1-18" minOccurs="0"/>
-            <xsd:element name="TS320" type="decimal1-18" minOccurs="0"/>
-            <xsd:element name="TS321" type="decimal1-18" minOccurs="0"/>
-            <xsd:element name="TS322" type="decimal1-18" minOccurs="0"/>
-            <xsd:element name="TS323" type="decimal1-18" minOccurs="0"/>
-            <xsd:element name="TS324" type="decimal1-18" minOccurs="0"/>
+            <xsd:element name="reference-identification" type="alpha2-80"/>
+            <xsd:element name="facility-code-value" type="alpha1-9" minOccurs="0"/>
+            <xsd:element name="date" type="decimal1-18" minOccurs="0"/>
+            <xsd:element name="quantity" type="decimal1-18" minOccurs="0"/>
+            <xsd:element name="monetary-amount" type="decimal1-18" minOccurs="0"/>
+            <xsd:element name="monetary-amount-2" type="numeric1-6" minOccurs="0"/>
+            <xsd:element name="monetary-amount-3" type="decimal1-18" minOccurs="0"/>
+            <xsd:element name="monetary-amount-4" type="decimal1-18" minOccurs="0"/>
+            <xsd:element name="monetary-amount-5" type="decimal1-18" minOccurs="0"/>
+            <xsd:element name="monetary-amount-6" type="decimal1-18" minOccurs="0"/>
+            <xsd:element name="monetary-amount-7" type="decimal1-18" minOccurs="0"/>
+            <xsd:element name="monetary-amount-8" type="decimal1-18" minOccurs="0"/>
+            <xsd:element name="monetary-amount-9" type="decimal1-18" minOccurs="0"/>
+            <xsd:element name="monetary-amount-10" type="decimal1-18" minOccurs="0"/>
+            <xsd:element name="monetary-amount-11" type="decimal1-18" minOccurs="0"/>
+            <xsd:element name="monetary-amount-12" type="decimal1-18" minOccurs="0"/>
+            <xsd:element name="monetary-amount-13" type="decimal1-18" minOccurs="0"/>
+            <xsd:element name="monetary-amount-14" type="decimal1-18" minOccurs="0"/>
+            <xsd:element name="monetary-amount-15" type="decimal1-18" minOccurs="0"/>
+            <xsd:element name="monetary-amount-16" type="decimal1-18" minOccurs="0"/>
+            <xsd:element name="monetary-amount-17" type="decimal1-18" minOccurs="0"/>
+            <xsd:element name="monetary-amount-18" type="decimal1-18" minOccurs="0"/>
+            <xsd:element name="monetary-amount-19" type="decimal1-18" minOccurs="0"/>
+            <xsd:element name="monetary-amount-20" type="decimal1-18" minOccurs="0"/>
         </xsd:sequence>
     </xsd:complexType>
 
     <xsd:complexType name="TS2_Segment">
         <xsd:sequence dfdl:ref="ibmEdiFmt:EDISegmentSequenceFormat">
-            <xsd:element name="TS201" type="decimal1-18" minOccurs="0"/>
-            <xsd:element name="TS202" type="decimal1-18" minOccurs="0"/>
-            <xsd:element name="TS203" type="decimal1-18" minOccurs="0"/>
-            <xsd:element name="TS204" type="decimal1-18" minOccurs="0"/>
-            <xsd:element name="TS205" type="decimal1-18" minOccurs="0"/>
-            <xsd:element name="TS206" type="decimal1-18" minOccurs="0"/>
-            <xsd:element name="TS207" type="decimal1-18" minOccurs="0"/>
-            <xsd:element name="TS208" type="decimal1-18" minOccurs="0"/>
-            <xsd:element name="TS209" type="decimal1-18" minOccurs="0"/>
-            <xsd:element name="TS210" type="decimal1-18" minOccurs="0"/>
-            <xsd:element name="TS211" type="decimal1-18" minOccurs="0"/>
-            <xsd:element name="TS212" type="decimal1-18" minOccurs="0"/>
-            <xsd:element name="TS213" type="decimal1-18" minOccurs="0"/>
-            <xsd:element name="TS214" type="decimal1-18" minOccurs="0"/>
-            <xsd:element name="TS215" type="decimal1-18" minOccurs="0"/>
-            <xsd:element name="TS216" type="decimal1-18" minOccurs="0"/>
-            <xsd:element name="TS217" type="decimal1-18" minOccurs="0"/>
-            <xsd:element name="TS218" type="decimal1-18" minOccurs="0"/>
-            <xsd:element name="TS219" type="decimal1-18" minOccurs="0"/>
+            <xsd:element name="supplemental-amount-1" type="decimal1-18" minOccurs="0"/>
+            <xsd:element name="supplemental-amount-2" type="decimal1-18" minOccurs="0"/>
+            <xsd:element name="supplemental-amount-3" type="decimal1-18" minOccurs="0"/>
+            <xsd:element name="supplemental-amount-4" type="decimal1-18" minOccurs="0"/>
+            <xsd:element name="supplemental-amount-5" type="decimal1-18" minOccurs="0"/>
+            <xsd:element name="supplemental-amount-6" type="decimal1-18" minOccurs="0"/>
+            <xsd:element name="supplemental-amount-7" type="decimal1-18" minOccurs="0"/>
+            <xsd:element name="supplemental-amount-8" type="decimal1-18" minOccurs="0"/>
+            <xsd:element name="supplemental-amount-9" type="decimal1-18" minOccurs="0"/>
+            <xsd:element name="supplemental-amount-10" type="decimal1-18" minOccurs="0"/>
+            <xsd:element name="supplemental-amount-11" type="decimal1-18" minOccurs="0"/>
+            <xsd:element name="supplemental-amount-12" type="decimal1-18" minOccurs="0"/>
+            <xsd:element name="supplemental-amount-13" type="decimal1-18" minOccurs="0"/>
+            <xsd:element name="supplemental-amount-14" type="decimal1-18" minOccurs="0"/>
+            <xsd:element name="supplemental-amount-15" type="decimal1-18" minOccurs="0"/>
+            <xsd:element name="supplemental-amount-16" type="decimal1-18" minOccurs="0"/>
+            <xsd:element name="supplemental-amount-17" type="decimal1-18" minOccurs="0"/>
+            <xsd:element name="supplemental-amount-18" type="decimal1-18" minOccurs="0"/>
+            <xsd:element name="supplemental-amount-19" type="decimal1-18" minOccurs="0"/>
         </xsd:sequence>
     </xsd:complexType>
 
     <xsd:complexType name="CLP_Segment">
         <xsd:sequence dfdl:ref="ibmEdiFmt:EDISegmentSequenceFormat">
-            <xsd:element name="CLP01" type="alpha1-38"/>
-            <xsd:element name="CLP02" type="numeric1-2"/>
-            <xsd:element name="CLP03" type="decimal1-18"/>
-            <xsd:element name="CLP04" type="decimal1-18"/>
-            <xsd:element name="CLP05" type="decimal1-18" minOccurs="0"/>
-            <xsd:element name="CLP06" type="alpha2-2" minOccurs="0"/>
-            <xsd:element name="CLP07" type="alpha1-38" minOccurs="0"/>
-            <xsd:element name="CLP08" type="alpha1-2" minOccurs="0"/>
-            <xsd:element name="CLP09" type="alpha1-38" minOccurs="0"/>
-            <xsd:element name="CLP10" type="alpha1-38" minOccurs="0"/>
-            <xsd:element name="CLP11" type="alpha1-38" minOccurs="0"/>
-            <xsd:element name="CLP12" type="alpha1-38" minOccurs="0"/>
-            <xsd:element name="CLP13" type="alpha1-38" minOccurs="0"/>
-            <xsd:element name="CLP14" type="alpha1-38" minOccurs="0"/>
+            <xsd:element name="claim-submitters-identifier" type="alpha1-38"/>
+            <xsd:element name="claim-status-code" type="numeric1-2"/>
+            <xsd:element name="total-claim-charge-amount" type="decimal1-18"/>
+            <xsd:element name="claim-payment-amount" type="decimal1-18"/>
+            <xsd:element name="patient-responsibility-amount" type="decimal1-18" minOccurs="0"/>
+            <xsd:element name="claim-filing-indicator-code" type="alpha2-2" minOccurs="0"/>
+            <xsd:element name="payer-claim-control-number" type="alpha1-38" minOccurs="0"/>
+            <xsd:element name="facility-type-code" type="alpha1-2" minOccurs="0"/>
+            <xsd:element name="claim-frequency-code" type="alpha1-38" minOccurs="0"/>
+            <xsd:element name="patient-status-code" type="alpha1-38" minOccurs="0"/>
+            <xsd:element name="diagnosis-related-group-code" type="alpha1-38" minOccurs="0"/>
+            <xsd:element name="drg-weight" type="alpha1-38" minOccurs="0"/>
+            <xsd:element name="discharge-fraction" type="alpha1-38" minOccurs="0"/>
+            <xsd:element name="ymd-date" type="alpha1-38" minOccurs="0"/>
         </xsd:sequence>
     </xsd:complexType>
 
     <xsd:complexType name="CAS_Segment">
         <xsd:sequence dfdl:ref="ibmEdiFmt:EDISegmentSequenceFormat">
-            <xsd:element name="CAS01" type="alpha1-2"/>
-            <xsd:element name="CAS02" type="alpha1-5"/>
-            <xsd:element name="CAS03" type="decimal1-18"/>
-            <xsd:element name="CAS04" type="decimal1-15" minOccurs="0"/>
-            <xsd:element name="CAS05" type="alpha1-5" minOccurs="0"/>
-            <xsd:element name="CAS06" type="decimal1-18" minOccurs="0"/>
-            <xsd:element name="CAS07" type="decimal1-15" minOccurs="0"/>
-            <xsd:element name="CAS08" type="alpha1-5" minOccurs="0"/>
-            <xsd:element name="CAS09" type="decimal1-18" minOccurs="0"/>
-            <xsd:element name="CAS10" type="decimal1-15" minOccurs="0"/>
-            <xsd:element name="CAS11" type="alpha1-5" minOccurs="0"/>
-            <xsd:element name="CAS12" type="decimal1-18" minOccurs="0"/>
-            <xsd:element name="CAS13" type="decimal1-15" minOccurs="0"/>
-            <xsd:element name="CAS14" type="alpha1-5" minOccurs="0"/>
-            <xsd:element name="CAS15" type="decimal1-18" minOccurs="0"/>
-            <xsd:element name="CAS16" type="decimal1-15" minOccurs="0"/>
-            <xsd:element name="CAS17" type="alpha1-5" minOccurs="0"/>
-            <xsd:element name="CAS18" type="decimal1-18" minOccurs="0"/>
-            <xsd:element name="CAS19" type="decimal1-15" minOccurs="0"/>
+            <xsd:element name="claim-adjustment-group-code" type="alpha1-2"/>
+            <xsd:element name="claim-adjustment-reason-code" type="alpha1-5"/>
+            <xsd:element name="monetary-amount" type="decimal1-18"/>
+            <xsd:element name="quantity" type="decimal1-15" minOccurs="0"/>
+            <xsd:element name="claim-adjustment-reason-code-2" type="alpha1-5" minOccurs="0"/>
+            <xsd:element name="monetary-amount-2" type="decimal1-18" minOccurs="0"/>
+            <xsd:element name="quantity-2" type="decimal1-15" minOccurs="0"/>
+            <xsd:element name="claim-adjustment-reason-code-3" type="alpha1-5" minOccurs="0"/>
+            <xsd:element name="monetary-amount-3" type="decimal1-18" minOccurs="0"/>
+            <xsd:element name="quantity-3" type="decimal1-15" minOccurs="0"/>
+            <xsd:element name="claim-adjustment-reason-code-4" type="alpha1-5" minOccurs="0"/>
+            <xsd:element name="monetary-amount-4" type="decimal1-18" minOccurs="0"/>
+            <xsd:element name="quantity-4" type="decimal1-15" minOccurs="0"/>
+            <xsd:element name="claim-adjustment-reason-code-5" type="alpha1-5" minOccurs="0"/>
+            <xsd:element name="monetary-amount-5" type="decimal1-18" minOccurs="0"/>
+            <xsd:element name="quantity-5" type="decimal1-15" minOccurs="0"/>
+            <xsd:element name="claim-adjustment-reason-code-6" type="alpha1-5" minOccurs="0"/>
+            <xsd:element name="monetary-amount-6" type="decimal1-18" minOccurs="0"/>
+            <xsd:element name="quantity-6" type="decimal1-15" minOccurs="0"/>
         </xsd:sequence>
     </xsd:complexType>
 
     <xsd:complexType name="MIA_Segment">
         <xsd:sequence dfdl:ref="ibmEdiFmt:EDISegmentSequenceFormat">
-            <xsd:element name="MIA01" type="decimal1-18"/>
-            <xsd:element name="MIA02" type="decimal1-18" minOccurs="0"/>
-            <xsd:element name="MIA03" type="decimal1-18" minOccurs="0"/>
-            <xsd:element name="MIA04" type="decimal1-18" minOccurs="0"/>
-            <xsd:element name="MIA05" type="alpha1-15" minOccurs="0"/>
-            <xsd:element name="MIA06" type="decimal1-18" minOccurs="0"/>
-            <xsd:element name="MIA07" type="decimal1-18" minOccurs="0"/>
-            <xsd:element name="MIA08" type="decimal1-18" minOccurs="0"/>
-            <xsd:element name="MIA09" type="decimal1-18" minOccurs="0"/>
-            <xsd:element name="MIA10" type="decimal1-18" minOccurs="0"/>
-            <xsd:element name="MIA11" type="decimal1-18" minOccurs="0"/>
-            <xsd:element name="MIA12" type="decimal1-18" minOccurs="0"/>
-            <xsd:element name="MIA13" type="decimal1-18" minOccurs="0"/>
-            <xsd:element name="MIA14" type="decimal1-18" minOccurs="0"/>
-            <xsd:element name="MIA15" type="decimal1-18" minOccurs="0"/>
-            <xsd:element name="MIA16" type="decimal1-18" minOccurs="0"/>
-            <xsd:element name="MIA17" type="decimal1-18" minOccurs="0"/>
-            <xsd:element name="MIA18" type="decimal1-18" minOccurs="0"/>
-            <xsd:element name="MIA19" type="decimal1-18" minOccurs="0"/>
-            <xsd:element name="MIA20" type="decimal1-18" minOccurs="0"/>
-            <xsd:element name="MIA21" type="decimal1-18" minOccurs="0"/>
-            <xsd:element name="MIA22" type="decimal1-18" minOccurs="0"/>
-            <xsd:element name="MIA23" type="decimal1-18" minOccurs="0"/>
-            <xsd:element name="MIA24" type="decimal1-18" minOccurs="0"/>
+            <xsd:element name="covered-days-or-visits-count" type="decimal1-18"/>
+            <xsd:element name="pps-operating-outlier-amount" type="decimal1-18" minOccurs="0"/>
+            <xsd:element name="lifetime-psychiatric-days-count" type="decimal1-18" minOccurs="0"/>
+            <xsd:element name="claim-drg-amount" type="decimal1-18" minOccurs="0"/>
+            <xsd:element name="claim-payment-remark-code" type="alpha1-15" minOccurs="0"/>
+            <xsd:element name="claim-disproportionate-share-amount" type="decimal1-18" minOccurs="0"/>
+            <xsd:element name="claim-msp-pass-through-amount" type="decimal1-18" minOccurs="0"/>
+            <xsd:element name="claim-pps-capital-amount" type="decimal1-18" minOccurs="0"/>
+            <xsd:element name="pps-capital-fsp-drg-amount" type="decimal1-18" minOccurs="0"/>
+            <xsd:element name="pps-capital-hsp-drg-amount" type="decimal1-18" minOccurs="0"/>
+            <xsd:element name="pps-capital-dsh-drg-amount" type="decimal1-18" minOccurs="0"/>
+            <xsd:element name="old-capital-amount" type="decimal1-18" minOccurs="0"/>
+            <xsd:element name="pps-capital-ime-amount" type="decimal1-18" minOccurs="0"/>
+            <xsd:element name="pps-operating-hospital-specific-drg-amount" type="decimal1-18" minOccurs="0"/>
+            <xsd:element name="cost-report-day-count" type="decimal1-18" minOccurs="0"/>
+            <xsd:element name="pps-operating-federal-specific-drg-amount" type="decimal1-18" minOccurs="0"/>
+            <xsd:element name="claim-pps-capital-outlier-amount" type="decimal1-18" minOccurs="0"/>
+            <xsd:element name="claim-indirect-medical-education-amount" type="decimal1-18" minOccurs="0"/>
+            <xsd:element name="nonpayable-professional-component-billed-amount" type="decimal1-18" minOccurs="0"/>
+            <xsd:element name="claim-payment-remark-code-2" type="decimal1-18" minOccurs="0"/>
+            <xsd:element name="claim-payment-remark-code-3" type="decimal1-18" minOccurs="0"/>
+            <xsd:element name="claim-payment-remark-code-4" type="decimal1-18" minOccurs="0"/>
+            <xsd:element name="pps-capital-exception-amount" type="decimal1-18" minOccurs="0"/>
+            <xsd:element name="pps-capital-disproportionate-share-drg-amount" type="decimal1-18" minOccurs="0"/>
         </xsd:sequence>
     </xsd:complexType>
 
     <xsd:complexType name="MOA_Segment">
         <xsd:sequence dfdl:ref="ibmEdiFmt:EDISegmentSequenceFormat">
-            <xsd:element name="MOA01" type="decimal1-18" minOccurs="0"/>
-            <xsd:element name="MOA02" type="decimal1-18" minOccurs="0"/>
-            <xsd:element name="MOA03" type="decimal1-18" minOccurs="0"/>
-            <xsd:element name="MOA04" type="decimal1-18" minOccurs="0"/>
-            <xsd:element name="MOA05" type="decimal1-18" minOccurs="0"/>
-            <xsd:element name="MOA06" type="decimal1-18" minOccurs="0"/>
-            <xsd:element name="MOA07" type="decimal1-18" minOccurs="0"/>
-            <xsd:element name="MOA08" type="decimal1-18" minOccurs="0"/>
-            <xsd:element name="MOA09" type="decimal1-18" minOccurs="0"/>
+            <xsd:element name="reimbursement-rate" type="decimal1-18" minOccurs="0"/>
+            <xsd:element name="hcpcs-payable-amount" type="decimal1-18" minOccurs="0"/>
+            <xsd:element name="claim-payment-remark-code" type="decimal1-18" minOccurs="0"/>
+            <xsd:element name="claim-payment-remark-code-2" type="decimal1-18" minOccurs="0"/>
+            <xsd:element name="claim-payment-remark-code-3" type="decimal1-18" minOccurs="0"/>
+            <xsd:element name="claim-payment-remark-code-4" type="decimal1-18" minOccurs="0"/>
+            <xsd:element name="claim-payment-remark-code-5" type="decimal1-18" minOccurs="0"/>
+            <xsd:element name="end-stage-renal-disease-payment-amount" type="decimal1-18" minOccurs="0"/>
+            <xsd:element name="non-payable-professional-component-billed-amount" type="decimal1-18" minOccurs="0"/>
         </xsd:sequence>
     </xsd:complexType>
 
     <xsd:complexType name="AMT_Segment">
         <xsd:sequence dfdl:ref="ibmEdiFmt:EDISegmentSequenceFormat">
-            <xsd:element name="AMT01" type="alpha1-3"/>
-            <xsd:element name="AMT02" type="decimal1-18"/>
-            <xsd:element name="AMT03" type="alpha1-1" minOccurs="0"/>
+            <xsd:element name="amount-qualifier-code" type="alpha1-3"/>
+            <xsd:element name="monetary-amount" type="decimal1-18"/>
+            <xsd:element name="credit-debit-flag-code" type="alpha1-1" minOccurs="0"/>
         </xsd:sequence>
     </xsd:complexType>
 
     <xsd:complexType name="QTY_Segment">
         <xsd:sequence dfdl:ref="ibmEdiFmt:EDISegmentSequenceFormat">
-            <xsd:element name="QTY01" type="alpha2-2"/>
-            <xsd:element name="QTY02" type="decimal1-15"/>
-            <xsd:element name="QTY03" type="C001_Type" minOccurs="0"/>
-            <xsd:element name="QTY04" type="alpha1-1" minOccurs="0"/>
+            <xsd:element name="quantity-qualifier" type="alpha2-2"/>
+            <xsd:element name="quantity" type="decimal1-15"/>
+            <xsd:element name="composite-unit-of-measure" type="C001_Type" minOccurs="0"/>
+            <xsd:element name="free-form-information" type="alpha1-1" minOccurs="0"/>
         </xsd:sequence>
     </xsd:complexType>
     <xsd:complexType name="SVC_Segment">
         <xsd:sequence dfdl:ref="ibmEdiFmt:EDISegmentSequenceFormat">
-            <xsd:element name="SVC01" type="alpha1-80"/>
-            <xsd:element name="SVC02" type="decimal1-18"/>
-            <xsd:element name="SVC03" type="decimal1-18"/>
+            <xsd:element name="composite-medical-procedure-identifier" type="alpha1-80"/>
+            <xsd:element name="line-item-charge-amount" type="decimal1-18"/>
+            <xsd:element name="line-item-provider-payment-amount" type="decimal1-18"/>
+            <xsd:element name="national-uniform-billing-committee-revenue-code" type="alpha1-48" minOccurs="0"/>
+            <xsd:element name="quantity" type="decimal1-15" minOccurs="0"/>
+            <xsd:element name="composite-medical-procedure-identifier-original" type="alpha1-80" minOccurs="0"/>
+            <xsd:element name="units-of-service-count" type="decimal1-15" minOccurs="0"/>
         </xsd:sequence>
     </xsd:complexType>
 
@@ -639,20 +643,20 @@
 
     <xsd:complexType name="PLB_Segment">
         <xsd:sequence dfdl:ref="ibmEdiFmt:EDISegmentSequenceFormat">
-            <xsd:element name="PLB01" type="alpha2-80"/>
-            <xsd:element name="PLB02" type="alpha8-8"/>
-            <xsd:element name="PLB03" type="C042_Type"/>
-            <xsd:element name="PLB04" type="decimal1-18"/>
-            <xsd:element name="PLB05" type="C042_Type" minOccurs="0"/>
-            <xsd:element name="PLB06" type="decimal1-18" minOccurs="0"/>
-            <xsd:element name="PLB07" type="C042_Type" minOccurs="0"/>
-            <xsd:element name="PLB08" type="decimal1-18" minOccurs="0"/>
-            <xsd:element name="PLB09" type="C042_Type" minOccurs="0"/>
-            <xsd:element name="PLB10" type="decimal1-18" minOccurs="0"/>
-            <xsd:element name="PLB11" type="C042_Type" minOccurs="0"/>
-            <xsd:element name="PLB12" type="decimal1-18" minOccurs="0"/>
-            <xsd:element name="PLB13" type="C042_Type" minOccurs="0"/>
-            <xsd:element name="PLB14" type="decimal1-18" minOccurs="0"/>
+            <xsd:element name="provider-identifier" type="alpha2-80"/>
+            <xsd:element name="fiscal-period-date" type="alpha8-8"/>
+            <xsd:element name="adjustment-identifier" type="C042_Type"/>
+            <xsd:element name="provider-adjustment-amount" type="decimal1-18"/>
+            <xsd:element name="adjustment-identifier-2" type="C042_Type" minOccurs="0"/>
+            <xsd:element name="provider-adjustment-amount-2" type="decimal1-18" minOccurs="0"/>
+            <xsd:element name="adjustment-identifier-3" type="C042_Type" minOccurs="0"/>
+            <xsd:element name="provider-adjustment-amount-3" type="decimal1-18" minOccurs="0"/>
+            <xsd:element name="adjustment-identifier-4" type="C042_Type" minOccurs="0"/>
+            <xsd:element name="provider-adjustment-amount-4" type="decimal1-18" minOccurs="0"/>
+            <xsd:element name="adjustment-identifier-5" type="C042_Type" minOccurs="0"/>
+            <xsd:element name="provider-adjustment-amount-5" type="decimal1-18" minOccurs="0"/>
+            <xsd:element name="adjustment-identifier-6" type="C042_Type" minOccurs="0"/>
+            <xsd:element name="provider-adjustment-amount-6" type="decimal1-18" minOccurs="0"/>
         </xsd:sequence>
     </xsd:complexType>
 
@@ -680,51 +684,51 @@
     <!-- Composite Data Element Types -->
     <xsd:complexType name="C001_Type">
         <xsd:sequence dfdl:ref="ibmEdiFmt:EDISegmentSequenceFormat">
-            <xsd:element name="C00101" type="alpha2-2"/>
-            <xsd:element name="C00102" type="alpha1-17" minOccurs="0"/>
-            <xsd:element name="C00103" type="alpha2-2" minOccurs="0"/>
-            <xsd:element name="C00104" type="alpha1-17" minOccurs="0"/>
-            <xsd:element name="C00105" type="alpha2-2" minOccurs="0"/>
-            <xsd:element name="C00106" type="alpha1-17" minOccurs="0"/>
-            <xsd:element name="C00107" type="alpha2-2" minOccurs="0"/>
-            <xsd:element name="C00108" type="alpha1-17" minOccurs="0"/>
-            <xsd:element name="C00109" type="alpha2-2" minOccurs="0"/>
-            <xsd:element name="C00110" type="alpha1-17" minOccurs="0"/>
-            <xsd:element name="C00111" type="alpha2-2" minOccurs="0"/>
-            <xsd:element name="C00112" type="alpha1-17" minOccurs="0"/>
-            <xsd:element name="C00113" type="alpha2-2" minOccurs="0"/>
-            <xsd:element name="C00114" type="alpha1-17" minOccurs="0"/>
-            <xsd:element name="C00115" type="alpha2-2" minOccurs="0"/>
+            <xsd:element name="unit-or-basis-for-measurement-code" type="alpha2-2"/>
+            <xsd:element name="exponent" type="alpha1-17" minOccurs="0"/>
+            <xsd:element name="multiplier" type="alpha2-2" minOccurs="0"/>
+            <xsd:element name="unit-or-basis-for-measurement-code-2" type="alpha1-17" minOccurs="0"/>
+            <xsd:element name="exponent-2" type="alpha2-2" minOccurs="0"/>
+            <xsd:element name="multiplier-2" type="alpha1-17" minOccurs="0"/>
+            <xsd:element name="unit-or-basis-for-measurement-code-3" type="alpha2-2" minOccurs="0"/>
+            <xsd:element name="exponent-3" type="alpha1-17" minOccurs="0"/>
+            <xsd:element name="multiplier-3" type="alpha2-2" minOccurs="0"/>
+            <xsd:element name="unit-or-basis-for-measurement-code-4" type="alpha1-17" minOccurs="0"/>
+            <xsd:element name="exponent-4" type="alpha2-2" minOccurs="0"/>
+            <xsd:element name="multiplier-4" type="alpha1-17" minOccurs="0"/>
+            <xsd:element name="unit-or-basis-for-measurement-code-5" type="alpha2-2" minOccurs="0"/>
+            <xsd:element name="exponent-5" type="alpha1-17" minOccurs="0"/>
+            <xsd:element name="multiplier-5" type="alpha2-2" minOccurs="0"/>
         </xsd:sequence>
     </xsd:complexType>
 
     <xsd:complexType name="C003_Type">
         <xsd:sequence dfdl:ref="ibmEdiFmt:EDISegmentSequenceFormat">
-            <xsd:element name="C00301" type="alpha1-48"/>
-            <xsd:element name="C00302" type="alpha1-7" minOccurs="0"/>
-            <xsd:element name="C00303" type="alpha1-7" minOccurs="0"/>
-            <xsd:element name="C00304" type="alpha1-7" minOccurs="0"/>
-            <xsd:element name="C00305" type="alpha1-7" minOccurs="0"/>
-            <xsd:element name="C00306" type="alpha1-7" minOccurs="0"/>
-            <xsd:element name="C00307" type="alpha1-30" minOccurs="0"/>
+            <xsd:element name="product-service-id-qualifier" type="alpha1-48"/>
+            <xsd:element name="product-service-id" type="alpha1-7" minOccurs="0"/>
+            <xsd:element name="procedure-modifier-1" type="alpha1-7" minOccurs="0"/>
+            <xsd:element name="procedure-modifier-2" type="alpha1-7" minOccurs="0"/>
+            <xsd:element name="procedure-modifier-3" type="alpha1-7" minOccurs="0"/>
+            <xsd:element name="procedure-modifier-4" type="alpha1-7" minOccurs="0"/>
+            <xsd:element name="procedure-description" type="alpha1-30" minOccurs="0"/>
         </xsd:sequence>
     </xsd:complexType>
 
     <xsd:complexType name="C040_Type">
         <xsd:sequence dfdl:ref="ibmEdiFmt:EDISegmentSequenceFormat">
-            <xsd:element name="C04001" type="alpha1-30"/>
-            <xsd:element name="C04002" type="alpha1-30" minOccurs="0"/>
-            <xsd:element name="C04003" type="alpha1-30" minOccurs="0"/>
-            <xsd:element name="C04004" type="alpha1-30" minOccurs="0"/>
-            <xsd:element name="C04005" type="alpha1-30" minOccurs="0"/>
-            <xsd:element name="C04006" type="alpha1-30" minOccurs="0"/>
+            <xsd:element name="reference-identification-qualifier" type="alpha1-30"/>
+            <xsd:element name="reference-identification" type="alpha1-30" minOccurs="0"/>
+            <xsd:element name="reference-identification-qualifier-2" type="alpha1-30" minOccurs="0"/>
+            <xsd:element name="reference-identification-2" type="alpha1-30" minOccurs="0"/>
+            <xsd:element name="reference-identification-qualifier-3" type="alpha1-30" minOccurs="0"/>
+            <xsd:element name="reference-identification-3" type="alpha1-30" minOccurs="0"/>
         </xsd:sequence>
     </xsd:complexType>
 
     <xsd:complexType name="C042_Type">
         <xsd:sequence dfdl:ref="ibmEdiFmt:EDISegmentSequenceFormat">
-            <xsd:element name="C04201" type="alpha1-2"/>
-            <xsd:element name="C04202" type="alpha1-50"/>
+            <xsd:element name="adjustment-reason-code" type="alpha1-2"/>
+            <xsd:element name="provider-adjustment-identifier" type="alpha1-50"/>
         </xsd:sequence>
     </xsd:complexType>
 

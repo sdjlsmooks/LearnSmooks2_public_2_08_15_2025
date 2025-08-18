@@ -282,10 +282,10 @@
 
     <xsd:complexType name="TRN_Segment">
         <xsd:sequence dfdl:ref="ibmEdiFmt:EDISegmentSequenceFormat">
-            <xsd:element name="TRN01" type="alpha1-2"/>
-            <xsd:element name="TRN02" type="alpha1-50"/>
-            <xsd:element name="TRN03" type="alpha10-10" minOccurs="0"/>
-            <xsd:element name="TRN04" type="alpha1-50" minOccurs="0"/>
+            <xsd:element name="trace-type-code" type="alpha1-2"/>
+            <xsd:element name="reference-identification" type="alpha1-50"/>
+            <xsd:element name="originating-company-identifier" type="alpha10-10" minOccurs="0"/>
+            <xsd:element name="reference-identification-2" type="alpha1-50" minOccurs="0"/>
         </xsd:sequence>
     </xsd:complexType>
 
@@ -317,10 +317,10 @@
 
     <xsd:complexType name="REF_Segment">
         <xsd:sequence dfdl:ref="ibmEdiFmt:EDISegmentSequenceFormat">
-            <xsd:element name="REF01" type="alpha2-3"/>
-            <xsd:element name="REF02" type="alpha1-50" minOccurs="0"/>
-            <xsd:element name="REF03" type="alpha1-80" minOccurs="0"/>
-            <xsd:element name="REF04" type="C040_Type" minOccurs="0"/>
+            <xsd:element name="reference-identification-qualifier" type="alpha2-3"/>
+            <xsd:element name="reference-identification" type="alpha1-50" minOccurs="0"/>
+            <xsd:element name="description" type="alpha1-80" minOccurs="0"/>
+            <xsd:element name="reference-identifier" type="C040_Type" minOccurs="0"/>
         </xsd:sequence>
     </xsd:complexType>
 
@@ -337,29 +337,29 @@
 
     <xsd:complexType name="N1_Segment">
         <xsd:sequence dfdl:ref="ibmEdiFmt:EDISegmentSequenceFormat">
-            <xsd:element name="N101" type="alpha2-3"/>
-            <xsd:element name="N102" type="alpha1-60" minOccurs="0"/>
-            <xsd:element name="N103" type="alpha1-80" minOccurs="0"/>
-            <xsd:element name="N104" type="alpha2-80" minOccurs="0"/>
-            <xsd:element name="N105" type="alpha2-3" minOccurs="0"/>
-            <xsd:element name="N106" type="alpha2-80" minOccurs="0"/>
+            <xsd:element name="entity-identifier-code" type="alpha2-3"/>
+            <xsd:element name="name" type="alpha1-60" minOccurs="0"/>
+            <xsd:element name="identification-code-qualifier" type="alpha1-80" minOccurs="0"/>
+            <xsd:element name="identification-code" type="alpha2-80" minOccurs="0"/>
+            <xsd:element name="entity-identifier-code-2" type="alpha2-3" minOccurs="0"/>
+            <xsd:element name="identification-code-2" type="alpha2-80" minOccurs="0"/>
         </xsd:sequence>
     </xsd:complexType>
 
     <xsd:complexType name="NM1_Segment">
         <xsd:sequence dfdl:ref="ibmEdiFmt:EDISegmentSequenceFormat">
-            <xsd:element name="NM101" type="alpha2-3"/>
-            <xsd:element name="NM102" type="alpha1-1"/>
-            <xsd:element name="NM103" type="alpha1-60" minOccurs="0"/>
-            <xsd:element name="NM104" type="alpha1-35" minOccurs="0"/>
-            <xsd:element name="NM105" type="alpha1-10" minOccurs="0"/>
-            <xsd:element name="NM106" type="alpha1-10" minOccurs="0"/>
-            <xsd:element name="NM107" type="alpha1-10" minOccurs="0"/>
-            <xsd:element name="NM108" type="alpha1-3" minOccurs="0"/>
-            <xsd:element name="NM109" type="alpha2-80" minOccurs="0"/>
-            <xsd:element name="NM110" type="alpha2-3" minOccurs="0"/>
-            <xsd:element name="NM111" type="alpha2-80" minOccurs="0"/>
-            <xsd:element name="NM112" type="alpha2-3" minOccurs="0"/>
+            <xsd:element name="entity-identifier-code" type="alpha2-3"/>
+            <xsd:element name="entity-type-qualifier" type="alpha1-1"/>
+            <xsd:element name="name-last-or-organization-name" type="alpha1-60" minOccurs="0"/>
+            <xsd:element name="name-first" type="alpha1-35" minOccurs="0"/>
+            <xsd:element name="name-middle" type="alpha1-10" minOccurs="0"/>
+            <xsd:element name="name-prefix" type="alpha1-10" minOccurs="0"/>
+            <xsd:element name="name-suffix" type="alpha1-10" minOccurs="0"/>
+            <xsd:element name="identification-code-qualifier" type="alpha1-3" minOccurs="0"/>
+            <xsd:element name="identification-code" type="alpha2-80" minOccurs="0"/>
+            <xsd:element name="entity-relationship-code" type="alpha2-3" minOccurs="0"/>
+            <xsd:element name="entity-identifier-code-2" type="alpha2-80" minOccurs="0"/>
+            <xsd:element name="entity-identifier-code-qualifier-2" type="alpha2-3" minOccurs="0"/>
         </xsd:sequence>
     </xsd:complexType>
 
