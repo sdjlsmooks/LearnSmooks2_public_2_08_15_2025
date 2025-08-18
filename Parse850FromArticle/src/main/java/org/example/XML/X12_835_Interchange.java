@@ -44,6 +44,14 @@ public class X12_835_Interchange {
 
     // --- Headers (ISA/GS/ST) ---
 
+    /**
+     * Represents the ISA (Interchange Control Header) segment of an X12 835 transaction.
+     * <p>
+     * The ISA segment defines the start of an interchange and provides critical metadata
+     * about the sender, receiver, and control information for the entire EDI transmission.
+     * This segment is required and appears once at the beginning of each interchange.
+     * </p>
+     */
     @Data
     public static class InterchangeHeader {
         // ISA segment fields (names aligned with 850 model semantics)
@@ -96,6 +104,14 @@ public class X12_835_Interchange {
         private String sDelimiter;   // I16
     }
 
+    /**
+     * Represents the GS (Functional Group Header) segment of an X12 835 transaction.
+     * <p>
+     * The GS segment marks the beginning of a functional group and identifies the
+     * application sender and receiver. It groups related transaction sets together
+     * within an interchange.
+     * </p>
+     */
     @Data
     public static class GroupHeader {
         // GS segment
@@ -124,6 +140,14 @@ public class X12_835_Interchange {
         private String version; // GS08
     }
 
+    /**
+     * Represents the ST (Transaction Set Header) segment of an X12 835 transaction.
+     * <p>
+     * The ST segment indicates the start of a transaction set (in this case, 835 - 
+     * Health Care Claim Payment/Advice) and assigns a control number for tracking purposes.
+     * The code field should contain "835" for healthcare payment advice transactions.
+     * </p>
+     */
     @Data
     public static class TransactionSetHeader {
         // ST segment
@@ -139,6 +163,14 @@ public class X12_835_Interchange {
 
     // --- HealthCareClaimPayment (BPR/TRN/etc + loops) ---
 
+    /**
+     * Represents the main body of an X12 835 Health Care Claim Payment/Advice transaction.
+     * <p>
+     * This class contains all the payment information, including financial details,
+     * payer and payee information, and detailed claim payment records. It serves as
+     * the primary container for remittance advice data sent from payers to providers.
+     * </p>
+     */
     @Data
     public static class HealthCareClaimPayment {
         @JsonProperty("financial-information")
@@ -179,6 +211,14 @@ public class X12_835_Interchange {
 
     // --- Loop 1000A (Payer) ---
 
+    /**
+     * Represents Loop 1000A - Payer Identification loop in an X12 835 transaction.
+     * <p>
+     * This loop contains information about the payer (insurance company or health plan)
+     * that is making the payment. It includes the payer's name, address, contact
+     * information, and additional identification references.
+     * </p>
+     */
     @Data
     public static class Loop1000APayer {
         @JsonProperty("payer-identification")
@@ -209,6 +249,14 @@ public class X12_835_Interchange {
 
     // --- Loop 1000B (Payee) ---
 
+    /**
+     * Represents Loop 1000B - Payee Identification loop in an X12 835 transaction.
+     * <p>
+     * This loop contains information about the payee (healthcare provider or billing service)
+     * that is receiving the payment. It includes the payee's name, address, and
+     * remittance delivery method preferences.
+     * </p>
+     */
     @Data
     public static class Loop1000BPayee {
         @JsonProperty("payee-identification")
@@ -230,6 +278,15 @@ public class X12_835_Interchange {
 
     // --- Loop 2000 Header (LX/TS3/TS2 + Loop 2100) ---
 
+    /**
+     * Represents Loop 2000 - Header Number loop in an X12 835 transaction.
+     * <p>
+     * This loop provides a hierarchical structure for organizing claim payments.
+     * It includes provider summary information and contains nested Loop 2100
+     * structures for individual claim payments. Multiple Loop 2000 instances
+     * can exist to group related claims together.
+     * </p>
+     */
     @Data
     public static class Loop2000Header {
         @JsonProperty("header-number")
@@ -246,6 +303,15 @@ public class X12_835_Interchange {
         private List<Loop2100ClaimPayment> loop2100ClaimPayment; // repeating
     }
 
+    /**
+     * Represents Loop 2100 - Claim Payment Information loop in an X12 835 transaction.
+     * <p>
+     * This loop contains detailed payment information for a specific claim, including
+     * the claim status, payment amounts, adjustments, patient information, and
+     * service-level details. It is the core structure for remittance advice at
+     * the claim level.
+     * </p>
+     */
     @Data
     public static class Loop2100ClaimPayment {
         @JsonProperty("claim-payment-information")
@@ -316,6 +382,14 @@ public class X12_835_Interchange {
         private List<Loop2110ServicePayment> loop2110ServicePayment; // repeating up to 999
     }
 
+    /**
+     * Represents Loop 2110 - Service Payment Information loop in an X12 835 transaction.
+     * <p>
+     * This loop contains line-item level payment details for individual services
+     * within a claim. It includes procedure codes, charges, payments, adjustments,
+     * and healthcare remark codes that explain payment decisions at the service level.
+     * </p>
+     */
     @Data
     public static class Loop2110ServicePayment {
         @JsonProperty("service-payment-information")
@@ -360,6 +434,13 @@ public class X12_835_Interchange {
 
     // --- Trailers (SE/GE/IEA) ---
 
+    /**
+     * Represents the SE (Transaction Set Trailer) segment of an X12 835 transaction.
+     * <p>
+     * The SE segment marks the end of a transaction set and provides a count of
+     * segments included and the control number that must match the ST segment.
+     * </p>
+     */
     @Data
     public static class TransactionSetTrailer {
         @JsonProperty("number-of-included-segments")
@@ -369,6 +450,13 @@ public class X12_835_Interchange {
         private String transactionSetControlNumber; // SE02
     }
 
+    /**
+     * Represents the GE (Functional Group Trailer) segment of an X12 835 transaction.
+     * <p>
+     * The GE segment marks the end of a functional group and provides a count of
+     * transaction sets included and the control number that must match the GS segment.
+     * </p>
+     */
     @Data
     public static class FunctionalGroupTrailer {
         @JsonProperty("number-of-transaction-sets")
@@ -378,6 +466,13 @@ public class X12_835_Interchange {
         private String groupControlNumber; // GE02
     }
 
+    /**
+     * Represents the IEA (Interchange Control Trailer) segment of an X12 835 transaction.
+     * <p>
+     * The IEA segment marks the end of an interchange and provides a count of
+     * functional groups included and the control number that must match the ISA segment.
+     * </p>
+     */
     @Data
     public static class InterchangeControlTrailer {
         @JsonProperty("number-of-function-groups-included")
@@ -389,6 +484,14 @@ public class X12_835_Interchange {
 
     // --- Common segment representations (minimal fields for binding) ---
 
+    /**
+     * Represents the BPR (Beginning Segment for Payment Order/Remittance Advice) segment.
+     * <p>
+     * The BPR segment contains the financial information for the entire remittance,
+     * including the total payment amount, payment method, and banking details for
+     * electronic funds transfer (EFT) transactions.
+     * </p>
+     */
     @Data
     public static class BPRSegment {
         @JsonProperty("transaction-handling-code")
@@ -455,6 +558,14 @@ public class X12_835_Interchange {
         private String senderBankAccountNumber2;
     }
 
+    /**
+     * Represents the TRN (Reassociation Trace Number) segment.
+     * <p>
+     * The TRN segment provides a unique trace number for the payment transaction,
+     * enabling providers to track and reconcile payments with their accounts
+     * receivable systems.
+     * </p>
+     */
     @Data
     public static class TRNSegment {
         @JsonProperty("trace-type-code")
@@ -470,6 +581,14 @@ public class X12_835_Interchange {
         private String referenceIdentification2;
     }
 
+    /**
+     * Represents the CUR (Currency) segment.
+     * <p>
+     * The CUR segment specifies currency information when payments involve
+     * foreign currency or when exchange rate information needs to be communicated.
+     * This segment is optional and used primarily for international transactions.
+     * </p>
+     */
     @Data
     public static class CURSegment {
         @JsonProperty("entity-identifier-code")
@@ -536,6 +655,14 @@ public class X12_835_Interchange {
         private String dateTimePeriodFormatQualifier4;
     }
 
+    /**
+     * Represents the REF (Reference Identification) segment.
+     * <p>
+     * The REF segment provides additional reference numbers and identifiers
+     * that are relevant to the transaction, such as claim numbers, provider IDs,
+     * or policy numbers. The specific type of reference is indicated by the qualifier.
+     * </p>
+     */
     @Data
     public static class REFSegment {
         @JsonProperty("reference-identification-qualifier")
@@ -551,6 +678,14 @@ public class X12_835_Interchange {
         private String referenceIdentifier;
     }
 
+    /**
+     * Represents the DTM (Date/Time Reference) segment.
+     * <p>
+     * The DTM segment specifies dates and times relevant to the transaction,
+     * such as service dates, claim received dates, or statement period dates.
+     * The qualifier indicates what type of date is being provided.
+     * </p>
+     */
     @Data
     public static class DTMSegment {
         @JsonProperty("date-time-qualifier")
@@ -572,6 +707,14 @@ public class X12_835_Interchange {
         private String dateTimePeriod;
     }
 
+    /**
+     * Represents the N1 (Name) segment.
+     * <p>
+     * The N1 segment identifies an entity by name and/or identification code.
+     * In 835 transactions, it's used to identify payers, payees, and other
+     * parties involved in the healthcare payment process.
+     * </p>
+     */
     @Data
     public static class N1Segment {
         @JsonProperty("entity-identifier-code")
@@ -587,6 +730,14 @@ public class X12_835_Interchange {
         private String identificationCode;
     }
 
+    /**
+     * Represents the N3 (Address Information) segment.
+     * <p>
+     * The N3 segment provides street address information for the entity
+     * identified in the preceding N1 segment. It can contain up to two
+     * address lines.
+     * </p>
+     */
     @Data
     public static class N3Segment {
         @JsonProperty("address-information")
@@ -596,6 +747,13 @@ public class X12_835_Interchange {
         private String addressInformation2;
     }
 
+    /**
+     * Represents the N4 (Geographic Location) segment.
+     * <p>
+     * The N4 segment provides city, state/province, postal code, and country
+     * information for the entity identified in the preceding N1 segment.
+     * </p>
+     */
     @Data
     public static class N4Segment {
         @JsonProperty("city-name")
@@ -611,6 +769,13 @@ public class X12_835_Interchange {
         private String countryCode;
     }
 
+    /**
+     * Represents the PER (Administrative Communications Contact) segment.
+     * <p>
+     * The PER segment provides contact information including names, phone numbers,
+     * email addresses, and other communication details for administrative purposes.
+     * </p>
+     */
     @Data
     public static class PERSegment {
         @JsonProperty("contact-function-code")
@@ -626,6 +791,13 @@ public class X12_835_Interchange {
         private String communicationNumber;
     }
 
+    /**
+     * Represents the RDM (Remittance Delivery Method) segment.
+     * <p>
+     * The RDM segment specifies how the remittance advice should be delivered
+     * to the payee, such as by mail, email, or electronic data interchange.
+     * </p>
+     */
     @Data
     public static class RDMSegment {
         @JsonProperty("report-transmission-code")
@@ -635,12 +807,28 @@ public class X12_835_Interchange {
         private String name;
     }
 
+    /**
+     * Represents the LX (Assigned Number) segment.
+     * <p>
+     * The LX segment assigns a sequential number to identify a specific
+     * iteration of a loop. It acts as a counter for organizing hierarchical
+     * data structures within the transaction.
+     * </p>
+     */
     @Data
     public static class LXSegment {
         @JsonProperty("assigned-number")
         private String assignedNumber;
     }
 
+    /**
+     * Represents the TS3 (Transaction Statistics) segment.
+     * <p>
+     * The TS3 segment provides provider-level summary information for
+     * facility services, including total charges and payment amounts
+     * for a specific facility or provider.
+     * </p>
+     */
     @Data
     public static class TS3Segment {
         @JsonProperty("reference-identification")
@@ -653,6 +841,14 @@ public class X12_835_Interchange {
         private String date;
     }
 
+    /**
+     * Represents the TS2 (Transaction Supplemental Statistics) segment.
+     * <p>
+     * The TS2 segment provides additional provider-level summary amounts
+     * that supplement the information in the TS3 segment. It contains
+     * various supplemental payment and adjustment amounts.
+     * </p>
+     */
     @Data
     public static class TS2Segment {
         @JsonProperty("supplemental-amount-1")
@@ -713,6 +909,14 @@ public class X12_835_Interchange {
         private String supplementalAmount19;
     }
 
+    /**
+     * Represents the CLP (Claim Level Data) segment.
+     * <p>
+     * The CLP segment contains claim-level payment information including
+     * claim status, charged amounts, paid amounts, and patient responsibility.
+     * This is the primary segment for claim payment details in the 835 transaction.
+     * </p>
+     */
     @Data
     public static class CLPSegment {
         @JsonProperty("claim-submitters-identifier")
@@ -758,6 +962,14 @@ public class X12_835_Interchange {
         private String ymdDate;
     }
 
+    /**
+     * Represents the CAS (Claims Adjustment) segment.
+     * <p>
+     * The CAS segment provides detailed information about adjustments to claims
+     * or services, including reasons for non-payment or reduced payment. Multiple
+     * adjustment reasons and amounts can be specified in a single segment.
+     * </p>
+     */
     @Data
     public static class CASSegment {
         @JsonProperty("claim-adjustment-group-code")
@@ -818,6 +1030,14 @@ public class X12_835_Interchange {
         private String quantity6;
     }
 
+    /**
+     * Represents the NM1 (Individual or Organizational Name) segment.
+     * <p>
+     * The NM1 segment identifies individuals or organizations involved in the
+     * healthcare claim, such as patients, insured parties, providers, and
+     * service facilities. It includes name components and identification codes.
+     * </p>
+     */
     @Data
     public static class NM1Segment {
         @JsonProperty("entity-identifier-code")
@@ -833,6 +1053,14 @@ public class X12_835_Interchange {
         private String identificationCode;
     }
 
+    /**
+     * Represents the MIA (Medicare Inpatient Adjudication) segment.
+     * <p>
+     * The MIA segment provides Medicare-specific inpatient claim adjudication
+     * information, including DRG amounts, PPS payments, and various Medicare
+     * payment components for inpatient hospital services.
+     * </p>
+     */
     @Data
     public static class MIASegment {
         @JsonProperty("covered-days-or-visits-count")
@@ -908,6 +1136,14 @@ public class X12_835_Interchange {
         private String ppsCapitalDisproportionateShareDrgAmount;
     }
 
+    /**
+     * Represents the MOA (Medicare Outpatient Adjudication) segment.
+     * <p>
+     * The MOA segment provides Medicare-specific outpatient claim adjudication
+     * information, including reimbursement rates, HCPCS amounts, and remark codes
+     * specific to outpatient services.
+     * </p>
+     */
     @Data
     public static class MOASegment {
         @JsonProperty("reimbursement-rate")
@@ -938,6 +1174,14 @@ public class X12_835_Interchange {
         private String nonPayableProfessionalComponentBilledAmount;
     }
 
+    /**
+     * Represents the AMT (Monetary Amount) segment.
+     * <p>
+     * The AMT segment specifies monetary amounts related to the claim or service,
+     * such as deductibles, coinsurance, or other payment-related amounts.
+     * The qualifier indicates the type of amount being reported.
+     * </p>
+     */
     @Data
     public static class AMTSegment {
         @JsonProperty("amount-qualifier-code")
@@ -950,6 +1194,14 @@ public class X12_835_Interchange {
         private String creditDebitFlagCode;
     }
 
+    /**
+     * Represents the QTY (Quantity) segment.
+     * <p>
+     * The QTY segment specifies quantities related to the claim or service,
+     * such as number of visits, units of service, or days of care.
+     * The qualifier indicates what is being counted.
+     * </p>
+     */
     @Data
     public static class QTYSegment {
         @JsonProperty("quantity-qualifier")
@@ -965,6 +1217,14 @@ public class X12_835_Interchange {
         private String freeFormInformation;
     }
 
+    /**
+     * Represents the SVC (Service Payment Information) segment.
+     * <p>
+     * The SVC segment provides line-item level payment information for individual
+     * services within a claim. It includes procedure codes, charged amounts,
+     * paid amounts, and revenue codes for each service line.
+     * </p>
+     */
     @Data
     public static class SVCSegment {
         @JsonProperty("composite-medical-procedure-identifier")
@@ -989,6 +1249,14 @@ public class X12_835_Interchange {
         private String unitsOfServiceCount;
     }
 
+    /**
+     * Represents the LQ (Industry Code) segment.
+     * <p>
+     * The LQ segment provides healthcare remark codes that explain payment
+     * policies, edits, or other information about why a service was paid
+     * as indicated. These codes supplement the adjustment reason codes.
+     * </p>
+     */
     @Data
     public static class LQSegment {
         @JsonProperty("code-list-qualifier-code")
@@ -998,6 +1266,14 @@ public class X12_835_Interchange {
         private String industryCode;
     }
 
+    /**
+     * Represents the PLB (Provider Level Adjustment) segment.
+     * <p>
+     * The PLB segment contains provider-level adjustments that are not related
+     * to specific claims, such as interest payments, penalties, or bulk
+     * adjustments. These adjustments affect the total payment amount.
+     * </p>
+     */
     @Data
     public static class PLBSegment {
         @JsonProperty("provider-identifier")
