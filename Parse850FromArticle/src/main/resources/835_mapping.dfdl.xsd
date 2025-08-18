@@ -297,23 +297,23 @@
             <xsd:element name="monetary-amount" type="decimal1-18"/>
             <xsd:element name="credit-debit-flag-code" type="alpha1-1"/>
             <xsd:element name="payment-method-code" type="alpha3-3"/>
-            <xsd:element name="payment-format-code" type="alpha1-2" minOccurs="0"/>
+            <xsd:element name="payment-format-code" type="alpha1-3" minOccurs="0"/>
             <xsd:element name="depository-financial-institution-dfi-identification-number-qualifier" type="alpha2-2" minOccurs="0"/>
-            <xsd:element name="depository-financial-institution-dfi-identification-number" type="alpha2-2" minOccurs="0"/>
+            <xsd:element name="depository-financial-institution-dfi-identification-number" type="alpha1-17" minOccurs="0"/>
             <xsd:element name="account-number-qualifier" type="alpha1-17" minOccurs="0"/>
-            <xsd:element name="sender-bank-account-number" type="alpha1-2" minOccurs="0"/>
-            <xsd:element name="originating-company-identifier" type="alpha2-2" minOccurs="0"/>
-            <xsd:element name="originating-company-supplemental-code" type="alpha2-2" minOccurs="0"/>
+            <xsd:element name="sender-bank-account-number" type="alpha1-35" minOccurs="0"/>
+            <xsd:element name="originating-company-identifier" type="alpha1-35" minOccurs="0"/>
+            <xsd:element name="originating-company-supplemental-code" type="alpha1-10" minOccurs="0"/>
             <xsd:element name="receiver-or-provider-bank-id-number-qualifier" type="alpha1-17" minOccurs="0"/>
-            <xsd:element name="receiver-or-provider-bank-id-number" type="alpha8-8" minOccurs="0"/>
+            <xsd:element name="receiver-or-provider-bank-id-number" type="alpha1-17" minOccurs="0"/>
             <xsd:element name="receiver-or-provider-account-number-qualifier" type="alpha1-2" minOccurs="0"/>
-            <xsd:element name="receiver-or-provider-account-number" type="alpha2-2" minOccurs="0"/>
+            <xsd:element name="receiver-or-provider-account-number" type="alpha1-35" minOccurs="0"/>
             <xsd:element name="date" type="alpha8-8" minOccurs="0"/>
             <xsd:element name="business-function-code" type="alpha1-17" minOccurs="0"/>
             <xsd:element name="dfi-id-number-qualifier" type="alpha1-2" minOccurs="0"/>
-            <xsd:element name="dfi-identification-number" type="alpha2-2" minOccurs="0"/>
-            <xsd:element name="account-number-qualifier-2" type="alpha2-2" minOccurs="0"/>
-            <xsd:element name="sender-bank-account-number-2" type="alpha1-17" minOccurs="0"/>
+            <xsd:element name="dfi-identification-number" type="alpha1-17" minOccurs="0"/>
+            <xsd:element name="account-number-qualifier-2" type="alpha1-3" minOccurs="0"/>
+            <xsd:element name="sender-bank-account-number-2" type="alpha1-35" minOccurs="0"/>
         </xsd:sequence>
     </xsd:complexType>
 
