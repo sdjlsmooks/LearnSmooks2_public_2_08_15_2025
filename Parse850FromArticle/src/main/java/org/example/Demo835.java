@@ -16,9 +16,9 @@ public class Demo835 {
         // Load an 835 EDI message from resources
         try {
             byte[] ediBytes = Files.readAllBytes(
-                    Paths.get(Demo835.class.getClassLoader().getResource("input835.edi").toURI())
+                    Paths.get(Demo835.class.getClassLoader().getResource("Test835Data/input835.edi").toURI())
             );
-            String originalEDIString = Files.readString(Paths.get(Demo835.class.getClassLoader().getResource("input835.edi").toURI()));
+            String originalEDIString = Files.readString(Paths.get(Demo835.class.getClassLoader().getResource("Test835Data/input835.edi").toURI()));
             System.out.println("Original      835 EDI:\n" + originalEDIString);
 
             // EDI -> XML
