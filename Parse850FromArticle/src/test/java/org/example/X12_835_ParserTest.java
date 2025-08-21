@@ -13,7 +13,7 @@ public class X12_835_ParserTest {
 
     @Test
     public void testParseAndSerialize835() throws Exception {
-        String fileName = "Test835Data/input835_1.edi";
+        String fileName = "Test835Data/input835.edi";
         byte[] ediBytes = Files.readAllBytes(
                 Paths.get(X12_835_ParserTest.class.getClassLoader().getResource(fileName).toURI())
         );
