@@ -11,45 +11,45 @@ import java.util.List;
  * Represents an X12 850 interchange structure, which encapsulates various
  * hierarchical components such as headers, parties, items, and trailers
  * for electronic data interchange (EDI) messages.
- *
+ * <p>
  * The primary purpose of this class is to model the data elements and
  * relationships required for the X12 850 document type, adhering to a
  * specific standard format for business transactions.
- *
+ * <p>
  * This class includes nested static classes that represent various functional
  * and structural components, such as interchange control, transaction details,
  * and party identifications. Each component manages specific data fields with
  * serialized JSON properties.
- *
+ * <p>
  * The following are the main components encapsulated:
- *
+ * <p>
  * 1. InterchangeHeader: Contains authentication, security, sender and
- *    receiver details, and other control-level data for the interchange.
- *
+ * receiver details, and other control-level data for the interchange.
+ * <p>
  * 2. GroupHeader: Includes identification and metadata regarding a functional
- *    group, such as standard version, control numbers, and timestamps.
- *
+ * group, such as standard version, control numbers, and timestamps.
+ * <p>
  * 3. TransactionSetHeader: Represents metadata for a transaction set,
- *    identifying the transaction type and control number.
- *
+ * identifying the transaction type and control number.
+ * <p>
  * 4. PartyIdentifications: Captures the list of parties involved in
- *    the transaction and their identification details.
- *
+ * the transaction and their identification details.
+ * <p>
  * 5. Items: Represents the list of items in the transaction, including
- *    details about baseline data, descriptions, and references.
- *
+ * details about baseline data, descriptions, and references.
+ * <p>
  * 6. TransactionTotals: Contains aggregation details, such as the total
- *    number of line items in the transaction.
- *
+ * number of line items in the transaction.
+ * <p>
  * 7. TransactionSetTrailer: Holds summarizing details for a transaction set,
- *    including segment and control number information.
- *
+ * including segment and control number information.
+ * <p>
  * 8. FunctionalGroupTrailer: Provides data summarizing the functional group
- *    details, such as transaction set counts and control numbers.
- *
+ * details, such as transaction set counts and control numbers.
+ * <p>
  * 9. InterchangeControlTrailer: Tracks interchange-level counts and control
- *    number metadata.
- *
+ * number metadata.
+ * <p>
  * Each nested class provides a cohesive representation of its respective
  * component and is annotated with JSON-related metadata for easy serialization
  * and deserialization.
@@ -62,11 +62,11 @@ public class X12_850_Interchange {
      * Represents the interchange header within an EDI (Electronic Data Interchange) segment.
      * This field contains metadata and control information necessary for parsing and processing
      * the EDI document, such as sender and receiver details, dates, standards, and control numbers.
-     *
+     * <p>
      * The structure of this object is defined by the {@code InterchangeHeader} class, which encapsulates
      * components like authentication details, sender and receiver identifiers, date, time, version information,
      * and other interchange-level settings.
-     *
+     * <p>
      * Annotated with {@code @JsonProperty} to define the JSON property mapping as "interchange-header".
      */
     @JsonProperty("interchange-header")
@@ -85,7 +85,7 @@ public class X12_850_Interchange {
      * Represents the transaction set header within the X12_850_Interchange object.
      * This field contains metadata about the specific transaction set, including
      * its code and a control number to uniquely identify the transaction set.
-     *
+     * <p>
      * Annotated with `@JsonProperty("transaction-set-header")`, this field is
      * mapped to the "transaction-set-header" key in the JSON or XML representation
      * of the X12_850_Interchange during serialization and deserialization processes.
@@ -108,14 +108,14 @@ public class X12_850_Interchange {
      * The items are deserialized from a JSON property named "items"
      * and are typically used to encapsulate details of individual items
      * within a transaction set.
-     *
+     * <p>
      * This field is annotated with Jackson annotations to handle JSON and XML
      * serialization and deserialization:
      * - {@code @JsonProperty} specifies the mapping from the JSON property "items"
-     *   to this field.
+     * to this field.
      * - {@code @JacksonXmlElementWrapper} with {@code useWrapping = false} ensures
-     *   that in XML format, the items are not wrapped in an additional container element.
-     *
+     * that in XML format, the items are not wrapped in an additional container element.
+     * <p>
      * Note: The {@code Items} class itself contains a list of {@code Item} objects.
      */
     @JsonProperty("items")
@@ -125,7 +125,7 @@ public class X12_850_Interchange {
      * Represents the transaction totals for the X12_850_Interchange, providing details
      * about aggregate transaction data within an interchange. This field is intended
      * to store relevant totals, such as the number of line items in the transaction set.
-     *
+     * <p>
      * Annotated with @JsonProperty to ensure the property is serialized/deserialized
      * with the name "transaction-totals" when using JSON.
      */
@@ -138,7 +138,7 @@ public class X12_850_Interchange {
      * an interchange message. This field encapsulates metadata
      * about the transaction set, including the number of
      * included segments and the transaction set control number.
-     *
+     * <p>
      * The `TransactionSetTrailer` class is a static nested class
      * within `X12_850_Interchange` and is serialized/deserialized
      * using the `@JsonProperty` annotation.
@@ -151,7 +151,7 @@ public class X12_850_Interchange {
      * structure within the {@code X12_850_Interchange} class. The functional group trailer contains
      * control information specific to a group of transaction sets and helps ensure that the data
      * within the group is processed correctly and completely.
-     *
+     * <p>
      * This field is mapped to the JSON property "functional-group-trailer" for
      * serialization and deserialization purposes.
      */
@@ -162,10 +162,10 @@ public class X12_850_Interchange {
      * Represents the interchange control trailer segment of an EDI (Electronic Data Interchange)
      * transaction in the X12 850 standard. This segment contains metadata about the interchange,
      * including the number of function groups included and the interchange control number.
-     *
+     * <p>
      * It is a part of the {@code X12_850_Interchange} class and is serialized using JSON with
      * a custom property name "interchange-control-trailer".
-     *
+     * <p>
      * The {@code InterchangeControlTrailer} class contains fields for:
      * - Number of function groups included in the interchange.
      * - Control number for the interchange, used for identification and tracking.
@@ -177,49 +177,49 @@ public class X12_850_Interchange {
     public static class InterchangeHeader {
         @JsonProperty("auth-qual")
         private String authQual;
-        
+
         @JsonProperty("auth-id")
         private String authId;
-        
+
         @JsonProperty("security-qual")
         private String securityQual;
-        
+
         @JsonProperty("security-id")
         private String securityId;
-        
+
         @JsonProperty("sender-qual")
         private String senderQual;
-        
+
         @JsonProperty("sender-id")
         private String senderId;
-        
+
         @JsonProperty("receiver-qual")
         private String receiverQual;
-        
+
         @JsonProperty("receiver-id")
         private String receiverId;
-        
+
         @JsonProperty("date")
         private String date;
-        
+
         @JsonProperty("time")
         private String time;
-        
+
         @JsonProperty("standard")
         private String standard;
-        
+
         @JsonProperty("version")
         private String version;
-        
+
         @JsonProperty("interchange-control-number")
         private String interchangeControlNumber;
-        
+
         @JsonProperty("ack")
         private String ack;
-        
+
         @JsonProperty("test")
         private String test;
-        
+
         @JsonProperty("s-delimiter")
         private String sDelimiter;
     }
@@ -228,25 +228,25 @@ public class X12_850_Interchange {
     public static class GroupHeader {
         @JsonProperty("code")
         private String code;
-        
+
         @JsonProperty("sender")
         private String sender;
-        
+
         @JsonProperty("receiver")
         private String receiver;
-        
+
         @JsonProperty("date")
         private String date;
-        
+
         @JsonProperty("time")
         private String time;
-        
+
         @JsonProperty("group-control-number")
         private String groupControlNumber;
-        
+
         @JsonProperty("standard")
         private String standard;
-        
+
         @JsonProperty("version")
         private String version;
     }
@@ -255,7 +255,7 @@ public class X12_850_Interchange {
     public static class TransactionSetHeader {
         @JsonProperty("code")
         private String code;
-        
+
         @JsonProperty("transaction-set-control-number")
         private String transactionSetControlNumber;
     }
@@ -271,13 +271,13 @@ public class X12_850_Interchange {
     public static class PartyIdentification {
         @JsonProperty("entity-ic")
         private String entityIc;
-        
+
         @JsonProperty("name")
         private String name;
-        
+
         @JsonProperty("id-code-qualifier")
         private String idCodeQualifier;
-        
+
         @JsonProperty("id-code")
         private String idCode;
     }
@@ -293,10 +293,10 @@ public class X12_850_Interchange {
     public static class Item {
         @JsonProperty("baseline_item_data")
         private BaselineItemData baselineItemData;
-        
+
         @JsonProperty("item_description")
         private ItemDescription itemDescription;
-        
+
         @JacksonXmlElementWrapper(useWrapping = false)
         @JsonProperty("reference-information")
         private List<ReferenceInformation> referenceInformation;
@@ -306,7 +306,7 @@ public class X12_850_Interchange {
     public static class BaselineItemData {
         @JsonProperty("assigned_identification")
         private String assignedIdentification;
-        
+
         @JsonProperty("quantity")
         private String quantity;
     }
@@ -315,7 +315,7 @@ public class X12_850_Interchange {
     public static class ItemDescription {
         @JsonProperty("item_description_type")
         private String itemDescriptionType;
-        
+
         @JsonProperty("description")
         private String description;
     }
@@ -324,7 +324,7 @@ public class X12_850_Interchange {
     public static class ReferenceInformation {
         @JsonProperty("id_qualifier")
         private String idQualifier;
-        
+
         @JsonProperty("reference_id")
         private String referenceId;
     }
@@ -339,7 +339,7 @@ public class X12_850_Interchange {
     public static class TransactionSetTrailer {
         @JsonProperty("number-of-included-segments")
         private String numberOfIncludedSegments;
-        
+
         @JsonProperty("transaction-set-control-number")
         private String transactionSetControlNumber;
     }
@@ -348,7 +348,7 @@ public class X12_850_Interchange {
     public static class FunctionalGroupTrailer {
         @JsonProperty("number-of-transaction-sets")
         private String numberOfTransactionSets;
-        
+
         @JsonProperty("group-control-number")
         private String groupControlNumber;
     }
@@ -357,7 +357,7 @@ public class X12_850_Interchange {
     public static class InterchangeControlTrailer {
         @JsonProperty("number-of-function-groups-included")
         private String numberOfFunctionGroupsIncluded;
-        
+
         @JsonProperty("interchange-control-number")
         private String interchangeControlNumber;
     }

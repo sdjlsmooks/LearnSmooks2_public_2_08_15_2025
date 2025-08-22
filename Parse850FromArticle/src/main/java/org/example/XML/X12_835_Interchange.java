@@ -143,7 +143,7 @@ public class X12_835_Interchange {
     /**
      * Represents the ST (Transaction Set Header) segment of an X12 835 transaction.
      * <p>
-     * The ST segment indicates the start of a transaction set (in this case, 835 - 
+     * The ST segment indicates the start of a transaction set (in this case, 835 -
      * Health Care Claim Payment/Advice) and assigns a control number for tracking purposes.
      * The code field should contain "835" for healthcare payment advice transactions.
      * </p>

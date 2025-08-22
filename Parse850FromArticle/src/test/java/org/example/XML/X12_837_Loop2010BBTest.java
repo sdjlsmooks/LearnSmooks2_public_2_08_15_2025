@@ -53,7 +53,7 @@ public class X12_837_Loop2010BBTest {
         try {
             String xml = X12_837_Parser.parseEDI(EDI_WITH_LOOP_2010BB);
             assertNotNull("XML result should not be null", xml);
-            assertTrue("XML should contain root element", xml.contains("X12_835_Interchange"));
+            assertTrue("XML should contain root element", xml.contains("X12_837_Interchange"));
             assertTrue("XML should contain Loop_2000B_SubscriberDetail", xml.contains("Loop_2000B_SubscriberDetail"));
             assertTrue("XML should contain Loop_2010BA_SubscriberName", xml.contains("Loop_2010BA_SubscriberName"));
             assertTrue("XML should contain Loop_2010BB_PayerName", xml.contains("Loop_2010BB_PayerName"));

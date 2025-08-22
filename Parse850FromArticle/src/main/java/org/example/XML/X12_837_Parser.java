@@ -24,11 +24,16 @@ import java.io.IOException;
 public class X12_837_Parser {
 
     private static final XmlMapper xmlMapper = new XmlMapper();
+
     private static final JsonMapper jsonMapper = new JsonMapper();
+
     private static final YAMLMapper yamlMapper = new YAMLMapper();
 
     static {
         xmlMapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
+        // Configure XML mapper to not include null or empty values
+        xmlMapper.setSerializationInclusion(com.fasterxml.jackson.annotation.JsonInclude.Include.NON_NULL);
+        xmlMapper.setSerializationInclusion(com.fasterxml.jackson.annotation.JsonInclude.Include.NON_EMPTY);
     }
 
     /**
@@ -36,7 +41,7 @@ public class X12_837_Parser {
      *
      * @param ediString The input EDI string to be parsed into XML format.
      * @return A string containing the XML representation of the provided EDI input.
-     * @throws IOException If an I/O error occurs during the parsing process.
+     * @throws IOException  If an I/O error occurs during the parsing process.
      * @throws SAXException If an error occurs while parsing the EDI input.
      */
     public static String parseEDI(String ediString) throws IOException, SAXException {
@@ -48,7 +53,7 @@ public class X12_837_Parser {
      *
      * @param ediInput The input EDI data as a byte array that needs to be converted to XML.
      * @return A string containing the XML representation of the given EDI data.
-     * @throws IOException If an I/O error occurs during the conversion process.
+     * @throws IOException  If an I/O error occurs during the conversion process.
      * @throws SAXException If an error occurs while parsing the EDI input.
      */
     public static String parseEDI(byte[] ediInput) throws IOException, SAXException {
@@ -148,7 +153,7 @@ public class X12_837_Parser {
      *
      * @param xmlResult The input XML string to be converted into EDI format.
      * @return A string containing the EDI representation of the provided XML input.
-     * @throws IOException If an I/O error occurs during the conversion process.
+     * @throws IOException  If an I/O error occurs during the conversion process.
      * @throws SAXException If an error occurs while parsing the XML input.
      */
     public static String xmlToEDI(String xmlResult) throws IOException, SAXException {
@@ -172,7 +177,7 @@ public class X12_837_Parser {
      *
      * @param interchange The X12_837_Interchange object to be converted into an EDI string.
      * @return A string containing the EDI representation of the provided X12_837_Interchange object.
-     * @throws IOException If an I/O error occurs during the conversion process.
+     * @throws IOException  If an I/O error occurs during the conversion process.
      * @throws SAXException If an error occurs while parsing the intermediate XML representation.
      */
     public static String toEdiString(X12_837_Interchange interchange) throws IOException, SAXException {

@@ -91,7 +91,7 @@ public class X12_837_SimpleTest {
         try {
             String xml = X12_837_Parser.parseEDI(MINIMAL_835_EDI);
             assertNotNull("XML result should not be null", xml);
-            assertTrue("XML should contain root element", xml.contains("X12_835_Interchange"));
+            assertTrue("XML should contain root element", xml.contains("X12_837_Interchange"));
             assertTrue("XML should contain interchange header", xml.contains("interchange-header"));
             assertTrue("XML should contain group header", xml.contains("group-header"));
             assertTrue("XML should contain transaction set header", xml.contains("transaction-set-header"));
@@ -144,7 +144,7 @@ public class X12_837_SimpleTest {
         try {
             String xml = X12_837_Parser.parseEDI(EDI_WITH_BHT);
             assertNotNull("XML result should not be null", xml);
-            assertTrue("XML should contain root element", xml.contains("X12_835_Interchange"));
+            assertTrue("XML should contain root element", xml.contains("X12_837_Interchange"));
             assertTrue("XML should contain BHT segment", xml.contains("beginning-hierarchical-transaction"));
             
             // Parse to object and verify BHT fields
@@ -176,7 +176,7 @@ public class X12_837_SimpleTest {
         try {
             String xml = X12_837_Parser.parseEDI(EDI_WITH_LOOP_1000A);
             assertNotNull("XML result should not be null", xml);
-            assertTrue("XML should contain root element", xml.contains("X12_835_Interchange"));
+            assertTrue("XML should contain root element", xml.contains("X12_837_Interchange"));
             assertTrue("XML should contain Loop_1000A_SubmitterName", xml.contains("Loop_1000A_SubmitterName"));
             assertTrue("XML should contain submitter-name", xml.contains("submitter-name"));
             assertTrue("XML should contain submitter-edi-contact-information", xml.contains("submitter-edi-contact-information"));
@@ -231,7 +231,7 @@ public class X12_837_SimpleTest {
         try {
             String xml = X12_837_Parser.parseEDI(EDI_WITH_LOOPS_1000A_AND_1000B);
             assertNotNull("XML result should not be null", xml);
-            assertTrue("XML should contain root element", xml.contains("X12_835_Interchange"));
+            assertTrue("XML should contain root element", xml.contains("X12_837_Interchange"));
             assertTrue("XML should contain Loop_1000A_SubmitterName", xml.contains("Loop_1000A_SubmitterName"));
             assertTrue("XML should contain Loop_1000B_ReceiverName", xml.contains("Loop_1000B_ReceiverName"));
             
@@ -278,7 +278,7 @@ public class X12_837_SimpleTest {
         try {
             String xml = X12_837_Parser.parseEDI(EDI_WITH_LOOP_2000A);
             assertNotNull("XML result should not be null", xml);
-            assertTrue("XML should contain root element", xml.contains("X12_835_Interchange"));
+            assertTrue("XML should contain root element", xml.contains("X12_837_Interchange"));
             assertTrue("XML should contain Loop_2000A_BillingProviderDetail", xml.contains("Loop_2000A_BillingProviderDetail"));
             
             // Parse to object and verify Loop 2000A fields

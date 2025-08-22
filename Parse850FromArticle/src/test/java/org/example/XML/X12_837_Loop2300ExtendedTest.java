@@ -72,7 +72,7 @@ public class X12_837_Loop2300ExtendedTest {
         try {
             String xml = X12_837_Parser.parseEDI(EDI_WITH_EXTENDED_LOOP_2300);
             assertNotNull("XML result should not be null", xml);
-            assertTrue("XML should contain root element", xml.contains("X12_835_Interchange"));
+            assertTrue("XML should contain root element", xml.contains("X12_837_Interchange"));
             assertTrue("XML should contain Loop_2300_ClaimInformation", xml.contains("Loop_2300_ClaimInformation"));
             
             // Parse to object and verify Loop 2300 fields

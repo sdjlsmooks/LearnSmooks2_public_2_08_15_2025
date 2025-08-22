@@ -100,8 +100,8 @@ public class X12_835_Parser {
             return edi;
         } catch (Exception ex) {
             // Surface serialization errors as well to ensure schema/config are correct.
-            log.error("Smooks failed to serialize 835 XML. Input XML: {}", 
-                     xml.substring(0, Math.min(200, xml.length())), ex);
+            log.error("Smooks failed to serialize 835 XML. Input XML: {}",
+                    xml.substring(0, Math.min(200, xml.length())), ex);
             throw ex;
         }
     }
@@ -189,7 +189,7 @@ public class X12_835_Parser {
      *
      * @param interchange The X12_850_Interchange object to be converted into an EDI string.
      * @return A string containing the EDI representation of the provided X12_850_Interchange object.
-     * @throws IOException If an I/O error occurs during the conversion process.
+     * @throws IOException  If an I/O error occurs during the conversion process.
      * @throws SAXException If an error occurs while parsing the intermediate XML representation.
      */
     public static String toEDIString(X12_835_Interchange interchange) throws IOException, SAXException {

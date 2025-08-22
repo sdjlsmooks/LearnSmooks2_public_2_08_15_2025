@@ -186,15 +186,91 @@ class Loop2010AA:
 
 
 @dataclass
+class N3_Segment:
+    """N3 - Party Location"""
+    address_information_1: str
+    address_information_2: Optional[str] = None
+
+
+@dataclass
+class N4_Segment:
+    """N4 - Geographic Location"""
+    city_name: str
+    state_or_province_code: Optional[str] = None
+    postal_code: Optional[str] = None
+    country_code: Optional[str] = None
+    location_qualifier: Optional[str] = None
+    location_identifier: Optional[str] = None
+    country_subdivision_code: Optional[str] = None
+
+
+@dataclass
+class Loop2310A:
+    """Loop 2310A - Referring Provider Name"""
+    referring_provider_name: NM1_Segment
+    referring_provider_secondary_identification: Optional[List[REF_Segment]] = None
+
+
+@dataclass
+class Loop2310B:
+    """Loop 2310B - Rendering Provider Name"""
+    rendering_provider_name: NM1_Segment
+    rendering_provider_secondary_identification: Optional[List[REF_Segment]] = None
+
+
+@dataclass
+class Loop2310C:
+    """Loop 2310C - Service Facility Location Name"""
+    service_facility_name: NM1_Segment
+    service_facility_address: Optional[N3_Segment] = None
+    service_facility_city_state_zip: Optional[N4_Segment] = None
+    service_facility_secondary_identification: Optional[List[REF_Segment]] = None
+    service_facility_contact_information: Optional[PER_Segment] = None
+
+
+@dataclass
+class Loop2310D:
+    """Loop 2310D - Supervising Provider Name"""
+    supervising_provider_name: NM1_Segment
+    supervising_provider_secondary_identification: Optional[List[REF_Segment]] = None
+
+
+@dataclass
+class Loop2310E:
+    """Loop 2310E - Ambulance Pick-up Location"""
+    ambulance_pickup_location_name: NM1_Segment
+    ambulance_pickup_address: Optional[N3_Segment] = None
+    ambulance_pickup_city_state_zip: Optional[N4_Segment] = None
+
+
+@dataclass
+class Loop2310F:
+    """Loop 2310F - Ambulance Drop-off Location"""
+    ambulance_dropoff_location_name: NM1_Segment
+    ambulance_dropoff_address: Optional[N3_Segment] = None
+    ambulance_dropoff_city_state_zip: Optional[N4_Segment] = None
+
+
+@dataclass
 class Loop2300:
     """Loop 2300 - Claim Information"""
     claim: CLM_Segment
     dates: List[DTP_Segment] = field(default_factory=list)
     claim_supplemental_information: Optional[List[Dict]] = None
     hi_diagnosis_codes: Optional[List[HI_Segment]] = None
-    referring_provider: Optional[NM1_Segment] = None
-    rendering_provider: Optional[NM1_Segment] = None
-    service_facility: Optional[NM1_Segment] = None
+    # Loop 2310A - Referring Provider
+    referring_provider: Optional[Loop2310A] = None
+    # Loop 2310B - Rendering Provider  
+    rendering_provider: Optional[Loop2310B] = None
+    # Loop 2310C - Service Facility Location
+    service_facility_location: Optional[Loop2310C] = None
+    # Loop 2310D - Supervising Provider
+    supervising_provider: Optional[Loop2310D] = None
+    # Loop 2310E - Ambulance Pick-up Location
+    ambulance_pickup_location: Optional[Loop2310E] = None
+    # Loop 2310F - Ambulance Drop-off Location
+    ambulance_dropoff_location: Optional[Loop2310F] = None
+    # Loop 2400 - Service Lines
     service_lines: List['Loop2400'] = field(default_factory=list)
 
 
@@ -240,6 +316,8 @@ class X12_837_Parser:
         interchange = None
         current_loop_2300 = None
         current_loop_2400 = None
+        current_loop_2310 = None  # Track current 2310 loop
+        current_loop_2310_type = None  # Track which 2310 loop we're in
         
         for segment in segments:
             elements = segment.split(self.element_separator)
@@ -263,13 +341,91 @@ class X12_837_Parser:
                 self.current_interchange.beginning_hierarchical_transaction = self._parse_bht(elements)
                 
             elif segment_id == 'NM1':
-                self._parse_nm1_into_loops(elements)
+                nm1 = self._parse_nm1(elements)
+                entity_code = elements[1] if len(elements) > 1 else ''
+                
+                # Check if this is a 2310 loop NM1
+                if current_loop_2300 and entity_code in ['DN', 'DQ', '82', '77', 'DK', 'PW', '45']:
+                    # Determine which 2310 loop based on entity code
+                    if entity_code in ['DN', 'DQ']:  # Referring Provider
+                        current_loop_2310 = Loop2310A(referring_provider_name=nm1)
+                        current_loop_2300.referring_provider = current_loop_2310
+                        current_loop_2310_type = '2310A'
+                    elif entity_code == '82':  # Rendering Provider
+                        current_loop_2310 = Loop2310B(rendering_provider_name=nm1)
+                        current_loop_2300.rendering_provider = current_loop_2310
+                        current_loop_2310_type = '2310B'
+                    elif entity_code == '77':  # Service Facility Location
+                        current_loop_2310 = Loop2310C(service_facility_name=nm1)
+                        current_loop_2300.service_facility_location = current_loop_2310
+                        current_loop_2310_type = '2310C'
+                    elif entity_code == 'DK':  # Supervising Provider
+                        current_loop_2310 = Loop2310D(supervising_provider_name=nm1)
+                        current_loop_2300.supervising_provider = current_loop_2310
+                        current_loop_2310_type = '2310D'
+                    elif entity_code == 'PW':  # Ambulance Pick-up Location
+                        current_loop_2310 = Loop2310E(ambulance_pickup_location_name=nm1)
+                        current_loop_2300.ambulance_pickup_location = current_loop_2310
+                        current_loop_2310_type = '2310E'
+                    elif entity_code == '45':  # Ambulance Drop-off Location
+                        current_loop_2310 = Loop2310F(ambulance_dropoff_location_name=nm1)
+                        current_loop_2300.ambulance_dropoff_location = current_loop_2310
+                        current_loop_2310_type = '2310F'
+                else:
+                    # Handle other NM1 segments (1000A, 1000B, 2010AA)
+                    self._parse_nm1_into_loops(elements)
+                    current_loop_2310 = None
+                    current_loop_2310_type = None
+                
+            elif segment_id == 'N3' and current_loop_2310:
+                n3 = self._parse_n3(elements)
+                if current_loop_2310_type == '2310C':
+                    current_loop_2310.service_facility_address = n3
+                elif current_loop_2310_type == '2310E':
+                    current_loop_2310.ambulance_pickup_address = n3
+                elif current_loop_2310_type == '2310F':
+                    current_loop_2310.ambulance_dropoff_address = n3
+                    
+            elif segment_id == 'N4' and current_loop_2310:
+                n4 = self._parse_n4(elements)
+                if current_loop_2310_type == '2310C':
+                    current_loop_2310.service_facility_city_state_zip = n4
+                elif current_loop_2310_type == '2310E':
+                    current_loop_2310.ambulance_pickup_city_state_zip = n4
+                elif current_loop_2310_type == '2310F':
+                    current_loop_2310.ambulance_dropoff_city_state_zip = n4
+                    
+            elif segment_id == 'REF' and current_loop_2310:
+                ref = self._parse_ref(elements)
+                # Add REF to secondary identification lists
+                if current_loop_2310_type in ['2310A', '2310B', '2310C', '2310D']:
+                    if current_loop_2310_type == '2310A':
+                        if current_loop_2310.referring_provider_secondary_identification is None:
+                            current_loop_2310.referring_provider_secondary_identification = []
+                        current_loop_2310.referring_provider_secondary_identification.append(ref)
+                    elif current_loop_2310_type == '2310B':
+                        if current_loop_2310.rendering_provider_secondary_identification is None:
+                            current_loop_2310.rendering_provider_secondary_identification = []
+                        current_loop_2310.rendering_provider_secondary_identification.append(ref)
+                    elif current_loop_2310_type == '2310C':
+                        if current_loop_2310.service_facility_secondary_identification is None:
+                            current_loop_2310.service_facility_secondary_identification = []
+                        current_loop_2310.service_facility_secondary_identification.append(ref)
+                    elif current_loop_2310_type == '2310D':
+                        if current_loop_2310.supervising_provider_secondary_identification is None:
+                            current_loop_2310.supervising_provider_secondary_identification = []
+                        current_loop_2310.supervising_provider_secondary_identification.append(ref)
+                        
+            elif segment_id == 'PER' and current_loop_2310_type == '2310C':
+                current_loop_2310.service_facility_contact_information = self._parse_per(elements)
                 
             elif segment_id == 'CLM':
                 current_loop_2300 = Loop2300(claim=self._parse_clm(elements))
                 if self.current_interchange.claims is None:
                     self.current_interchange.claims = []
                 self.current_interchange.claims.append(current_loop_2300)
+                current_loop_2310 = None
+                current_loop_2310_type = None
                 
             elif segment_id == 'HI' and current_loop_2300:
                 if current_loop_2300.hi_diagnosis_codes is None:
@@ -284,10 +440,12 @@ class X12_837_Parser:
                     current_loop_2300.dates.append(dtp)
                     
             elif segment_id == 'LX':
-                # Service Line Number
+                # Service Line Number - marks beginning of Loop 2400
                 if current_loop_2300:
                     current_loop_2400 = Loop2400(service_line_number=elements[1] if len(elements) > 1 else '')
                     current_loop_2300.service_lines.append(current_loop_2400)
+                    current_loop_2310 = None
+                    current_loop_2310_type = None
                     
             elif segment_id == 'SV1' and current_loop_2400:
                 current_loop_2400.professional_service = self._parse_sv1(elements)
@@ -446,6 +604,46 @@ class X12_837_Parser:
             date_time_qualifier=elements[1] if len(elements) > 1 else '',
             date_time_period_format_qualifier=elements[2] if len(elements) > 2 else '',
             date_time_period=elements[3] if len(elements) > 3 else ''
+        )
+    
+    def _parse_n3(self, elements: List[str]) -> N3_Segment:
+        """Parse N3 segment (Party Location)"""
+        return N3_Segment(
+            address_information_1=elements[1] if len(elements) > 1 else '',
+            address_information_2=elements[2] if len(elements) > 2 else None
+        )
+    
+    def _parse_n4(self, elements: List[str]) -> N4_Segment:
+        """Parse N4 segment (Geographic Location)"""
+        return N4_Segment(
+            city_name=elements[1] if len(elements) > 1 else '',
+            state_or_province_code=elements[2] if len(elements) > 2 else None,
+            postal_code=elements[3] if len(elements) > 3 else None,
+            country_code=elements[4] if len(elements) > 4 else None,
+            location_qualifier=elements[5] if len(elements) > 5 else None,
+            location_identifier=elements[6] if len(elements) > 6 else None,
+            country_subdivision_code=elements[7] if len(elements) > 7 else None
+        )
+    
+    def _parse_ref(self, elements: List[str]) -> REF_Segment:
+        """Parse REF segment"""
+        return REF_Segment(
+            reference_identification_qualifier=elements[1] if len(elements) > 1 else '',
+            reference_identification=elements[2] if len(elements) > 2 else '',
+            description=elements[3] if len(elements) > 3 else None
+        )
+    
+    def _parse_per(self, elements: List[str]) -> PER_Segment:
+        """Parse PER segment (Administrative Communications Contact)"""
+        return PER_Segment(
+            contact_function_code=elements[1] if len(elements) > 1 else '',
+            name=elements[2] if len(elements) > 2 else None,
+            communication_number_qualifier_1=elements[3] if len(elements) > 3 else None,
+            communication_number_1=elements[4] if len(elements) > 4 else None,
+            communication_number_qualifier_2=elements[5] if len(elements) > 5 else None,
+            communication_number_2=elements[6] if len(elements) > 6 else None,
+            communication_number_qualifier_3=elements[7] if len(elements) > 7 else None,
+            communication_number_3=elements[8] if len(elements) > 8 else None
         )
     
     def to_json(self, interchange: X12_837_Interchange, indent: int = 2) -> str:

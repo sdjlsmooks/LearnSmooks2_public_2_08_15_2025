@@ -13,7 +13,7 @@
         </xsd:appinfo>
     </xsd:annotation>
 
-    <xsd:element ibmSchExtn:docRoot="true" name="X12_835_Interchange">
+    <xsd:element ibmSchExtn:docRoot="true" name="X12_837_Interchange">
         <xsd:complexType>
             <xsd:sequence>
                 <xsd:element dfdl:initiator="ISA" dfdl:ref="ibmEdiFmt:EDISegmentFormat" name="interchange-header"
@@ -307,6 +307,290 @@
                             <!-- HCP Claim Pricing/Repricing Info -->
                             <xsd:element dfdl:initiator="HCP" dfdl:ref="ibmEdiFmt:EDISegmentFormat" name="claim-pricing-repricing-info"
                                          type="HCP_Segment" minOccurs="0" maxOccurs="1"/>
+                            
+                            <!-- Loop 2310A - Referring Provider Name -->
+                            <xsd:element name="Loop_2310A_ReferringProviderName" minOccurs="0" maxOccurs="2">
+                                <xsd:complexType>
+                                    <xsd:sequence>
+                                        <xsd:element dfdl:initiator="NM1" dfdl:ref="ibmEdiFmt:EDISegmentFormat" name="referring-provider-name"
+                                                     type="NM1_Segment" minOccurs="1" maxOccurs="1">
+                                            <xsd:annotation>
+                                                <xsd:appinfo source="http://www.ogf.org/dfdl/">
+                                                    <dfdl:discriminator test="{./entity-identifier-code eq 'DN' or ./entity-identifier-code eq 'DQ'}"/>
+                                                </xsd:appinfo>
+                                            </xsd:annotation>
+                                        </xsd:element>
+                                        <xsd:element dfdl:initiator="REF" dfdl:ref="ibmEdiFmt:EDISegmentFormat" name="referring-provider-secondary-id"
+                                                     type="REF_Segment" minOccurs="0" maxOccurs="5"/>
+                                    </xsd:sequence>
+                                </xsd:complexType>
+                            </xsd:element>
+                            
+                            <!-- Loop 2310B - Rendering Provider Name -->
+                            <xsd:element name="Loop_2310B_RenderingProviderName" minOccurs="0" maxOccurs="1">
+                                <xsd:complexType>
+                                    <xsd:sequence>
+                                        <xsd:element dfdl:initiator="NM1" dfdl:ref="ibmEdiFmt:EDISegmentFormat" name="rendering-provider-name"
+                                                     type="NM1_Segment" minOccurs="1" maxOccurs="1">
+                                            <xsd:annotation>
+                                                <xsd:appinfo source="http://www.ogf.org/dfdl/">
+                                                    <dfdl:discriminator test="{./entity-identifier-code eq '82'}"/>
+                                                </xsd:appinfo>
+                                            </xsd:annotation>
+                                        </xsd:element>
+                                        <xsd:element dfdl:initiator="PRV" dfdl:ref="ibmEdiFmt:EDISegmentFormat" name="rendering-provider-specialty-info"
+                                                     type="PRV_Segment" minOccurs="0" maxOccurs="1"/>
+                                        <xsd:element dfdl:initiator="REF" dfdl:ref="ibmEdiFmt:EDISegmentFormat" name="rendering-provider-secondary-id"
+                                                     type="REF_Segment" minOccurs="0" maxOccurs="5"/>
+                                    </xsd:sequence>
+                                </xsd:complexType>
+                            </xsd:element>
+                            
+                            <!-- Loop 2310C - Service Facility Location Name -->
+                            <xsd:element name="Loop_2310C_ServiceFacilityLocationName" minOccurs="0" maxOccurs="1">
+                                <xsd:complexType>
+                                    <xsd:sequence>
+                                        <xsd:element dfdl:initiator="NM1" dfdl:ref="ibmEdiFmt:EDISegmentFormat" name="service-facility-location-name"
+                                                     type="NM1_Segment" minOccurs="1" maxOccurs="1">
+                                            <xsd:annotation>
+                                                <xsd:appinfo source="http://www.ogf.org/dfdl/">
+                                                    <dfdl:discriminator test="{./entity-identifier-code eq '77'}"/>
+                                                </xsd:appinfo>
+                                            </xsd:annotation>
+                                        </xsd:element>
+                                        <xsd:element dfdl:initiator="N3" dfdl:ref="ibmEdiFmt:EDISegmentFormat" name="service-facility-location-address"
+                                                     type="N3_Segment" minOccurs="1" maxOccurs="1"/>
+                                        <xsd:element dfdl:initiator="N4" dfdl:ref="ibmEdiFmt:EDISegmentFormat" name="service-facility-location-city-state-zip"
+                                                     type="N4_Segment" minOccurs="1" maxOccurs="1"/>
+                                        <xsd:element dfdl:initiator="REF" dfdl:ref="ibmEdiFmt:EDISegmentFormat" name="service-facility-location-secondary-id"
+                                                     type="REF_Segment" minOccurs="0" maxOccurs="3"/>
+                                        <xsd:element dfdl:initiator="PER" dfdl:ref="ibmEdiFmt:EDISegmentFormat" name="service-facility-contact-info"
+                                                     type="PER_Segment" minOccurs="0" maxOccurs="1"/>
+                                    </xsd:sequence>
+                                </xsd:complexType>
+                            </xsd:element>
+                            
+                            <!-- Loop 2310D - Supervising Provider Name -->
+                            <xsd:element name="Loop_2310D_SupervisingProviderName" minOccurs="0" maxOccurs="1">
+                                <xsd:complexType>
+                                    <xsd:sequence>
+                                        <xsd:element dfdl:initiator="NM1" dfdl:ref="ibmEdiFmt:EDISegmentFormat" name="supervising-provider-name"
+                                                     type="NM1_Segment" minOccurs="1" maxOccurs="1">
+                                            <xsd:annotation>
+                                                <xsd:appinfo source="http://www.ogf.org/dfdl/">
+                                                    <dfdl:discriminator test="{./entity-identifier-code eq 'DK'}"/>
+                                                </xsd:appinfo>
+                                            </xsd:annotation>
+                                        </xsd:element>
+                                        <xsd:element dfdl:initiator="REF" dfdl:ref="ibmEdiFmt:EDISegmentFormat" name="supervising-provider-secondary-id"
+                                                     type="REF_Segment" minOccurs="0" maxOccurs="5"/>
+                                    </xsd:sequence>
+                                </xsd:complexType>
+                            </xsd:element>
+                            
+                            <!-- Loop 2310E - Ambulance Pick-up Location -->
+                            <xsd:element name="Loop_2310E_AmbulancePickupLocation" minOccurs="0" maxOccurs="1">
+                                <xsd:complexType>
+                                    <xsd:sequence>
+                                        <xsd:element dfdl:initiator="NM1" dfdl:ref="ibmEdiFmt:EDISegmentFormat" name="ambulance-pickup-location-name"
+                                                     type="NM1_Segment" minOccurs="1" maxOccurs="1">
+                                            <xsd:annotation>
+                                                <xsd:appinfo source="http://www.ogf.org/dfdl/">
+                                                    <dfdl:discriminator test="{./entity-identifier-code eq 'PW'}"/>
+                                                </xsd:appinfo>
+                                            </xsd:annotation>
+                                        </xsd:element>
+                                        <xsd:element dfdl:initiator="N3" dfdl:ref="ibmEdiFmt:EDISegmentFormat" name="ambulance-pickup-address"
+                                                     type="N3_Segment" minOccurs="1" maxOccurs="1"/>
+                                        <xsd:element dfdl:initiator="N4" dfdl:ref="ibmEdiFmt:EDISegmentFormat" name="ambulance-pickup-city-state-zip"
+                                                     type="N4_Segment" minOccurs="1" maxOccurs="1"/>
+                                    </xsd:sequence>
+                                </xsd:complexType>
+                            </xsd:element>
+                            
+                            <!-- Loop 2310F - Ambulance Drop-off Location -->
+                            <xsd:element name="Loop_2310F_AmbulanceDropoffLocation" minOccurs="0" maxOccurs="1">
+                                <xsd:complexType>
+                                    <xsd:sequence>
+                                        <xsd:element dfdl:initiator="NM1" dfdl:ref="ibmEdiFmt:EDISegmentFormat" name="ambulance-dropoff-location-name"
+                                                     type="NM1_Segment" minOccurs="1" maxOccurs="1">
+                                            <xsd:annotation>
+                                                <xsd:appinfo source="http://www.ogf.org/dfdl/">
+                                                    <dfdl:discriminator test="{./entity-identifier-code eq '45'}"/>
+                                                </xsd:appinfo>
+                                            </xsd:annotation>
+                                        </xsd:element>
+                                        <xsd:element dfdl:initiator="N3" dfdl:ref="ibmEdiFmt:EDISegmentFormat" name="ambulance-dropoff-address"
+                                                     type="N3_Segment" minOccurs="1" maxOccurs="1"/>
+                                        <xsd:element dfdl:initiator="N4" dfdl:ref="ibmEdiFmt:EDISegmentFormat" name="ambulance-dropoff-city-state-zip"
+                                                     type="N4_Segment" minOccurs="1" maxOccurs="1"/>
+                                    </xsd:sequence>
+                                </xsd:complexType>
+                            </xsd:element>
+                            
+                            <!-- Loop 2320 - Other Subscriber Information -->
+                            <xsd:element name="Loop_2320_OtherSubscriberInformation" minOccurs="0" maxOccurs="10">
+                                <xsd:complexType>
+                                    <xsd:sequence>
+                                        <xsd:element dfdl:initiator="SBR" dfdl:ref="ibmEdiFmt:EDISegmentFormat" name="subscriber-information"
+                                                     type="SBR_Segment" minOccurs="1" maxOccurs="1"/>
+                                        <xsd:element dfdl:initiator="CAS" dfdl:ref="ibmEdiFmt:EDISegmentFormat" name="claim-adjustment"
+                                                     type="CAS_Segment" minOccurs="0" maxOccurs="5"/>
+                                        <xsd:element dfdl:initiator="AMT" dfdl:ref="ibmEdiFmt:EDISegmentFormat" name="other-payer-paid-amount"
+                                                     type="AMT_Segment" minOccurs="0" maxOccurs="unbounded"/>
+                                        <xsd:element dfdl:initiator="OI" dfdl:ref="ibmEdiFmt:EDISegmentFormat" name="other-insurance-coverage-information"
+                                                     type="OI_Segment" minOccurs="0" maxOccurs="1"/>
+                                        <xsd:element dfdl:initiator="MOA" dfdl:ref="ibmEdiFmt:EDISegmentFormat" name="medicare-outpatient-adjudication"
+                                                     type="MOA_Segment" minOccurs="0" maxOccurs="1"/>
+                                        
+                                        <!-- Loop 2330A - Other Subscriber Name -->
+                                        <xsd:element name="Loop_2330A_OtherSubscriberName" minOccurs="0" maxOccurs="1">
+                                            <xsd:complexType>
+                                                <xsd:sequence>
+                                                    <xsd:element dfdl:initiator="NM1" dfdl:ref="ibmEdiFmt:EDISegmentFormat" name="other-subscriber-name"
+                                                                 type="NM1_Segment" minOccurs="1" maxOccurs="1">
+                                                        <xsd:annotation>
+                                                            <xsd:appinfo source="http://www.ogf.org/dfdl/">
+                                                                <dfdl:discriminator test="{./entity-identifier-code eq 'IL'}"/>
+                                                            </xsd:appinfo>
+                                                        </xsd:annotation>
+                                                    </xsd:element>
+                                                    <xsd:element dfdl:initiator="N3" dfdl:ref="ibmEdiFmt:EDISegmentFormat" name="other-subscriber-address"
+                                                                 type="N3_Segment" minOccurs="0" maxOccurs="1"/>
+                                                    <xsd:element dfdl:initiator="N4" dfdl:ref="ibmEdiFmt:EDISegmentFormat" name="other-subscriber-city-state-zip"
+                                                                 type="N4_Segment" minOccurs="0" maxOccurs="1"/>
+                                                    <xsd:element dfdl:initiator="REF" dfdl:ref="ibmEdiFmt:EDISegmentFormat" name="other-subscriber-secondary-identification"
+                                                                 type="REF_Segment" minOccurs="0" maxOccurs="unbounded"/>
+                                                </xsd:sequence>
+                                            </xsd:complexType>
+                                        </xsd:element>
+                                        
+                                        <!-- Loop 2330B - Other Payer Name -->
+                                        <xsd:element name="Loop_2330B_OtherPayerName" minOccurs="1" maxOccurs="1">
+                                            <xsd:complexType>
+                                                <xsd:sequence>
+                                                    <xsd:element dfdl:initiator="NM1" dfdl:ref="ibmEdiFmt:EDISegmentFormat" name="other-payer-name"
+                                                                 type="NM1_Segment" minOccurs="1" maxOccurs="1">
+                                                        <xsd:annotation>
+                                                            <xsd:appinfo source="http://www.ogf.org/dfdl/">
+                                                                <dfdl:discriminator test="{./entity-identifier-code eq 'PR'}"/>
+                                                            </xsd:appinfo>
+                                                        </xsd:annotation>
+                                                    </xsd:element>
+                                                    <xsd:element dfdl:initiator="N3" dfdl:ref="ibmEdiFmt:EDISegmentFormat" name="other-payer-address"
+                                                                 type="N3_Segment" minOccurs="0" maxOccurs="1"/>
+                                                    <xsd:element dfdl:initiator="N4" dfdl:ref="ibmEdiFmt:EDISegmentFormat" name="other-payer-city-state-zip"
+                                                                 type="N4_Segment" minOccurs="0" maxOccurs="1"/>
+                                                    <xsd:element dfdl:initiator="DTP" dfdl:ref="ibmEdiFmt:EDISegmentFormat" name="claim-check-remittance-date"
+                                                                 type="DTP_Segment" minOccurs="0" maxOccurs="1"/>
+                                                    <xsd:element dfdl:initiator="REF" dfdl:ref="ibmEdiFmt:EDISegmentFormat" name="other-payer-secondary-identifier"
+                                                                 type="REF_Segment" minOccurs="0" maxOccurs="unbounded"/>
+                                                    <xsd:element dfdl:initiator="REF" dfdl:ref="ibmEdiFmt:EDISegmentFormat" name="other-payer-prior-authorization-number"
+                                                                 type="REF_Segment" minOccurs="0" maxOccurs="1"/>
+                                                    <xsd:element dfdl:initiator="REF" dfdl:ref="ibmEdiFmt:EDISegmentFormat" name="other-payer-referral-number"
+                                                                 type="REF_Segment" minOccurs="0" maxOccurs="1"/>
+                                                    <xsd:element dfdl:initiator="REF" dfdl:ref="ibmEdiFmt:EDISegmentFormat" name="other-payer-claim-adjustment-indicator"
+                                                                 type="REF_Segment" minOccurs="0" maxOccurs="1"/>
+                                                    <xsd:element dfdl:initiator="REF" dfdl:ref="ibmEdiFmt:EDISegmentFormat" name="other-payer-claim-control-number"
+                                                                 type="REF_Segment" minOccurs="0" maxOccurs="1"/>
+                                                    <xsd:element dfdl:initiator="PER" dfdl:ref="ibmEdiFmt:EDISegmentFormat" name="other-payer-contact-information"
+                                                                 type="PER_Segment" minOccurs="0" maxOccurs="1"/>
+                                                </xsd:sequence>
+                                            </xsd:complexType>
+                                        </xsd:element>
+                                        
+                                        <!-- Loop 2330C - Other Payer Referring Provider -->
+                                        <xsd:element name="Loop_2330C_OtherPayerReferringProvider" minOccurs="0" maxOccurs="2">
+                                            <xsd:complexType>
+                                                <xsd:sequence>
+                                                    <xsd:element dfdl:initiator="NM1" dfdl:ref="ibmEdiFmt:EDISegmentFormat" name="other-payer-referring-provider"
+                                                                 type="NM1_Segment" minOccurs="1" maxOccurs="1">
+                                                        <xsd:annotation>
+                                                            <xsd:appinfo source="http://www.ogf.org/dfdl/">
+                                                                <dfdl:discriminator test="{./entity-identifier-code eq 'DN' or ./entity-identifier-code eq 'P3'}"/>
+                                                            </xsd:appinfo>
+                                                        </xsd:annotation>
+                                                    </xsd:element>
+                                                    <xsd:element dfdl:initiator="REF" dfdl:ref="ibmEdiFmt:EDISegmentFormat" name="other-payer-referring-provider-secondary-identifier"
+                                                                 type="REF_Segment" minOccurs="0" maxOccurs="unbounded"/>
+                                                </xsd:sequence>
+                                            </xsd:complexType>
+                                        </xsd:element>
+                                        
+                                        <!-- Loop 2330D - Other Payer Rendering Provider -->
+                                        <xsd:element name="Loop_2330D_OtherPayerRenderingProvider" minOccurs="0" maxOccurs="1">
+                                            <xsd:complexType>
+                                                <xsd:sequence>
+                                                    <xsd:element dfdl:initiator="NM1" dfdl:ref="ibmEdiFmt:EDISegmentFormat" name="other-payer-rendering-provider"
+                                                                 type="NM1_Segment" minOccurs="1" maxOccurs="1">
+                                                        <xsd:annotation>
+                                                            <xsd:appinfo source="http://www.ogf.org/dfdl/">
+                                                                <dfdl:discriminator test="{./entity-identifier-code eq '82'}"/>
+                                                            </xsd:appinfo>
+                                                        </xsd:annotation>
+                                                    </xsd:element>
+                                                    <xsd:element dfdl:initiator="REF" dfdl:ref="ibmEdiFmt:EDISegmentFormat" name="other-payer-rendering-provider-secondary-identifier"
+                                                                 type="REF_Segment" minOccurs="0" maxOccurs="unbounded"/>
+                                                </xsd:sequence>
+                                            </xsd:complexType>
+                                        </xsd:element>
+                                        
+                                        <!-- Loop 2330E - Other Payer Service Facility Location -->
+                                        <xsd:element name="Loop_2330E_OtherPayerServiceFacilityLocation" minOccurs="0" maxOccurs="1">
+                                            <xsd:complexType>
+                                                <xsd:sequence>
+                                                    <xsd:element dfdl:initiator="NM1" dfdl:ref="ibmEdiFmt:EDISegmentFormat" name="other-payer-service-facility-location"
+                                                                 type="NM1_Segment" minOccurs="1" maxOccurs="1">
+                                                        <xsd:annotation>
+                                                            <xsd:appinfo source="http://www.ogf.org/dfdl/">
+                                                                <dfdl:discriminator test="{./entity-identifier-code eq '77'}"/>
+                                                            </xsd:appinfo>
+                                                        </xsd:annotation>
+                                                    </xsd:element>
+                                                    <xsd:element dfdl:initiator="REF" dfdl:ref="ibmEdiFmt:EDISegmentFormat" name="other-payer-service-facility-location-secondary-identifier"
+                                                                 type="REF_Segment" minOccurs="0" maxOccurs="unbounded"/>
+                                                </xsd:sequence>
+                                            </xsd:complexType>
+                                        </xsd:element>
+                                        
+                                        <!-- Loop 2330F - Other Payer Supervising Provider -->
+                                        <xsd:element name="Loop_2330F_OtherPayerSupervisingProvider" minOccurs="0" maxOccurs="1">
+                                            <xsd:complexType>
+                                                <xsd:sequence>
+                                                    <xsd:element dfdl:initiator="NM1" dfdl:ref="ibmEdiFmt:EDISegmentFormat" name="other-payer-supervising-provider"
+                                                                 type="NM1_Segment" minOccurs="1" maxOccurs="1">
+                                                        <xsd:annotation>
+                                                            <xsd:appinfo source="http://www.ogf.org/dfdl/">
+                                                                <dfdl:discriminator test="{./entity-identifier-code eq 'DQ'}"/>
+                                                            </xsd:appinfo>
+                                                        </xsd:annotation>
+                                                    </xsd:element>
+                                                    <xsd:element dfdl:initiator="REF" dfdl:ref="ibmEdiFmt:EDISegmentFormat" name="other-payer-supervising-provider-secondary-identifier"
+                                                                 type="REF_Segment" minOccurs="0" maxOccurs="unbounded"/>
+                                                </xsd:sequence>
+                                            </xsd:complexType>
+                                        </xsd:element>
+                                        
+                                        <!-- Loop 2330G - Other Payer Billing Provider -->
+                                        <xsd:element name="Loop_2330G_OtherPayerBillingProvider" minOccurs="0" maxOccurs="1">
+                                            <xsd:complexType>
+                                                <xsd:sequence>
+                                                    <xsd:element dfdl:initiator="NM1" dfdl:ref="ibmEdiFmt:EDISegmentFormat" name="other-payer-billing-provider"
+                                                                 type="NM1_Segment" minOccurs="1" maxOccurs="1">
+                                                        <xsd:annotation>
+                                                            <xsd:appinfo source="http://www.ogf.org/dfdl/">
+                                                                <dfdl:discriminator test="{./entity-identifier-code eq '85'}"/>
+                                                            </xsd:appinfo>
+                                                        </xsd:annotation>
+                                                    </xsd:element>
+                                                    <xsd:element dfdl:initiator="REF" dfdl:ref="ibmEdiFmt:EDISegmentFormat" name="other-payer-billing-provider-secondary-identifier"
+                                                                 type="REF_Segment" minOccurs="0" maxOccurs="unbounded"/>
+                                                </xsd:sequence>
+                                            </xsd:complexType>
+                                        </xsd:element>
+                                    </xsd:sequence>
+                                </xsd:complexType>
+                            </xsd:element>
                         </xsd:sequence>
                     </xsd:complexType>
                 </xsd:element>
@@ -757,6 +1041,17 @@
             <xsd:element name="amount-qualifier-code" type="alpha1-3"/>
             <xsd:element name="monetary-amount" type="decimal1-18"/>
             <xsd:element name="credit-debit-flag-code" type="alpha1-1" minOccurs="0"/>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:complexType name="OI_Segment">
+        <xsd:sequence dfdl:ref="ibmEdiFmt:EDISegmentSequenceFormat">
+            <xsd:element name="claim-filing-indicator-code" type="alpha1-2" minOccurs="0"/>
+            <xsd:element name="claim-submission-reason-code" type="alpha1-2" minOccurs="0"/>
+            <xsd:element name="yes-no-condition-response-code" type="alpha1-1"/>
+            <xsd:element name="patient-signature-source-code" type="alpha1-1" minOccurs="0"/>
+            <xsd:element name="provider-agreement-code" type="alpha1-1" minOccurs="0"/>
+            <xsd:element name="release-of-information-code" type="alpha1-1" minOccurs="0"/>
         </xsd:sequence>
     </xsd:complexType>
 

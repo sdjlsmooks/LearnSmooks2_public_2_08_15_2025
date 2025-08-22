@@ -1,0 +1,745 @@
+{
+  "interchange_header": {
+    "authorization_info_qualifier": "00",
+    "authorization_info": "          ",
+    "security_info_qualifier": "00",
+    "security_info": "          ",
+    "interchange_id_qualifier_sender": "ZZ",
+    "interchange_sender_id": "SUBMITTERID    ",
+    "interchange_id_qualifier_receiver": "ZZ",
+    "interchange_receiver_id": "RECEIVERID     ",
+    "interchange_date": "230415",
+    "interchange_time": "1045",
+    "repetition_separator": "^",
+    "interchange_control_version": "00501",
+    "interchange_control_number": "000000002",
+    "acknowledgment_requested": "0",
+    "usage_indicator": "P",
+    "component_element_separator": ":"
+  },
+  "group_header": {
+    "functional_id_code": "HC",
+    "application_sender_code": "SUBMITTERCODE",
+    "application_receiver_code": "RECEIVERCODE",
+    "date": "20230415",
+    "time": "1045",
+    "group_control_number": "2",
+    "responsible_agency_code": "X",
+    "version_release_industry_id": "005010X222A1"
+  },
+  "transaction_set_header": {
+    "transaction_set_id_code": "837",
+    "transaction_set_control_number": "0002",
+    "implementation_convention_reference": "005010X222A1"
+  },
+  "beginning_hierarchical_transaction": {
+    "hierarchical_structure_code": "0019",
+    "transaction_set_purpose_code": "00",
+    "originator_application_transaction_id": "CLM567890123",
+    "transaction_set_creation_date": "20230415",
+    "transaction_set_creation_time": "1045",
+    "claim_or_encounter_identifier": "CH"
+  },
+  "submitter": {
+    "submitter_name": {
+      "entity_identifier_code": "41",
+      "entity_type_qualifier": "2",
+      "name_last_or_organization_name": "PRECISION MEDICAL BILLING",
+      "name_first": "",
+      "name_middle": "",
+      "name_prefix": "",
+      "name_suffix": "",
+      "identification_code_qualifier": "46",
+      "identification_code": "456789012"
+    },
+    "submitter_contact": null
+  },
+  "receiver": {
+    "receiver_name": {
+      "entity_identifier_code": "40",
+      "entity_type_qualifier": "2",
+      "name_last_or_organization_name": "UNITED HEALTHCARE",
+      "name_first": "",
+      "name_middle": "",
+      "name_prefix": "",
+      "name_suffix": "",
+      "identification_code_qualifier": "46",
+      "identification_code": "234567890"
+    }
+  },
+  "billing_provider": {
+    "billing_provider_name": {
+      "entity_identifier_code": "85",
+      "entity_type_qualifier": "2",
+      "name_last_or_organization_name": "ADVANCED MEDICAL GROUP",
+      "name_first": "",
+      "name_middle": "",
+      "name_prefix": "",
+      "name_suffix": "",
+      "identification_code_qualifier": "XX",
+      "identification_code": "2345678901"
+    },
+    "billing_provider_address": null,
+    "billing_provider_city_state_zip": null,
+    "billing_provider_tax_id": null,
+    "billing_provider_contact": null
+  },
+  "claims": [
+    {
+      "claim": {
+        "patient_control_number": "CLAIM2023041501",
+        "monetary_amount": "3250.00",
+        "claim_filing_indicator_code": "",
+        "non_institutional_claim_type_code": "",
+        "facility_code_value": "11",
+        "facility_code_qualifier": "B",
+        "claim_frequency_type_code": "Y",
+        "yes_no_condition_response_code": "A",
+        "provider_accept_assignment_code": "Y",
+        "yes_no_condition_response_code_2": "Y",
+        "release_of_information_code": null,
+        "patient_signature_source_code": null
+      },
+      "dates": [
+        {
+          "date_time_qualifier": "434",
+          "date_time_period_format_qualifier": "RD8",
+          "date_time_period": "20230410-20230410"
+        },
+        {
+          "date_time_qualifier": "435",
+          "date_time_period_format_qualifier": "DT",
+          "date_time_period": "202304100900"
+        },
+        {
+          "date_time_qualifier": "096",
+          "date_time_period_format_qualifier": "TM",
+          "date_time_period": "0900"
+        }
+      ],
+      "claim_supplemental_information": null,
+      "hi_diagnosis_codes": [
+        {
+          "health_care_code_information": [
+            {
+              "code_list_qualifier": "ABK",
+              "code": "M7989"
+            },
+            {
+              "code_list_qualifier": "ABF",
+              "code": "E119"
+            },
+            {
+              "code_list_qualifier": "ABF",
+              "code": "K7211"
+            }
+          ]
+        }
+      ],
+      "referring_provider": {
+        "referring_provider_name": {
+          "entity_identifier_code": "DN",
+          "entity_type_qualifier": "1",
+          "name_last_or_organization_name": "WILLIAMS",
+          "name_first": "MICHAEL",
+          "name_middle": "D",
+          "name_prefix": "DR",
+          "name_suffix": "",
+          "identification_code_qualifier": "",
+          "identification_code": "XX"
+        },
+        "referring_provider_secondary_identification": [
+          {
+            "reference_identification_qualifier": "0B",
+            "reference_identification": "999888777",
+            "description": null
+          },
+          {
+            "reference_identification_qualifier": "G2",
+            "reference_identification": "REF123456",
+            "description": null
+          }
+        ]
+      },
+      "rendering_provider": {
+        "rendering_provider_name": {
+          "entity_identifier_code": "82",
+          "entity_type_qualifier": "1",
+          "name_last_or_organization_name": "ANDERSON",
+          "name_first": "JENNIFER",
+          "name_middle": "M",
+          "name_prefix": "MD",
+          "name_suffix": "",
+          "identification_code_qualifier": "",
+          "identification_code": "XX"
+        },
+        "rendering_provider_secondary_identification": [
+          {
+            "reference_identification_qualifier": "0B",
+            "reference_identification": "888777666",
+            "description": null
+          },
+          {
+            "reference_identification_qualifier": "1G",
+            "reference_identification": "PROV456789",
+            "description": null
+          }
+        ]
+      },
+      "service_facility_location": {
+        "service_facility_name": {
+          "entity_identifier_code": "77",
+          "entity_type_qualifier": "2",
+          "name_last_or_organization_name": "CITY GENERAL HOSPITAL",
+          "name_first": "",
+          "name_middle": "",
+          "name_prefix": "",
+          "name_suffix": "",
+          "identification_code_qualifier": "XX",
+          "identification_code": "3456789012"
+        },
+        "service_facility_address": {
+          "address_information_1": "1500 HOSPITAL BOULEVARD",
+          "address_information_2": null
+        },
+        "service_facility_city_state_zip": {
+          "city_name": "MEDICAL CENTER",
+          "state_or_province_code": "FL",
+          "postal_code": "33103",
+          "country_code": null,
+          "location_qualifier": null,
+          "location_identifier": null,
+          "country_subdivision_code": null
+        },
+        "service_facility_secondary_identification": [
+          {
+            "reference_identification_qualifier": "G2",
+            "reference_identification": "HOSP987654",
+            "description": null
+          }
+        ],
+        "service_facility_contact_information": {
+          "contact_function_code": "IC",
+          "name": "FACILITY ADMIN",
+          "communication_number_qualifier_1": "TE",
+          "communication_number_1": "5554567890",
+          "communication_number_qualifier_2": null,
+          "communication_number_2": null,
+          "communication_number_qualifier_3": null,
+          "communication_number_3": null
+        }
+      },
+      "supervising_provider": {
+        "supervising_provider_name": {
+          "entity_identifier_code": "DK",
+          "entity_type_qualifier": "1",
+          "name_last_or_organization_name": "SUPERVISING",
+          "name_first": "DAVID",
+          "name_middle": "R",
+          "name_prefix": "MD",
+          "name_suffix": "",
+          "identification_code_qualifier": "",
+          "identification_code": "XX"
+        },
+        "supervising_provider_secondary_identification": [
+          {
+            "reference_identification_qualifier": "G2",
+            "reference_identification": "SUP123456",
+            "description": null
+          }
+        ]
+      },
+      "ambulance_pickup_location": {
+        "ambulance_pickup_location_name": {
+          "entity_identifier_code": "PW",
+          "entity_type_qualifier": "2",
+          "name_last_or_organization_name": "METRO AMBULANCE SERVICE",
+          "name_first": "",
+          "name_middle": "",
+          "name_prefix": "",
+          "name_suffix": "",
+          "identification_code_qualifier": "XX",
+          "identification_code": "5678901234"
+        },
+        "ambulance_pickup_address": {
+          "address_information_1": "100 EMERGENCY WAY",
+          "address_information_2": null
+        },
+        "ambulance_pickup_city_state_zip": {
+          "city_name": "PICKUP CITY",
+          "state_or_province_code": "FL",
+          "postal_code": "33104",
+          "country_code": null,
+          "location_qualifier": null,
+          "location_identifier": null,
+          "country_subdivision_code": null
+        }
+      },
+      "ambulance_dropoff_location": {
+        "ambulance_dropoff_location_name": {
+          "entity_identifier_code": "45",
+          "entity_type_qualifier": "2",
+          "name_last_or_organization_name": "CITY GENERAL HOSPITAL EMERGENCY",
+          "name_first": "",
+          "name_middle": "",
+          "name_prefix": "",
+          "name_suffix": "",
+          "identification_code_qualifier": "XX",
+          "identification_code": "3456789012"
+        },
+        "ambulance_dropoff_address": {
+          "address_information_1": "1500 HOSPITAL BOULEVARD",
+          "address_information_2": null
+        },
+        "ambulance_dropoff_city_state_zip": {
+          "city_name": "MEDICAL CENTER",
+          "state_or_province_code": "FL",
+          "postal_code": "33103",
+          "country_code": null,
+          "location_qualifier": null,
+          "location_identifier": null,
+          "country_subdivision_code": null
+        }
+      },
+      "service_lines": [
+        {
+          "service_line_number": "1",
+          "professional_service": {
+            "composite_medical_procedure_identifier": {
+              "product_service_id_qualifier": "HC",
+              "product_service_id": "99285",
+              "procedure_modifier_1": "25",
+              "procedure_modifier_2": null,
+              "procedure_modifier_3": null,
+              "procedure_modifier_4": null
+            },
+            "monetary_amount": "1500.00",
+            "unit_or_basis_for_measurement_code": "UN",
+            "quantity": "1",
+            "facility_code_value": "",
+            "service_type_code": "",
+            "composite_diagnosis_code_pointer": [
+              "1"
+            ]
+          },
+          "service_dates": [
+            {
+              "date_time_qualifier": "472",
+              "date_time_period_format_qualifier": "D8",
+              "date_time_period": "20230410"
+            }
+          ],
+          "service_line_supplemental_info": null
+        },
+        {
+          "service_line_number": "2",
+          "professional_service": {
+            "composite_medical_procedure_identifier": {
+              "product_service_id_qualifier": "HC",
+              "product_service_id": "93000",
+              "procedure_modifier_1": null,
+              "procedure_modifier_2": null,
+              "procedure_modifier_3": null,
+              "procedure_modifier_4": null
+            },
+            "monetary_amount": "150.00",
+            "unit_or_basis_for_measurement_code": "UN",
+            "quantity": "1",
+            "facility_code_value": "",
+            "service_type_code": "",
+            "composite_diagnosis_code_pointer": [
+              "1",
+              "2"
+            ]
+          },
+          "service_dates": [
+            {
+              "date_time_qualifier": "472",
+              "date_time_period_format_qualifier": "D8",
+              "date_time_period": "20230410"
+            }
+          ],
+          "service_line_supplemental_info": null
+        },
+        {
+          "service_line_number": "3",
+          "professional_service": {
+            "composite_medical_procedure_identifier": {
+              "product_service_id_qualifier": "HC",
+              "product_service_id": "80053",
+              "procedure_modifier_1": null,
+              "procedure_modifier_2": null,
+              "procedure_modifier_3": null,
+              "procedure_modifier_4": null
+            },
+            "monetary_amount": "250.00",
+            "unit_or_basis_for_measurement_code": "UN",
+            "quantity": "1",
+            "facility_code_value": "",
+            "service_type_code": "",
+            "composite_diagnosis_code_pointer": [
+              "2"
+            ]
+          },
+          "service_dates": [
+            {
+              "date_time_qualifier": "472",
+              "date_time_period_format_qualifier": "D8",
+              "date_time_period": "20230410"
+            }
+          ],
+          "service_line_supplemental_info": null
+        },
+        {
+          "service_line_number": "4",
+          "professional_service": {
+            "composite_medical_procedure_identifier": {
+              "product_service_id_qualifier": "HC",
+              "product_service_id": "J3420",
+              "procedure_modifier_1": "JW",
+              "procedure_modifier_2": null,
+              "procedure_modifier_3": null,
+              "procedure_modifier_4": null
+            },
+            "monetary_amount": "850.00",
+            "unit_or_basis_for_measurement_code": "UN",
+            "quantity": "10",
+            "facility_code_value": "",
+            "service_type_code": "",
+            "composite_diagnosis_code_pointer": [
+              "1"
+            ]
+          },
+          "service_dates": [
+            {
+              "date_time_qualifier": "472",
+              "date_time_period_format_qualifier": "D8",
+              "date_time_period": "20230410"
+            }
+          ],
+          "service_line_supplemental_info": null
+        },
+        {
+          "service_line_number": "5",
+          "professional_service": {
+            "composite_medical_procedure_identifier": {
+              "product_service_id_qualifier": "HC",
+              "product_service_id": "A0425",
+              "procedure_modifier_1": null,
+              "procedure_modifier_2": null,
+              "procedure_modifier_3": null,
+              "procedure_modifier_4": null
+            },
+            "monetary_amount": "500.00",
+            "unit_or_basis_for_measurement_code": "MI",
+            "quantity": "5",
+            "facility_code_value": "",
+            "service_type_code": "",
+            "composite_diagnosis_code_pointer": [
+              "1"
+            ]
+          },
+          "service_dates": [
+            {
+              "date_time_qualifier": "472",
+              "date_time_period_format_qualifier": "D8",
+              "date_time_period": "20230410"
+            },
+            {
+              "date_time_qualifier": "434",
+              "date_time_period_format_qualifier": "RD8",
+              "date_time_period": "20230412-20230412"
+            },
+            {
+              "date_time_qualifier": "435",
+              "date_time_period_format_qualifier": "DT",
+              "date_time_period": "202304121400"
+            }
+          ],
+          "service_line_supplemental_info": null
+        }
+      ]
+    },
+    {
+      "claim": {
+        "patient_control_number": "CLAIM2023041502",
+        "monetary_amount": "1850.00",
+        "claim_filing_indicator_code": "",
+        "non_institutional_claim_type_code": "",
+        "facility_code_value": "11",
+        "facility_code_qualifier": "B",
+        "claim_frequency_type_code": "Y",
+        "yes_no_condition_response_code": "A",
+        "provider_accept_assignment_code": "Y",
+        "yes_no_condition_response_code_2": "Y",
+        "release_of_information_code": null,
+        "patient_signature_source_code": null
+      },
+      "dates": [],
+      "claim_supplemental_information": null,
+      "hi_diagnosis_codes": [
+        {
+          "health_care_code_information": [
+            {
+              "code_list_qualifier": "ABK",
+              "code": "K9211"
+            }
+          ]
+        }
+      ],
+      "referring_provider": {
+        "referring_provider_name": {
+          "entity_identifier_code": "DN",
+          "entity_type_qualifier": "1",
+          "name_last_or_organization_name": "JONES",
+          "name_first": "PATRICIA",
+          "name_middle": "L",
+          "name_prefix": "MD",
+          "name_suffix": "",
+          "identification_code_qualifier": "",
+          "identification_code": "XX"
+        },
+        "referring_provider_secondary_identification": [
+          {
+            "reference_identification_qualifier": "0B",
+            "reference_identification": "777666555",
+            "description": null
+          }
+        ]
+      },
+      "rendering_provider": {
+        "rendering_provider_name": {
+          "entity_identifier_code": "82",
+          "entity_type_qualifier": "1",
+          "name_last_or_organization_name": "SMITH",
+          "name_first": "CHRISTOPHER",
+          "name_middle": "T",
+          "name_prefix": "MD",
+          "name_suffix": "",
+          "identification_code_qualifier": "",
+          "identification_code": "XX"
+        },
+        "rendering_provider_secondary_identification": [
+          {
+            "reference_identification_qualifier": "0B",
+            "reference_identification": "666555444",
+            "description": null
+          }
+        ]
+      },
+      "service_facility_location": {
+        "service_facility_name": {
+          "entity_identifier_code": "77",
+          "entity_type_qualifier": "2",
+          "name_last_or_organization_name": "MEDICAL IMAGING CENTER",
+          "name_first": "",
+          "name_middle": "",
+          "name_prefix": "",
+          "name_suffix": "",
+          "identification_code_qualifier": "XX",
+          "identification_code": "8901234567"
+        },
+        "service_facility_address": {
+          "address_information_1": "2000 SCAN STREET",
+          "address_information_2": null
+        },
+        "service_facility_city_state_zip": {
+          "city_name": "IMAGING CITY",
+          "state_or_province_code": "FL",
+          "postal_code": "33105",
+          "country_code": null,
+          "location_qualifier": null,
+          "location_identifier": null,
+          "country_subdivision_code": null
+        },
+        "service_facility_secondary_identification": [
+          {
+            "reference_identification_qualifier": "G2",
+            "reference_identification": "IMG456789",
+            "description": null
+          }
+        ],
+        "service_facility_contact_information": null
+      },
+      "supervising_provider": null,
+      "ambulance_pickup_location": null,
+      "ambulance_dropoff_location": null,
+      "service_lines": [
+        {
+          "service_line_number": "1",
+          "professional_service": {
+            "composite_medical_procedure_identifier": {
+              "product_service_id_qualifier": "HC",
+              "product_service_id": "99214",
+              "procedure_modifier_1": "25",
+              "procedure_modifier_2": null,
+              "procedure_modifier_3": null,
+              "procedure_modifier_4": null
+            },
+            "monetary_amount": "350.00",
+            "unit_or_basis_for_measurement_code": "UN",
+            "quantity": "1",
+            "facility_code_value": "",
+            "service_type_code": "",
+            "composite_diagnosis_code_pointer": [
+              "1"
+            ]
+          },
+          "service_dates": [
+            {
+              "date_time_qualifier": "472",
+              "date_time_period_format_qualifier": "D8",
+              "date_time_period": "20230412"
+            }
+          ],
+          "service_line_supplemental_info": null
+        },
+        {
+          "service_line_number": "2",
+          "professional_service": {
+            "composite_medical_procedure_identifier": {
+              "product_service_id_qualifier": "HC",
+              "product_service_id": "71020",
+              "procedure_modifier_1": null,
+              "procedure_modifier_2": null,
+              "procedure_modifier_3": null,
+              "procedure_modifier_4": null
+            },
+            "monetary_amount": "500.00",
+            "unit_or_basis_for_measurement_code": "UN",
+            "quantity": "1",
+            "facility_code_value": "",
+            "service_type_code": "",
+            "composite_diagnosis_code_pointer": [
+              "1"
+            ]
+          },
+          "service_dates": [
+            {
+              "date_time_qualifier": "472",
+              "date_time_period_format_qualifier": "D8",
+              "date_time_period": "20230412"
+            }
+          ],
+          "service_line_supplemental_info": null
+        },
+        {
+          "service_line_number": "3",
+          "professional_service": {
+            "composite_medical_procedure_identifier": {
+              "product_service_id_qualifier": "HC",
+              "product_service_id": "99000",
+              "procedure_modifier_1": null,
+              "procedure_modifier_2": null,
+              "procedure_modifier_3": null,
+              "procedure_modifier_4": null
+            },
+            "monetary_amount": "100.00",
+            "unit_or_basis_for_measurement_code": "UN",
+            "quantity": "1",
+            "facility_code_value": "",
+            "service_type_code": "",
+            "composite_diagnosis_code_pointer": [
+              "1"
+            ]
+          },
+          "service_dates": [
+            {
+              "date_time_qualifier": "472",
+              "date_time_period_format_qualifier": "D8",
+              "date_time_period": "20230412"
+            }
+          ],
+          "service_line_supplemental_info": null
+        },
+        {
+          "service_line_number": "4",
+          "professional_service": {
+            "composite_medical_procedure_identifier": {
+              "product_service_id_qualifier": "HC",
+              "product_service_id": "90715",
+              "procedure_modifier_1": null,
+              "procedure_modifier_2": null,
+              "procedure_modifier_3": null,
+              "procedure_modifier_4": null
+            },
+            "monetary_amount": "450.00",
+            "unit_or_basis_for_measurement_code": "UN",
+            "quantity": "1",
+            "facility_code_value": "",
+            "service_type_code": "",
+            "composite_diagnosis_code_pointer": [
+              "1"
+            ]
+          },
+          "service_dates": [
+            {
+              "date_time_qualifier": "472",
+              "date_time_period_format_qualifier": "D8",
+              "date_time_period": "20230412"
+            }
+          ],
+          "service_line_supplemental_info": null
+        },
+        {
+          "service_line_number": "5",
+          "professional_service": {
+            "composite_medical_procedure_identifier": {
+              "product_service_id_qualifier": "HC",
+              "product_service_id": "87081",
+              "procedure_modifier_1": null,
+              "procedure_modifier_2": null,
+              "procedure_modifier_3": null,
+              "procedure_modifier_4": null
+            },
+            "monetary_amount": "50.00",
+            "unit_or_basis_for_measurement_code": "UN",
+            "quantity": "1",
+            "facility_code_value": "",
+            "service_type_code": "",
+            "composite_diagnosis_code_pointer": [
+              "1"
+            ]
+          },
+          "service_dates": [
+            {
+              "date_time_qualifier": "472",
+              "date_time_period_format_qualifier": "D8",
+              "date_time_period": "20230412"
+            }
+          ],
+          "service_line_supplemental_info": null
+        },
+        {
+          "service_line_number": "6",
+          "professional_service": {
+            "composite_medical_procedure_identifier": {
+              "product_service_id_qualifier": "HC",
+              "product_service_id": "81003",
+              "procedure_modifier_1": null,
+              "procedure_modifier_2": null,
+              "procedure_modifier_3": null,
+              "procedure_modifier_4": null
+            },
+            "monetary_amount": "400.00",
+            "unit_or_basis_for_measurement_code": "UN",
+            "quantity": "1",
+            "facility_code_value": "",
+            "service_type_code": "",
+            "composite_diagnosis_code_pointer": [
+              "1"
+            ]
+          },
+          "service_dates": [
+            {
+              "date_time_qualifier": "472",
+              "date_time_period_format_qualifier": "D8",
+              "date_time_period": "20230412"
+            }
+          ],
+          "service_line_supplemental_info": null
+        }
+      ]
+    }
+  ]
+}

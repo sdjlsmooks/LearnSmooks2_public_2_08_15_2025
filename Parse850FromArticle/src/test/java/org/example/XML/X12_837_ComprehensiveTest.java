@@ -168,7 +168,7 @@ public class X12_837_ComprehensiveTest {
         try {
             String xml = X12_837_Parser.parseEDI(COMPREHENSIVE_EDI_837);
             assertNotNull("XML result should not be null", xml);
-            assertTrue("XML should contain root element", xml.contains("X12_835_Interchange"));
+            assertTrue("XML should contain root element", xml.contains("X12_837_Interchange"));
             
             // Parse to object and verify major components
             X12_837_Interchange interchange = X12_837_Parser.parseXML(xml);

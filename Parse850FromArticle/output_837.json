@@ -133,8 +133,51 @@
         }
       ],
       "referring_provider": null,
-      "rendering_provider": null,
-      "service_facility": null,
+      "rendering_provider": {
+        "rendering_provider_name": {
+          "entity_identifier_code": "82",
+          "entity_type_qualifier": "1",
+          "name_last_or_organization_name": "SMITH",
+          "name_first": "ROBERT",
+          "name_middle": "MD",
+          "name_prefix": "",
+          "name_suffix": "",
+          "identification_code_qualifier": "XX",
+          "identification_code": "1122334455"
+        },
+        "rendering_provider_secondary_identification": null
+      },
+      "service_facility_location": {
+        "service_facility_name": {
+          "entity_identifier_code": "77",
+          "entity_type_qualifier": "2",
+          "name_last_or_organization_name": "GENERAL HOSPITAL",
+          "name_first": "",
+          "name_middle": "",
+          "name_prefix": "",
+          "name_suffix": "",
+          "identification_code_qualifier": "XX",
+          "identification_code": "5544332211"
+        },
+        "service_facility_address": {
+          "address_information_1": "789 HOSPITAL WAY",
+          "address_information_2": null
+        },
+        "service_facility_city_state_zip": {
+          "city_name": "MEDICAL CITY",
+          "state_or_province_code": "CA",
+          "postal_code": "90212",
+          "country_code": null,
+          "location_qualifier": null,
+          "location_identifier": null,
+          "country_subdivision_code": null
+        },
+        "service_facility_secondary_identification": null,
+        "service_facility_contact_information": null
+      },
+      "supervising_provider": null,
+      "ambulance_pickup_location": null,
+      "ambulance_dropoff_location": null,
       "service_lines": [
         {
           "service_line_number": "1",
