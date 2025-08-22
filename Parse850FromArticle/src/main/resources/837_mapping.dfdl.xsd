@@ -24,7 +24,7 @@
                              type="ST_TransactionSetHeader"/>
                 <xsd:element dfdl:initiator="BHT" dfdl:ref="ibmEdiFmt:EDISegmentFormat" name="beginning-hierarchical-transaction"
                              type="BHT_BeginningHierarchicalTransaction" minOccurs="0"/>
-                
+
                 <!-- Loop 1000A - Submitter Name -->
                 <xsd:element name="Loop_1000A_SubmitterName" minOccurs="0" maxOccurs="1">
                     <xsd:complexType>
@@ -36,7 +36,7 @@
                         </xsd:sequence>
                     </xsd:complexType>
                 </xsd:element>
-                
+
                 <!-- Loop 1000B - Receiver Name -->
                 <xsd:element name="Loop_1000B_ReceiverName" minOccurs="0" maxOccurs="1">
                     <xsd:complexType>
@@ -46,7 +46,7 @@
                         </xsd:sequence>
                     </xsd:complexType>
                 </xsd:element>
-                
+
                 <!-- Loop 2000A - Billing Provider Detail -->
                 <xsd:element name="Loop_2000A_BillingProviderDetail" minOccurs="0" maxOccurs="unbounded">
                     <xsd:complexType>
@@ -63,7 +63,7 @@
                                          type="PRV_Segment" minOccurs="0" maxOccurs="1"/>
                             <xsd:element dfdl:initiator="CUR" dfdl:ref="ibmEdiFmt:EDISegmentFormat" name="foreign-currency-information"
                                          type="CUR_Segment" minOccurs="0" maxOccurs="1"/>
-                            
+
                             <!-- Loop 2010AA - Billing Provider Detail -->
                             <xsd:element name="Loop_2010AA_BillingProviderDetailHL" minOccurs="0" maxOccurs="1">
                                 <xsd:complexType>
@@ -83,7 +83,7 @@
                                     </xsd:sequence>
                                 </xsd:complexType>
                             </xsd:element>
-                            
+
                             <!-- Loop 2010AB - Pay-To Address Name -->
                             <xsd:element name="Loop_2010AB_PayToAddressName" minOccurs="0" maxOccurs="1">
                                 <xsd:complexType>
@@ -97,7 +97,7 @@
                                     </xsd:sequence>
                                 </xsd:complexType>
                             </xsd:element>
-                            
+
                             <!-- Loop 2010AC - Pay-To Plan Name -->
                             <xsd:element name="Loop_2010AC_PayToPlanName" minOccurs="0" maxOccurs="1">
                                 <xsd:complexType>
@@ -135,7 +135,7 @@
                                          type="SBR_Segment" minOccurs="1" maxOccurs="1"/>
                             <xsd:element dfdl:initiator="PAT" dfdl:ref="ibmEdiFmt:EDISegmentFormat" name="patient-information"
                                          type="PAT_Segment" minOccurs="0" maxOccurs="1"/>
-                            
+
                             <!-- Loop 2010BA - Subscriber Name -->
                             <xsd:element name="Loop_2010BA_SubscriberName" minOccurs="0" maxOccurs="1">
                                 <xsd:complexType>
@@ -157,7 +157,7 @@
                                     </xsd:sequence>
                                 </xsd:complexType>
                             </xsd:element>
-                            
+
                             <!-- Loop 2010BB - Payer Name -->
                             <xsd:element name="Loop_2010BB_PayerName" minOccurs="0" maxOccurs="1">
                                 <xsd:complexType>
@@ -217,6 +217,96 @@
                                          type="DTP_Segment" minOccurs="0" maxOccurs="2"/>
                             <xsd:element dfdl:initiator="DTP" dfdl:ref="ibmEdiFmt:EDISegmentFormat" name="repricer-received-date"
                                          type="DTP_Segment" minOccurs="0" maxOccurs="2"/>
+                            <xsd:element dfdl:initiator="PWK" dfdl:ref="ibmEdiFmt:EDISegmentFormat" name="claim-supplemental-information"
+                                         type="PWK_Segment" minOccurs="0" maxOccurs="10"/>
+                            <xsd:element dfdl:initiator="CN1" dfdl:ref="ibmEdiFmt:EDISegmentFormat" name="contract-information"
+                                         type="CN1_Segment" minOccurs="0" maxOccurs="1"/>
+                            <xsd:element dfdl:initiator="AMT" dfdl:ref="ibmEdiFmt:EDISegmentFormat" name="patient-amount-paid"
+                                         type="AMT_Segment" minOccurs="0" maxOccurs="1"/>
+                            <!-- REF segments for various reference numbers -->
+                            <xsd:element dfdl:initiator="REF" dfdl:ref="ibmEdiFmt:EDISegmentFormat" name="service-authorization-exception-code"
+                                         type="REF_Segment" minOccurs="0" maxOccurs="1"/>
+                            <xsd:element dfdl:initiator="REF" dfdl:ref="ibmEdiFmt:EDISegmentFormat" name="mandatory-medicare"
+                                         type="REF_Segment" minOccurs="0" maxOccurs="1"/>
+                            <xsd:element dfdl:initiator="REF" dfdl:ref="ibmEdiFmt:EDISegmentFormat" name="mammogram-certification"
+                                         type="REF_Segment" minOccurs="0" maxOccurs="1"/>
+                            <xsd:element dfdl:initiator="REF" dfdl:ref="ibmEdiFmt:EDISegmentFormat" name="referral-number"
+                                         type="REF_Segment" minOccurs="0" maxOccurs="1"/>
+                            <xsd:element dfdl:initiator="REF" dfdl:ref="ibmEdiFmt:EDISegmentFormat" name="prior-authorization"
+                                         type="REF_Segment" minOccurs="0" maxOccurs="1"/>
+                            <xsd:element dfdl:initiator="REF" dfdl:ref="ibmEdiFmt:EDISegmentFormat" name="payer-claim-control-number"
+                                         type="REF_Segment" minOccurs="0" maxOccurs="1"/>
+                            <xsd:element dfdl:initiator="REF" dfdl:ref="ibmEdiFmt:EDISegmentFormat" name="clinical-laboratory-improvement"
+                                         type="REF_Segment" minOccurs="0" maxOccurs="1"/>
+                            <xsd:element dfdl:initiator="REF" dfdl:ref="ibmEdiFmt:EDISegmentFormat" name="repriced-claim-number"
+                                         type="REF_Segment" minOccurs="0" maxOccurs="1"/>
+                            <xsd:element dfdl:initiator="REF" dfdl:ref="ibmEdiFmt:EDISegmentFormat" name="adjusted-repriced-claim-number"
+                                         type="REF_Segment" minOccurs="0" maxOccurs="1"/>
+                            <xsd:element dfdl:initiator="REF" dfdl:ref="ibmEdiFmt:EDISegmentFormat" name="investigational-device-ex-number"
+                                         type="REF_Segment" minOccurs="0" maxOccurs="1"/>
+                            <xsd:element dfdl:initiator="REF" dfdl:ref="ibmEdiFmt:EDISegmentFormat" name="claim-id-for-txn-intermediaries"
+                                         type="REF_Segment" minOccurs="0" maxOccurs="1"/>
+                            <xsd:element dfdl:initiator="REF" dfdl:ref="ibmEdiFmt:EDISegmentFormat" name="medical-record-number"
+                                         type="REF_Segment" minOccurs="0" maxOccurs="1"/>
+                            <xsd:element dfdl:initiator="REF" dfdl:ref="ibmEdiFmt:EDISegmentFormat" name="demo-project-id"
+                                         type="REF_Segment" minOccurs="0" maxOccurs="1"/>
+                            <xsd:element dfdl:initiator="REF" dfdl:ref="ibmEdiFmt:EDISegmentFormat" name="care-plan-oversight"
+                                         type="REF_Segment" minOccurs="0" maxOccurs="1"/>
+                            <!-- K3 File Information -->
+                            <xsd:element dfdl:initiator="K3" dfdl:ref="ibmEdiFmt:EDISegmentFormat" name="file-information"
+                                         type="K3_Segment" minOccurs="0" maxOccurs="10"/>
+                            <!-- NTE Claim Note -->
+                            <xsd:element dfdl:initiator="NTE" dfdl:ref="ibmEdiFmt:EDISegmentFormat" name="claim-note"
+                                         type="NTE_Segment" minOccurs="0" maxOccurs="1"/>
+                            <!-- CR1 Ambulance Transport Info -->
+                            <xsd:element dfdl:initiator="CR1" dfdl:ref="ibmEdiFmt:EDISegmentFormat" name="ambulance-transport-info"
+                                         type="CR1_Segment" minOccurs="0" maxOccurs="1"/>
+                            <!-- CR2 Spinal Manipulation Info -->
+                            <xsd:element dfdl:initiator="CR2" dfdl:ref="ibmEdiFmt:EDISegmentFormat" name="spinal-manipulation-info"
+                                         type="CR2_Segment" minOccurs="0" maxOccurs="1"/>
+                            <!-- CRC segments for various certifications -->
+                            <xsd:element dfdl:initiator="CRC" dfdl:ref="ibmEdiFmt:EDISegmentFormat" name="ambulance-certification"
+                                         type="CRC_Segment" minOccurs="0" maxOccurs="3">
+                                <xsd:annotation>
+                                    <xsd:appinfo source="http://www.ogf.org/dfdl/">
+                                        <dfdl:discriminator test="{code-category eq '07'}"/>
+                                    </xsd:appinfo>
+                                </xsd:annotation>
+                            </xsd:element>
+                            <xsd:element dfdl:initiator="CRC" dfdl:ref="ibmEdiFmt:EDISegmentFormat" name="patient-condition-vision"
+                                         type="CRC_Segment" minOccurs="0" maxOccurs="3">
+                                <xsd:annotation>
+                                    <xsd:appinfo source="http://www.ogf.org/dfdl/">
+                                        <dfdl:discriminator test="{code-category eq 'E1' or code-category eq 'E2' or code-category eq 'E3'}"/>
+                                    </xsd:appinfo>
+                                </xsd:annotation>
+                            </xsd:element>
+                            <xsd:element dfdl:initiator="CRC" dfdl:ref="ibmEdiFmt:EDISegmentFormat" name="homebound-indicator"
+                                         type="CRC_Segment" minOccurs="0" maxOccurs="1">
+                                <xsd:annotation>
+                                    <xsd:appinfo source="http://www.ogf.org/dfdl/">
+                                        <dfdl:discriminator test="{code-category eq '75'}"/>
+                                    </xsd:appinfo>
+                                </xsd:annotation>
+                            </xsd:element>
+                            <xsd:element dfdl:initiator="CRC" dfdl:ref="ibmEdiFmt:EDISegmentFormat" name="epsdt-referral"
+                                         type="CRC_Segment" minOccurs="0" maxOccurs="1">
+                                <xsd:annotation>
+                                    <xsd:appinfo source="http://www.ogf.org/dfdl/">
+                                        <dfdl:discriminator test="{code-category eq 'ZZ'}"/>
+                                    </xsd:appinfo>
+                                </xsd:annotation>
+                            </xsd:element>
+                            <!-- HI segments for diagnosis and procedure codes -->
+                            <xsd:element dfdl:initiator="HI" dfdl:ref="ibmEdiFmt:EDISegmentFormat" name="health-care-diagnosis-code"
+                                         type="HI_Segment" minOccurs="0" maxOccurs="1"/>
+                            <xsd:element dfdl:initiator="HI" dfdl:ref="ibmEdiFmt:EDISegmentFormat" name="anesthesia-related-proc"
+                                         type="HI_Segment" minOccurs="0" maxOccurs="1"/>
+                            <xsd:element dfdl:initiator="HI" dfdl:ref="ibmEdiFmt:EDISegmentFormat" name="condition-info"
+                                         type="HI_Segment" minOccurs="0" maxOccurs="2"/>
+                            <!-- HCP Claim Pricing/Repricing Info -->
+                            <xsd:element dfdl:initiator="HCP" dfdl:ref="ibmEdiFmt:EDISegmentFormat" name="claim-pricing-repricing-info"
+                                         type="HCP_Segment" minOccurs="0" maxOccurs="1"/>
                         </xsd:sequence>
                     </xsd:complexType>
                 </xsd:element>
@@ -749,6 +839,127 @@
         </xsd:sequence>
     </xsd:complexType>
 
+    <xsd:complexType name="PWK_Segment">
+        <xsd:sequence dfdl:ref="ibmEdiFmt:EDISegmentSequenceFormat">
+            <xsd:element name="report-type-code" type="alpha2-2"/>
+            <xsd:element name="report-transmission-code" type="alpha1-2"/>
+            <xsd:element name="report-copies-needed" type="numeric1-2" minOccurs="0"/>
+            <xsd:element name="entity-identifier-code" type="alpha2-3" minOccurs="0"/>
+            <xsd:element name="identification-code-qualifier" type="alpha2-3" minOccurs="0"/>
+            <xsd:element name="identification-code" type="alpha2-80" minOccurs="0"/>
+            <xsd:element name="description" type="alpha1-80" minOccurs="0"/>
+            <xsd:element name="actions-indicated" type="alpha1-2" minOccurs="0"/>
+            <xsd:element name="request-category-code" type="alpha1-2" minOccurs="0"/>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:complexType name="CN1_Segment">
+        <xsd:sequence dfdl:ref="ibmEdiFmt:EDISegmentSequenceFormat">
+            <xsd:element name="contract-type-code" type="alpha2-2"/>
+            <xsd:element name="contract-amount" type="decimal1-18" minOccurs="0"/>
+            <xsd:element name="contract-percentage" type="decimal1-10" minOccurs="0"/>
+            <xsd:element name="contract-code" type="alpha1-50" minOccurs="0"/>
+            <xsd:element name="terms-discount-percentage" type="decimal1-10" minOccurs="0"/>
+            <xsd:element name="contract-version-identifier" type="alpha1-30" minOccurs="0"/>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:complexType name="K3_Segment">
+        <xsd:sequence dfdl:ref="ibmEdiFmt:EDISegmentSequenceFormat">
+            <xsd:element name="fixed-format-information" type="alpha1-80"/>
+            <xsd:element name="record-format-code" type="alpha1-2" minOccurs="0"/>
+            <xsd:element name="situation-code" type="alpha1-3" minOccurs="0"/>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:complexType name="NTE_Segment">
+        <xsd:sequence dfdl:ref="ibmEdiFmt:EDISegmentSequenceFormat">
+            <xsd:element name="note-reference-code" type="alpha3-3"/>
+            <xsd:element name="note-text" type="alpha1-80"/>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:complexType name="CR1_Segment">
+        <xsd:sequence dfdl:ref="ibmEdiFmt:EDISegmentSequenceFormat">
+            <xsd:element name="unit-or-basis-for-measurement-code" type="alpha2-2" minOccurs="0"/>
+            <xsd:element name="weight" type="decimal1-10" minOccurs="0"/>
+            <xsd:element name="ambulance-transport-code" type="alpha1-1" minOccurs="0"/>
+            <xsd:element name="ambulance-transport-reason-code" type="alpha1-1" minOccurs="0"/>
+            <xsd:element name="unit-or-basis-for-measurement-code-2" type="alpha2-2" minOccurs="0"/>
+            <xsd:element name="quantity" type="decimal1-15" minOccurs="0"/>
+            <xsd:element name="address-information" type="alpha1-55" minOccurs="0"/>
+            <xsd:element name="address-information-2" type="alpha1-55" minOccurs="0"/>
+            <xsd:element name="description" type="alpha1-80" minOccurs="0"/>
+            <xsd:element name="description-2" type="alpha1-80" minOccurs="0"/>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:complexType name="CR2_Segment">
+        <xsd:sequence dfdl:ref="ibmEdiFmt:EDISegmentSequenceFormat">
+            <xsd:element name="count" type="numeric1-6" minOccurs="0"/>
+            <xsd:element name="quantity" type="decimal1-15" minOccurs="0"/>
+            <xsd:element name="subluxation-level-code" type="alpha2-3" minOccurs="0"/>
+            <xsd:element name="subluxation-level-code-2" type="alpha2-3" minOccurs="0"/>
+            <xsd:element name="unit-or-basis-for-measurement-code" type="alpha2-2" minOccurs="0"/>
+            <xsd:element name="quantity-2" type="decimal1-15" minOccurs="0"/>
+            <xsd:element name="quantity-3" type="decimal1-15" minOccurs="0"/>
+            <xsd:element name="nature-of-condition-code" type="alpha1-1" minOccurs="0"/>
+            <xsd:element name="yes-no-condition-response-code" type="alpha1-1" minOccurs="0"/>
+            <xsd:element name="description" type="alpha1-80" minOccurs="0"/>
+            <xsd:element name="description-2" type="alpha1-80" minOccurs="0"/>
+            <xsd:element name="yes-no-condition-response-code-2" type="alpha1-1" minOccurs="0"/>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:complexType name="CRC_Segment">
+        <xsd:sequence dfdl:ref="ibmEdiFmt:EDISegmentSequenceFormat">
+            <xsd:element name="code-category" type="alpha2-2"/>
+            <xsd:element name="yes-no-condition-or-response-code" type="alpha1-1"/>
+            <xsd:element name="condition-indicator" type="alpha2-2"/>
+            <xsd:element name="condition-indicator-2" type="alpha2-2" minOccurs="0"/>
+            <xsd:element name="condition-indicator-3" type="alpha2-2" minOccurs="0"/>
+            <xsd:element name="condition-indicator-4" type="alpha2-2" minOccurs="0"/>
+            <xsd:element name="condition-indicator-5" type="alpha2-2" minOccurs="0"/>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:complexType name="HI_Segment">
+        <xsd:sequence dfdl:ref="ibmEdiFmt:EDISegmentSequenceFormat">
+            <xsd:element name="health-care-code-information" type="alpha1-30"/>
+            <xsd:element name="health-care-code-information-2" type="alpha1-30" minOccurs="0"/>
+            <xsd:element name="health-care-code-information-3" type="alpha1-30" minOccurs="0"/>
+            <xsd:element name="health-care-code-information-4" type="alpha1-30" minOccurs="0"/>
+            <xsd:element name="health-care-code-information-5" type="alpha1-30" minOccurs="0"/>
+            <xsd:element name="health-care-code-information-6" type="alpha1-30" minOccurs="0"/>
+            <xsd:element name="health-care-code-information-7" type="alpha1-30" minOccurs="0"/>
+            <xsd:element name="health-care-code-information-8" type="alpha1-30" minOccurs="0"/>
+            <xsd:element name="health-care-code-information-9" type="alpha1-30" minOccurs="0"/>
+            <xsd:element name="health-care-code-information-10" type="alpha1-30" minOccurs="0"/>
+            <xsd:element name="health-care-code-information-11" type="alpha1-30" minOccurs="0"/>
+            <xsd:element name="health-care-code-information-12" type="alpha1-30" minOccurs="0"/>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:complexType name="HCP_Segment">
+        <xsd:sequence dfdl:ref="ibmEdiFmt:EDISegmentSequenceFormat">
+            <xsd:element name="pricing-methodology" type="alpha2-2"/>
+            <xsd:element name="monetary-amount" type="decimal1-18"/>
+            <xsd:element name="monetary-amount-2" type="decimal1-18" minOccurs="0"/>
+            <xsd:element name="reference-identification" type="alpha1-50" minOccurs="0"/>
+            <xsd:element name="rate" type="decimal1-10" minOccurs="0"/>
+            <xsd:element name="reference-identification-2" type="alpha1-50" minOccurs="0"/>
+            <xsd:element name="monetary-amount-3" type="decimal1-18" minOccurs="0"/>
+            <xsd:element name="product-service-id" type="alpha1-48" minOccurs="0"/>
+            <xsd:element name="product-service-id-qualifier" type="alpha2-2" minOccurs="0"/>
+            <xsd:element name="product-service-id-2" type="alpha1-48" minOccurs="0"/>
+            <xsd:element name="unit-or-basis-for-measurement-code" type="alpha2-2" minOccurs="0"/>
+            <xsd:element name="quantity" type="decimal1-15" minOccurs="0"/>
+            <xsd:element name="reject-reason-code" type="alpha2-2" minOccurs="0"/>
+            <xsd:element name="policy-compliance-code" type="alpha1-2" minOccurs="0"/>
+            <xsd:element name="exception-code" type="alpha2-2" minOccurs="0"/>
+        </xsd:sequence>
+    </xsd:complexType>
+
     <xsd:complexType name="SE_TransactionSetTrailer">
         <xsd:sequence dfdl:ref="ibmEdiFmt:EDISegmentSequenceFormat">
             <xsd:element name="number-of-included-segments" type="numeric1-10"/>
@@ -914,6 +1125,7 @@
     </xsd:simpleType>
 
     <xsd:simpleType name="alpha1-35">
+
         <xsd:restriction base="xsd:string">
             <xsd:minLength value="1"/>
             <xsd:maxLength value="35"/>

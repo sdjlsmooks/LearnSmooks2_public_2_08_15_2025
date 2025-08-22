@@ -36,7 +36,10 @@ public class X12_837_Loop2300Test {
         "DTP*439*D8*20210814~" +  // Accident Date
         "DTP*096*D8*20210801~" +  // Discharge Date
         "DTP*090*D8*20210821~" +  // Assumed/Relinquished Care Date
-        "SE*19*0001~" +
+        "PWK*OZ*BM~" +  // Claim Supplemental Information
+        "CN1*01*1500.00~" +  // Contract Information
+        "AMT*F5*250.00~" +  // Patient Amount Paid
+        "SE*22*0001~" +
         "GE*1*1~" +
         "IEA*1*000000001~";
 
@@ -76,7 +79,10 @@ public class X12_837_Loop2300Test {
         "DTP*444*D8*20210815~" +  // Property Casualty Date 2
         "DTP*050*D8*20210820~" +  // Repricer Received Date 1
         "DTP*050*D8*20210821~" +  // Repricer Received Date 2
-        "SE*32*0001~" +
+        "PWK*OZ*BM*1*IL*EI*SUP123456*Document Description~" +  // Claim Supplemental Information
+        "CN1*01*2500.00*85*CONTRACT123*5*V1.0~" +  // Contract Information
+        "AMT*F5*500.00~" +  // Patient Amount Paid
+        "SE*35*0001~" +
         "GE*1*1~" +
         "IEA*1*000000001~";
 
@@ -137,6 +143,21 @@ public class X12_837_Loop2300Test {
             
             // The list fields would only be populated if we had more DTP segments
             // Since we only have 6 DTP segments, they fill the first 6 single fields
+            
+            // Verify PWK segment (Claim Supplemental Information)
+            assertNotNull("Claim supplemental information should not be null", loop2300.getClaimSupplementalInformation());
+            assertEquals("OZ", loop2300.getClaimSupplementalInformation().getReportTypeCode());
+            assertEquals("BM", loop2300.getClaimSupplementalInformation().getReportTransmissionCode());
+            
+            // Verify CN1 segment (Contract Information)
+            assertNotNull("Contract information should not be null", loop2300.getContractInformation());
+            assertEquals("01", loop2300.getContractInformation().getContractTypeCode());
+            assertEquals("1500.00", loop2300.getContractInformation().getContractAmount());
+            
+            // Verify AMT segment (Patient Amount Paid)
+            assertNotNull("Patient amount paid should not be null", loop2300.getPatientAmountPaid());
+            assertEquals("F5", loop2300.getPatientAmountPaid().getAmountQualifierCode());
+            assertEquals("250.00", loop2300.getPatientAmountPaid().getMonetaryAmount());
             
             System.out.println("Successfully parsed EDI with Loop 2300:");
             System.out.println(xml);
@@ -212,6 +233,30 @@ public class X12_837_Loop2300Test {
             assertEquals("050", loop2300.getRepricerReceivedDate().get(0).getDateTimeQualifier());
             assertEquals("20210820", loop2300.getRepricerReceivedDate().get(0).getDateTimePeriod());
             assertEquals("20210821", loop2300.getRepricerReceivedDate().get(1).getDateTimePeriod());
+            
+            // Verify PWK segment with all fields
+            assertNotNull("Claim supplemental information should not be null", loop2300.getClaimSupplementalInformation());
+            assertEquals("OZ", loop2300.getClaimSupplementalInformation().getReportTypeCode());
+            assertEquals("BM", loop2300.getClaimSupplementalInformation().getReportTransmissionCode());
+            assertEquals("1", loop2300.getClaimSupplementalInformation().getReportCopiesNeeded());
+            assertEquals("IL", loop2300.getClaimSupplementalInformation().getEntityIdentifierCode());
+            assertEquals("EI", loop2300.getClaimSupplementalInformation().getIdentificationCodeQualifier());
+            assertEquals("SUP123456", loop2300.getClaimSupplementalInformation().getIdentificationCode());
+            assertEquals("Document Description", loop2300.getClaimSupplementalInformation().getDescription());
+            
+            // Verify CN1 segment with all fields
+            assertNotNull("Contract information should not be null", loop2300.getContractInformation());
+            assertEquals("01", loop2300.getContractInformation().getContractTypeCode());
+            assertEquals("2500.00", loop2300.getContractInformation().getContractAmount());
+            assertEquals("85", loop2300.getContractInformation().getContractPercentage());
+            assertEquals("CONTRACT123", loop2300.getContractInformation().getContractCode());
+            assertEquals("5", loop2300.getContractInformation().getTermsDiscountPercentage());
+            assertEquals("V1.0", loop2300.getContractInformation().getContractVersionIdentifier());
+            
+            // Verify AMT segment
+            assertNotNull("Patient amount paid should not be null", loop2300.getPatientAmountPaid());
+            assertEquals("F5", loop2300.getPatientAmountPaid().getAmountQualifierCode());
+            assertEquals("500.00", loop2300.getPatientAmountPaid().getMonetaryAmount());
             
             System.out.println("Successfully parsed EDI with all Loop 2300 DTP segments");
             

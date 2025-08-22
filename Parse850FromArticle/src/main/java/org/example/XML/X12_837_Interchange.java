@@ -370,6 +370,105 @@ public class X12_837_Interchange {
         @JacksonXmlElementWrapper(useWrapping = false)
         @JsonProperty("repricer-received-date")
         private List<DTPSegment> repricerReceivedDate;
+        
+        @JsonProperty("claim-supplemental-information")
+        private PWKSegment claimSupplementalInformation;
+        
+        @JsonProperty("contract-information")
+        private CN1Segment contractInformation;
+        
+        @JsonProperty("patient-amount-paid")
+        private AMTSegment patientAmountPaid;
+        
+        // REF segments for various reference numbers
+        @JsonProperty("service-authorization-exception-code")
+        private REFSegment serviceAuthorizationExceptionCode;
+        
+        @JsonProperty("mandatory-medicare")
+        private REFSegment mandatoryMedicare;
+        
+        @JsonProperty("mammogram-certification")
+        private REFSegment mammogramCertification;
+        
+        @JsonProperty("referral-number")
+        private REFSegment referralNumber;
+        
+        @JsonProperty("prior-authorization")
+        private REFSegment priorAuthorization;
+        
+        @JsonProperty("payer-claim-control-number")
+        private REFSegment payerClaimControlNumber;
+        
+        @JsonProperty("clinical-laboratory-improvement")
+        private REFSegment clinicalLaboratoryImprovement;
+        
+        @JsonProperty("repriced-claim-number")
+        private REFSegment repricedClaimNumber;
+        
+        @JsonProperty("adjusted-repriced-claim-number")
+        private REFSegment adjustedRepricedClaimNumber;
+        
+        @JsonProperty("investigational-device-ex-number")
+        private REFSegment investigationalDeviceExNumber;
+        
+        @JsonProperty("claim-id-for-txn-intermediaries")
+        private REFSegment claimIdForTxnIntermediaries;
+        
+        @JsonProperty("medical-record-number")
+        private REFSegment medicalRecordNumber;
+        
+        @JsonProperty("demo-project-id")
+        private REFSegment demoProjectId;
+        
+        @JsonProperty("care-plan-oversight")
+        private REFSegment carePlanOversight;
+        
+        // K3 File Information
+        @JacksonXmlElementWrapper(useWrapping = false)
+        @JsonProperty("file-information")
+        private List<K3Segment> fileInformation;
+        
+        // NTE Claim Note
+        @JsonProperty("claim-note")
+        private NTESegment claimNote;
+        
+        // CR1 Ambulance Transport Info
+        @JsonProperty("ambulance-transport-info")
+        private CR1Segment ambulanceTransportInfo;
+        
+        // CR2 Spinal Manipulation Info
+        @JsonProperty("spinal-manipulation-info")
+        private CR2Segment spinalManipulationInfo;
+        
+        // CRC segments for various certifications
+        @JacksonXmlElementWrapper(useWrapping = false)
+        @JsonProperty("ambulance-certification")
+        private List<CRCSegment> ambulanceCertification;
+        
+        @JacksonXmlElementWrapper(useWrapping = false)
+        @JsonProperty("patient-condition-vision")
+        private List<CRCSegment> patientConditionVision;
+        
+        @JsonProperty("homebound-indicator")
+        private CRCSegment homeboundIndicator;
+        
+        @JsonProperty("epsdt-referral")
+        private CRCSegment epsdtReferral;
+        
+        // HI segments for diagnosis and procedure codes
+        @JsonProperty("health-care-diagnosis-code")
+        private HISegment healthCareDiagnosisCode;
+        
+        @JsonProperty("anesthesia-related-proc")
+        private HISegment anesthesiaRelatedProc;
+        
+        @JacksonXmlElementWrapper(useWrapping = false)
+        @JsonProperty("condition-info")
+        private List<HISegment> conditionInfo;
+        
+        // HCP Claim Pricing/Repricing Info
+        @JsonProperty("claim-pricing-repricing-info")
+        private HCPSegment claimPricingRepricingInfo;
     }
 
     @Data
@@ -864,6 +963,194 @@ public class X12_837_Interchange {
         private String dateTimePeriodFormatQualifier;
         @JsonProperty("date-time-period")
         private String dateTimePeriod;
+    }
+
+    @Data
+    public static class PWKSegment {
+        @JsonProperty("report-type-code")
+        private String reportTypeCode;
+        @JsonProperty("report-transmission-code")
+        private String reportTransmissionCode;
+        @JsonProperty("report-copies-needed")
+        private String reportCopiesNeeded;
+        @JsonProperty("entity-identifier-code")
+        private String entityIdentifierCode;
+        @JsonProperty("identification-code-qualifier")
+        private String identificationCodeQualifier;
+        @JsonProperty("identification-code")
+        private String identificationCode;
+        @JsonProperty("description")
+        private String description;
+        @JsonProperty("actions-indicated")
+        private String actionsIndicated;
+        @JsonProperty("request-category-code")
+        private String requestCategoryCode;
+    }
+
+    @Data
+    public static class CN1Segment {
+        @JsonProperty("contract-type-code")
+        private String contractTypeCode;
+        @JsonProperty("contract-amount")
+        private String contractAmount;
+        @JsonProperty("contract-percentage")
+        private String contractPercentage;
+        @JsonProperty("contract-code")
+        private String contractCode;
+        @JsonProperty("terms-discount-percentage")
+        private String termsDiscountPercentage;
+        @JsonProperty("contract-version-identifier")
+        private String contractVersionIdentifier;
+    }
+
+    @Data
+    public static class K3Segment {
+        @JsonProperty("fixed-format-information")
+        private String fixedFormatInformation;
+        @JsonProperty("record-format-code")
+        private String recordFormatCode;
+        @JsonProperty("situation-code")
+        private String situationCode;
+    }
+
+    @Data
+    public static class NTESegment {
+        @JsonProperty("note-reference-code")
+        private String noteReferenceCode;
+        @JsonProperty("note-text")
+        private String noteText;
+    }
+
+    @Data
+    public static class CR1Segment {
+        @JsonProperty("unit-or-basis-for-measurement-code")
+        private String unitOrBasisForMeasurementCode;
+        @JsonProperty("weight")
+        private String weight;
+        @JsonProperty("ambulance-transport-code")
+        private String ambulanceTransportCode;
+        @JsonProperty("ambulance-transport-reason-code")
+        private String ambulanceTransportReasonCode;
+        @JsonProperty("unit-or-basis-for-measurement-code-2")
+        private String unitOrBasisForMeasurementCode2;
+        @JsonProperty("quantity")
+        private String quantity;
+        @JsonProperty("address-information")
+        private String addressInformation;
+        @JsonProperty("address-information-2")
+        private String addressInformation2;
+        @JsonProperty("description")
+        private String description;
+        @JsonProperty("description-2")
+        private String description2;
+    }
+
+    @Data
+    public static class CR2Segment {
+        @JsonProperty("count")
+        private String count;
+        @JsonProperty("quantity")
+        private String quantity;
+        @JsonProperty("subluxation-level-code")
+        private String subluxationLevelCode;
+        @JsonProperty("subluxation-level-code-2")
+        private String subluxationLevelCode2;
+        @JsonProperty("unit-or-basis-for-measurement-code")
+        private String unitOrBasisForMeasurementCode;
+        @JsonProperty("quantity-2")
+        private String quantity2;
+        @JsonProperty("quantity-3")
+        private String quantity3;
+        @JsonProperty("nature-of-condition-code")
+        private String natureOfConditionCode;
+        @JsonProperty("yes-no-condition-response-code")
+        private String yesNoConditionResponseCode;
+        @JsonProperty("description")
+        private String description;
+        @JsonProperty("description-2")
+        private String description2;
+        @JsonProperty("yes-no-condition-response-code-2")
+        private String yesNoConditionResponseCode2;
+    }
+
+    @Data
+    public static class CRCSegment {
+        @JsonProperty("code-category")
+        private String codeCategory;
+        @JsonProperty("yes-no-condition-or-response-code")
+        private String yesNoConditionOrResponseCode;
+        @JsonProperty("condition-indicator")
+        private String conditionIndicator;
+        @JsonProperty("condition-indicator-2")
+        private String conditionIndicator2;
+        @JsonProperty("condition-indicator-3")
+        private String conditionIndicator3;
+        @JsonProperty("condition-indicator-4")
+        private String conditionIndicator4;
+        @JsonProperty("condition-indicator-5")
+        private String conditionIndicator5;
+    }
+
+    @Data
+    public static class HISegment {
+        @JsonProperty("health-care-code-information")
+        private String healthCareCodeInformation;
+        @JsonProperty("health-care-code-information-2")
+        private String healthCareCodeInformation2;
+        @JsonProperty("health-care-code-information-3")
+        private String healthCareCodeInformation3;
+        @JsonProperty("health-care-code-information-4")
+        private String healthCareCodeInformation4;
+        @JsonProperty("health-care-code-information-5")
+        private String healthCareCodeInformation5;
+        @JsonProperty("health-care-code-information-6")
+        private String healthCareCodeInformation6;
+        @JsonProperty("health-care-code-information-7")
+        private String healthCareCodeInformation7;
+        @JsonProperty("health-care-code-information-8")
+        private String healthCareCodeInformation8;
+        @JsonProperty("health-care-code-information-9")
+        private String healthCareCodeInformation9;
+        @JsonProperty("health-care-code-information-10")
+        private String healthCareCodeInformation10;
+        @JsonProperty("health-care-code-information-11")
+        private String healthCareCodeInformation11;
+        @JsonProperty("health-care-code-information-12")
+        private String healthCareCodeInformation12;
+    }
+
+    @Data
+    public static class HCPSegment {
+        @JsonProperty("pricing-methodology")
+        private String pricingMethodology;
+        @JsonProperty("monetary-amount")
+        private String monetaryAmount;
+        @JsonProperty("monetary-amount-2")
+        private String monetaryAmount2;
+        @JsonProperty("reference-identification")
+        private String referenceIdentification;
+        @JsonProperty("rate")
+        private String rate;
+        @JsonProperty("reference-identification-2")
+        private String referenceIdentification2;
+        @JsonProperty("monetary-amount-3")
+        private String monetaryAmount3;
+        @JsonProperty("product-service-id")
+        private String productServiceId;
+        @JsonProperty("product-service-id-qualifier")
+        private String productServiceIdQualifier;
+        @JsonProperty("product-service-id-2")
+        private String productServiceId2;
+        @JsonProperty("unit-or-basis-for-measurement-code")
+        private String unitOrBasisForMeasurementCode;
+        @JsonProperty("quantity")
+        private String quantity;
+        @JsonProperty("reject-reason-code")
+        private String rejectReasonCode;
+        @JsonProperty("policy-compliance-code")
+        private String policyComplianceCode;
+        @JsonProperty("exception-code")
+        private String exceptionCode;
     }
 
     @Data
