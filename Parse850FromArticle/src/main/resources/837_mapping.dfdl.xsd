@@ -297,7 +297,7 @@
                                     </xsd:appinfo>
                                 </xsd:annotation>
                             </xsd:element>
-                            <!-- HI segments for diagnosis and procedure codes -->
+                            <!-- HI segments for diagnosis and procedure codes - expects ABK or BK prefix -->
                             <xsd:element dfdl:initiator="HI" dfdl:ref="ibmEdiFmt:EDISegmentFormat" name="health-care-diagnosis-code"
                                          type="HI_Segment" minOccurs="0" maxOccurs="1"/>
                             <xsd:element dfdl:initiator="HI" dfdl:ref="ibmEdiFmt:EDISegmentFormat" name="anesthesia-related-proc"
