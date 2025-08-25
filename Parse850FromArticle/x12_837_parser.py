@@ -275,12 +275,188 @@ class Loop2300:
 
 
 @dataclass
+class LIN_Segment:
+    """LIN - Item Identification"""
+    product_service_id_qualifier: str
+    product_service_id: str
+    assigned_identification: Optional[str] = None
+    product_service_id_qualifier_2: Optional[str] = None
+    product_service_id_2: Optional[str] = None
+    product_service_id_qualifier_3: Optional[str] = None
+    product_service_id_3: Optional[str] = None
+
+
+@dataclass
+class CTP_Segment:
+    """CTP - Drug Pricing"""
+    class_of_trade_code: Optional[str] = None
+    price_identifier_code: Optional[str] = None
+    unit_price: Optional[str] = None
+    quantity: Optional[str] = None
+    composite_unit_of_measure: Optional[str] = None
+    price_multiplier_qualifier: Optional[str] = None
+    multiplier: Optional[str] = None
+    monetary_amount: Optional[str] = None
+    basis_of_unit_price_code: Optional[str] = None
+    condition_value: Optional[str] = None
+    multiple_price_quantity: Optional[str] = None
+
+
+@dataclass
+class SVD_Segment:
+    """SVD - Line Adjudication Information"""
+    other_payer_primary_identifier: str
+    service_line_paid_amount: str
+    composite_medical_procedure_identifier: Optional[str] = None
+    product_service_id: Optional[str] = None
+    paid_service_unit_count: Optional[str] = None
+    bundled_or_unbundled_line_number: Optional[str] = None
+
+
+@dataclass
+class CAS_Segment:
+    """CAS - Claims Adjustment"""
+    claim_adjustment_group_code: str
+    claim_adjustment_reason_code: str
+    monetary_amount: str
+    quantity: Optional[str] = None
+    claim_adjustment_reason_code_2: Optional[str] = None
+    monetary_amount_2: Optional[str] = None
+    quantity_2: Optional[str] = None
+
+
+@dataclass
+class AMT_Segment:
+    """AMT - Monetary Amount"""
+    amount_qualifier_code: str
+    monetary_amount: str
+    credit_debit_flag_code: Optional[str] = None
+
+
+@dataclass
+class LQ_Segment:
+    """LQ - Form Identification Code"""
+    code_list_qualifier_code: str
+    industry_code: str
+
+
+@dataclass
+class FRM_Segment:
+    """FRM - Supporting Documentation"""
+    question_number_letter: str
+    question_response: Optional[str] = None
+    question_response_2: Optional[str] = None
+    question_response_3: Optional[str] = None
+    question_response_4: Optional[str] = None
+    question_response_5: Optional[str] = None
+
+
+@dataclass
+class Loop2410:
+    """Loop 2410 - Drug Identification"""
+    drug_identification: Optional[LIN_Segment] = None
+    drug_quantity: Optional[CTP_Segment] = None
+    prescription_date: Optional[REF_Segment] = None
+
+
+@dataclass
+class Loop2420A:
+    """Loop 2420A - Rendering Provider Name"""
+    rendering_provider_name: NM1_Segment
+    rendering_provider_secondary_id: Optional[List[REF_Segment]] = None
+
+
+@dataclass
+class Loop2420B:
+    """Loop 2420B - Purchased Service Provider Name"""
+    purchased_service_provider_name: NM1_Segment
+    purchased_service_provider_secondary_id: Optional[List[REF_Segment]] = None
+
+
+@dataclass
+class Loop2420C:
+    """Loop 2420C - Service Facility Location Name"""
+    service_facility_name: NM1_Segment
+    service_facility_address: Optional[N3_Segment] = None
+    service_facility_city_state_zip: Optional[N4_Segment] = None
+    service_facility_secondary_id: Optional[List[REF_Segment]] = None
+
+
+@dataclass
+class Loop2420D:
+    """Loop 2420D - Supervising Provider Name"""
+    supervising_provider_name: NM1_Segment
+    supervising_provider_secondary_id: Optional[List[REF_Segment]] = None
+
+
+@dataclass
+class Loop2420E:
+    """Loop 2420E - Ordering Provider Name"""
+    ordering_provider_name: NM1_Segment
+    ordering_provider_address: Optional[N3_Segment] = None
+    ordering_provider_city_state_zip: Optional[N4_Segment] = None
+    ordering_provider_secondary_id: Optional[List[REF_Segment]] = None
+    ordering_provider_contact: Optional[PER_Segment] = None
+
+
+@dataclass
+class Loop2420F:
+    """Loop 2420F - Referring Provider Name"""
+    referring_provider_name: NM1_Segment
+    referring_provider_secondary_id: Optional[List[REF_Segment]] = None
+
+
+@dataclass
+class Loop2420G:
+    """Loop 2420G - Ambulance Pick-up Location"""
+    ambulance_pickup_name: NM1_Segment
+    ambulance_pickup_address: N3_Segment
+    ambulance_pickup_city_state_zip: N4_Segment
+
+
+@dataclass
+class Loop2420H:
+    """Loop 2420H - Ambulance Drop-off Location"""
+    ambulance_dropoff_name: NM1_Segment
+    ambulance_dropoff_address: N3_Segment
+    ambulance_dropoff_city_state_zip: N4_Segment
+
+
+@dataclass
+class Loop2430:
+    """Loop 2430 - Line Adjudication Information"""
+    line_adjudication_information: SVD_Segment
+    line_adjustment: Optional[List[CAS_Segment]] = None
+    line_check_or_remittance_date: Optional[DTP_Segment] = None
+    remaining_patient_liability: Optional[AMT_Segment] = None
+
+
+@dataclass
+class Loop2440:
+    """Loop 2440 - Form Identification Code"""
+    form_identification_code: LQ_Segment
+    supporting_documentation: Optional[List[FRM_Segment]] = None
+
+
+@dataclass
 class Loop2400:
     """Loop 2400 - Service Line"""
     service_line_number: str
     professional_service: Optional[SV1_Segment] = None
     service_dates: List[DTP_Segment] = field(default_factory=list)
     service_line_supplemental_info: Optional[List[Dict]] = None
+    # Child loops
+    drug_identification: Optional[Loop2410] = None
+    rendering_provider: Optional[Loop2420A] = None
+    purchased_service_provider: Optional[Loop2420B] = None
+    service_facility_location: Optional[Loop2420C] = None
+    supervising_provider: Optional[Loop2420D] = None
+    ordering_provider: Optional[Loop2420E] = None
+    referring_providers: List[Loop2420F] = field(default_factory=list)
+    ambulance_pickup_location: Optional[Loop2420G] = None
+    ambulance_dropoff_location: Optional[Loop2420H] = None
+    line_adjudication_information: List[Loop2430] = field(default_factory=list)
+    form_identification_codes: List[Loop2440] = field(default_factory=list)
 
 
 @dataclass
@@ -344,8 +520,44 @@ class X12_837_Parser:
                 nm1 = self._parse_nm1(elements)
                 entity_code = elements[1] if len(elements) > 1 else ''
                 
-                # Check if this is a 2310 loop NM1
-                if current_loop_2300 and entity_code in ['DN', 'DQ', '82', '77', 'DK', 'PW', '45']:
+                # Check if this is a 2420 loop NM1 (Service Line level)
+                if current_loop_2400 and entity_code in ['82', '71', '77', 'DQ', 'DK', 'DN', 'P3', 'PW', '45']:
+                    # Handle Loop 2420A-H
+                    if entity_code == '82':  # Loop 2420A - Rendering Provider
+                        current_loop_2400.rendering_provider = Loop2420A(rendering_provider_name=nm1)
+                        current_loop_2310 = current_loop_2400.rendering_provider  # Track for REF segments
+                        current_loop_2310_type = '2420A'
+                    elif entity_code == '71':  # Loop 2420B - Purchased Service Provider
+                        current_loop_2400.purchased_service_provider = Loop2420B(purchased_service_provider_name=nm1)
+                        current_loop_2310 = current_loop_2400.purchased_service_provider
+                        current_loop_2310_type = '2420B'
+                    elif entity_code == '77':  # Loop 2420C - Service Facility Location
+                        current_loop_2400.service_facility_location = Loop2420C(service_facility_name=nm1)
+                        current_loop_2310 = current_loop_2400.service_facility_location
+                        current_loop_2310_type = '2420C'
+                    elif entity_code == 'DQ':  # Loop 2420D - Supervising Provider
+                        current_loop_2400.supervising_provider = Loop2420D(supervising_provider_name=nm1)
+                        current_loop_2310 = current_loop_2400.supervising_provider
+                        current_loop_2310_type = '2420D'
+                    elif entity_code == 'DK':  # Loop 2420E - Ordering Provider
+                        current_loop_2400.ordering_provider = Loop2420E(ordering_provider_name=nm1)
+                        current_loop_2310 = current_loop_2400.ordering_provider
+                        current_loop_2310_type = '2420E'
+                    elif entity_code in ['DN', 'P3']:  # Loop 2420F - Referring Provider
+                        provider = Loop2420F(referring_provider_name=nm1)
+                        current_loop_2400.referring_providers.append(provider)
+                        current_loop_2310 = provider
+                        current_loop_2310_type = '2420F'
+                    elif entity_code == 'PW':  # Loop 2420G - Ambulance Pick-up Location
+                        current_loop_2400.ambulance_pickup_location = Loop2420G(ambulance_pickup_name=nm1)
+                        current_loop_2310 = current_loop_2400.ambulance_pickup_location
+                        current_loop_2310_type = '2420G'
+                    elif entity_code == '45':  # Loop 2420H - Ambulance Drop-off Location
+                        current_loop_2400.ambulance_dropoff_location = Loop2420H(ambulance_dropoff_name=nm1)
+                        current_loop_2310 = current_loop_2400.ambulance_dropoff_location
+                        current_loop_2310_type = '2420H'
+                # Check if this is a 2310 loop NM1 (Claim level)
+                elif current_loop_2300 and entity_code in ['DN', 'DQ', '82', '77', 'DK', 'PW', '45']:
                     # Determine which 2310 loop based on entity code
                     if entity_code in ['DN', 'DQ']:  # Referring Provider
                         current_loop_2310 = Loop2310A(referring_provider_name=nm1)
@@ -385,6 +597,14 @@ class X12_837_Parser:
                     current_loop_2310.ambulance_pickup_address = n3
                 elif current_loop_2310_type == '2310F':
                     current_loop_2310.ambulance_dropoff_address = n3
+                elif current_loop_2310_type == '2420C':  # Service Line level service facility
+                    current_loop_2310.service_facility_address = n3
+                elif current_loop_2310_type == '2420E':  # Ordering Provider address
+                    current_loop_2310.ordering_provider_address = n3
+                elif current_loop_2310_type == '2420G':  # Ambulance Pickup (service line level)
+                    current_loop_2310.ambulance_pickup_address = n3
+                elif current_loop_2310_type == '2420H':  # Ambulance Dropoff (service line level)
+                    current_loop_2310.ambulance_dropoff_address = n3
                     
             elif segment_id == 'N4' and current_loop_2310:
                 n4 = self._parse_n4(elements)
@@ -393,6 +613,14 @@ class X12_837_Parser:
                 elif current_loop_2310_type == '2310E':
                     current_loop_2310.ambulance_pickup_city_state_zip = n4
                 elif current_loop_2310_type == '2310F':
+                    current_loop_2310.ambulance_dropoff_city_state_zip = n4
+                elif current_loop_2310_type == '2420C':  # Service Line level service facility
+                    current_loop_2310.service_facility_city_state_zip = n4
+                elif current_loop_2310_type == '2420E':  # Ordering Provider city/state
+                    current_loop_2310.ordering_provider_city_state_zip = n4
+                elif current_loop_2310_type == '2420G':  # Ambulance Pickup (service line level)
+                    current_loop_2310.ambulance_pickup_city_state_zip = n4
+                elif current_loop_2310_type == '2420H':  # Ambulance Dropoff (service line level)
                     current_loop_2310.ambulance_dropoff_city_state_zip = n4
                     
             elif segment_id == 'REF' and current_loop_2310:
@@ -415,6 +643,32 @@ class X12_837_Parser:
                         if current_loop_2310.supervising_provider_secondary_identification is None:
                             current_loop_2310.supervising_provider_secondary_identification = []
                         current_loop_2310.supervising_provider_secondary_identification.append(ref)
+                # Handle 2420 REF segments
+                elif current_loop_2310_type in ['2420A', '2420B', '2420C', '2420D', '2420E', '2420F']:
+                    if current_loop_2310_type == '2420A':
+                        if current_loop_2310.rendering_provider_secondary_id is None:
+                            current_loop_2310.rendering_provider_secondary_id = []
+                        current_loop_2310.rendering_provider_secondary_id.append(ref)
+                    elif current_loop_2310_type == '2420B':
+                        if current_loop_2310.purchased_service_provider_secondary_id is None:
+                            current_loop_2310.purchased_service_provider_secondary_id = []
+                        current_loop_2310.purchased_service_provider_secondary_id.append(ref)
+                    elif current_loop_2310_type == '2420C':
+                        if current_loop_2310.service_facility_secondary_id is None:
+                            current_loop_2310.service_facility_secondary_id = []
+                        current_loop_2310.service_facility_secondary_id.append(ref)
+                    elif current_loop_2310_type == '2420D':
+                        if current_loop_2310.supervising_provider_secondary_id is None:
+                            current_loop_2310.supervising_provider_secondary_id = []
+                        current_loop_2310.supervising_provider_secondary_id.append(ref)
+                    elif current_loop_2310_type == '2420E':
+                        if current_loop_2310.ordering_provider_secondary_id is None:
+                            current_loop_2310.ordering_provider_secondary_id = []
+                        current_loop_2310.ordering_provider_secondary_id.append(ref)
+                    elif current_loop_2310_type == '2420F':
+                        if current_loop_2310.referring_provider_secondary_id is None:
+                            current_loop_2310.referring_provider_secondary_id = []
+                        current_loop_2310.referring_provider_secondary_id.append(ref)
                         
             elif segment_id == 'PER' and current_loop_2310_type == '2310C':
                 current_loop_2310.service_facility_contact_information = self._parse_per(elements)
@@ -434,7 +688,15 @@ class X12_837_Parser:
                 
             elif segment_id == 'DTP':
                 dtp = self._parse_dtp(elements)
-                if current_loop_2400:
+                # Check if this is a Loop 2430 DTP (Line Adjudication date)
+                if current_loop_2400 and current_loop_2400.line_adjudication_information:
+                    # Check if DTP is 573 (Check/Remittance Date) for Loop 2430
+                    if elements[1] == '573':
+                        # Add to most recent adjudication
+                        current_loop_2400.line_adjudication_information[-1].line_check_or_remittance_date = dtp
+                    else:
+                        current_loop_2400.service_dates.append(dtp)
+                elif current_loop_2400:
                     current_loop_2400.service_dates.append(dtp)
                 elif current_loop_2300:
                     current_loop_2300.dates.append(dtp)
@@ -449,6 +711,49 @@ class X12_837_Parser:
                     
             elif segment_id == 'SV1' and current_loop_2400:
                 current_loop_2400.professional_service = self._parse_sv1(elements)
+                
+            elif segment_id == 'LIN' and current_loop_2400:
+                # Loop 2410 - Drug Identification
+                if not current_loop_2400.drug_identification:
+                    current_loop_2400.drug_identification = Loop2410()
+                current_loop_2400.drug_identification.drug_identification = self._parse_lin(elements)
+                
+            elif segment_id == 'CTP' and current_loop_2400 and current_loop_2400.drug_identification:
+                current_loop_2400.drug_identification.drug_quantity = self._parse_ctp(elements)
+                
+            elif segment_id == 'SVD' and current_loop_2400:
+                # Loop 2430 - Line Adjudication Information
+                svd = self._parse_svd(elements)
+                adjudication = Loop2430(line_adjudication_information=svd)
+                current_loop_2400.line_adjudication_information.append(adjudication)
+                
+            elif segment_id == 'CAS' and current_loop_2400 and current_loop_2400.line_adjudication_information:
+                # Add to most recent adjudication
+                cas = self._parse_cas(elements)
+                last_adjudication = current_loop_2400.line_adjudication_information[-1]
+                if not last_adjudication.line_adjustment:
+                    last_adjudication.line_adjustment = []
+                last_adjudication.line_adjustment.append(cas)
+                
+            elif segment_id == 'AMT' and current_loop_2400 and current_loop_2400.line_adjudication_information:
+                # Add to most recent adjudication
+                amt = self._parse_amt(elements)
+                if elements[1] == 'EAF':  # Remaining Patient Liability
+                    current_loop_2400.line_adjudication_information[-1].remaining_patient_liability = amt
+                    
+            elif segment_id == 'LQ' and current_loop_2400:
+                # Loop 2440 - Form Identification Code
+                lq = self._parse_lq(elements)
+                form = Loop2440(form_identification_code=lq)
+                current_loop_2400.form_identification_codes.append(form)
+                
+            elif segment_id == 'FRM' and current_loop_2400 and current_loop_2400.form_identification_codes:
+                # Add to most recent form
+                frm = self._parse_frm(elements)
+                last_form = current_loop_2400.form_identification_codes[-1]
+                if not last_form.supporting_documentation:
+                    last_form.supporting_documentation = []
+                last_form.supporting_documentation.append(frm)
                 
         return self.current_interchange
     
@@ -644,6 +949,83 @@ class X12_837_Parser:
             communication_number_2=elements[6] if len(elements) > 6 else None,
             communication_number_qualifier_3=elements[7] if len(elements) > 7 else None,
             communication_number_3=elements[8] if len(elements) > 8 else None
+        )
+    
+    def _parse_lin(self, elements: List[str]) -> LIN_Segment:
+        """Parse LIN segment (Item Identification)"""
+        return LIN_Segment(
+            product_service_id_qualifier=elements[2] if len(elements) > 2 else '',
+            product_service_id=elements[3] if len(elements) > 3 else '',
+            assigned_identification=elements[1] if len(elements) > 1 else None,
+            product_service_id_qualifier_2=elements[4] if len(elements) > 4 else None,
+            product_service_id_2=elements[5] if len(elements) > 5 else None,
+            product_service_id_qualifier_3=elements[6] if len(elements) > 6 else None,
+            product_service_id_3=elements[7] if len(elements) > 7 else None
+        )
+    
+    def _parse_ctp(self, elements: List[str]) -> CTP_Segment:
+        """Parse CTP segment (Drug Pricing)"""
+        return CTP_Segment(
+            class_of_trade_code=elements[1] if len(elements) > 1 else None,
+            price_identifier_code=elements[2] if len(elements) > 2 else None,
+            unit_price=elements[3] if len(elements) > 3 else None,
+            quantity=elements[4] if len(elements) > 4 else None,
+            composite_unit_of_measure=elements[5] if len(elements) > 5 else None,
+            price_multiplier_qualifier=elements[6] if len(elements) > 6 else None,
+            multiplier=elements[7] if len(elements) > 7 else None,
+            monetary_amount=elements[8] if len(elements) > 8 else None,
+            basis_of_unit_price_code=elements[9] if len(elements) > 9 else None,
+            condition_value=elements[10] if len(elements) > 10 else None,
+            multiple_price_quantity=elements[11] if len(elements) > 11 else None
+        )
+    
+    def _parse_svd(self, elements: List[str]) -> SVD_Segment:
+        """Parse SVD segment (Line Adjudication Information)"""
+        return SVD_Segment(
+            other_payer_primary_identifier=elements[1] if len(elements) > 1 else '',
+            service_line_paid_amount=elements[2] if len(elements) > 2 else '',
+            composite_medical_procedure_identifier=elements[3] if len(elements) > 3 else None,
+            product_service_id=elements[4] if len(elements) > 4 else None,
+            paid_service_unit_count=elements[5] if len(elements) > 5 else None,
+            bundled_or_unbundled_line_number=elements[6] if len(elements) > 6 else None
+        )
+    
+    def _parse_cas(self, elements: List[str]) -> CAS_Segment:
+        """Parse CAS segment (Claims Adjustment)"""
+        return CAS_Segment(
+            claim_adjustment_group_code=elements[1] if len(elements) > 1 else '',
+            claim_adjustment_reason_code=elements[2] if len(elements) > 2 else '',
+            monetary_amount=elements[3] if len(elements) > 3 else '',
+            quantity=elements[4] if len(elements) > 4 else None,
+            claim_adjustment_reason_code_2=elements[5] if len(elements) > 5 else None,
+            monetary_amount_2=elements[6] if len(elements) > 6 else None,
+            quantity_2=elements[7] if len(elements) > 7 else None
+        )
+    
+    def _parse_amt(self, elements: List[str]) -> AMT_Segment:
+        """Parse AMT segment (Monetary Amount)"""
+        return AMT_Segment(
+            amount_qualifier_code=elements[1] if len(elements) > 1 else '',
+            monetary_amount=elements[2] if len(elements) > 2 else '',
+            credit_debit_flag_code=elements[3] if len(elements) > 3 else None
+        )
+    
+    def _parse_lq(self, elements: List[str]) -> LQ_Segment:
+        """Parse LQ segment (Form Identification Code)"""
+        return LQ_Segment(
+            code_list_qualifier_code=elements[1] if len(elements) > 1 else '',
+            industry_code=elements[2] if len(elements) > 2 else ''
+        )
+    
+    def _parse_frm(self, elements: List[str]) -> FRM_Segment:
+        """Parse FRM segment (Supporting Documentation)"""
+        return FRM_Segment(
+            question_number_letter=elements[1] if len(elements) > 1 else '',
+            question_response=elements[2] if len(elements) > 2 else None,
+            question_response_2=elements[3] if len(elements) > 3 else None,
+            question_response_3=elements[4] if len(elements) > 4 else None,
+            question_response_4=elements[5] if len(elements) > 5 else None,
+            question_response_5=elements[6] if len(elements) > 6 else None
         )
     
     def to_json(self, interchange: X12_837_Interchange, indent: int = 2) -> str:

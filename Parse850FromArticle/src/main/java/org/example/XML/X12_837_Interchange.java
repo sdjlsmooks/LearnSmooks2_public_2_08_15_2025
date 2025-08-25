@@ -49,6 +49,7 @@ public class X12_837_Interchange {
     @JsonProperty("Loop_2300_ClaimInformation")
     private List<Loop2300ClaimInformation> loop2300ClaimInformation;
 
+
     @JsonProperty("financial-information")
     private FinancialInformation financialInformation;
 
@@ -527,6 +528,10 @@ public class X12_837_Interchange {
         @JacksonXmlElementWrapper(useWrapping = false)
         @JsonProperty("Loop_2320_OtherSubscriberInformation")
         private List<X12_837_Loop2310_Classes.Loop2320OtherSubscriberInformation> loop2320OtherSubscriberInformation;
+        
+        @JacksonXmlElementWrapper(useWrapping = false)
+        @JsonProperty("Loop_2400_ServiceLineInformation")
+        private List<X12_837_Loop2400_Classes.Loop2400ServiceLineInformation> loop2400ServiceLineInformation;
     }
 
     @Data
