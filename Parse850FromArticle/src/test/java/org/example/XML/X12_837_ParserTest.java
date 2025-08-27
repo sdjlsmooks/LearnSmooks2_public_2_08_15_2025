@@ -42,7 +42,7 @@ public class X12_837_ParserTest {
                     "N4*PLANTOWN*TX*75001~" +
                     "REF*2U*SECONDARY987~" +
                     "REF*EI*98-7654321~" +
-                    "SE*25*0001~" +
+                    "SE*24*0001~" +
                     "GE*1*1~" +
                     "IEA*1*000000001~";
 
